@@ -1,0 +1,45 @@
+.swiper {
+  height: 100%;
+  .swiper-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    .slideContainer {
+      padding: 10px;
+      border-radius: 10px;
+      background: #fff;
+    }
+    .swiper-slide {
+      img {
+        height: 45vw;
+      }
+    }
+    .slideDesc {
+      position: absolute;
+      bottom: 9px;
+      width: 100%;
+      font-weight: bold;
+      font-size: 36px;
+      color: #ffffff;
+      background: #e60012;
+      border-radius: 20px;
+      padding: 0px 54px 0px 15px;
+      line-height: 57px;
+      width: max-content;
+      left: 50%;
+      transform: translateX(-50%);
+      &:after {
+        content: '';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: url('../../assets/arrow-r.png') no-repeat;
+        width: 20px;
+        height: 20px;
+        background-size: contain;
+      }
+    }
+  }
+}

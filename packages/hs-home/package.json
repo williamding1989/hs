@@ -1,0 +1,41 @@
+{
+  "name": "hs-20",
+  "version": "1.0.0",
+  "dependencies": {
+    "@craco/craco": "^7.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-scripts": "5.0.1",
+    "swiper": "^11.2.4"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "craco": "^0.0.3",
+    "craco-less": "^3.0.1",
+    "less": "^4.2.2",
+    "postcss-pxtorem": "^6.1.0"
+  }
+}

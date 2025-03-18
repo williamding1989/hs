@@ -1,0 +1,629 @@
+@import './mobile.less';
+@import './pc.less';
+@import './pad.less';
+
+// Common
+.Home {
+  margin: 0 auto;
+  // banner
+  .banner {
+    position: relative;
+    &__curryrice {
+      position: absolute;
+      bottom: 28%;
+      left: 0;
+    }
+    &__logo {
+      position: absolute;
+      top: 6%;
+      left: 0;
+      transform: translateX(100%);
+      animation: trx0 forwards 1s ease-out 2s;
+    }
+    &__line {
+      position: absolute;
+      left: 6%;
+      width: 80%;
+      top: -2%;
+    }
+    &__fat {
+      position: absolute;
+      right: 9%;
+      width: 29%;
+      top: 42%;
+      transform: translateX(300%);
+      animation: trx0 forwards 1s ease-out 2s;
+    }
+    &__spoon {
+      position: absolute;
+      right: -14%;
+      width: 46%;
+      top: 38%;
+      animation: updown infinite linear 2s;
+    }
+
+    &__zero {
+      position: absolute;
+      right: 17%;
+      width: 12%;
+      top: 33%;
+      transform: translateX(300%);
+      animation: trx0 forwards 1s ease-out 2s;
+    }
+    &__currcybox {
+      position: absolute;
+      left: 8%;
+      width: 50%;
+      top: 33%;
+      transform: translateX(300%);
+      animation: trx0 forwards 1s ease-out 2s;
+    }
+
+    // 按钮区域
+    &__guide {
+      position: absolute;
+      bottom: 6%;
+      left: 3%;
+      width: 94%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .guide__list {
+        padding: 0.2rem 0;
+        width: 48%;
+        background-color: #e60012;
+        border-radius: 10px;
+        margin-bottom: 17px;
+        letter-spacing: 0.2rem;
+        .list__title,
+        .list__dsc {
+          text-align: center;
+          color: #fff;
+        }
+        .list__title {
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+        .list__dsc {
+          font-size: 0.7rem;
+        }
+        &:last-child {
+          margin: 0 auto;
+        }
+      }
+    }
+
+    // 宣传语
+    &__slogan {
+      position: absolute;
+      top: 1%;
+      left: 28%;
+      font-size: 2rem;
+      color: #5b391b;
+      transform: translateY(-300%) rotateZ(-10deg);
+      animation: slogandown forwards 1s ease-out 2.8s;
+    }
+  }
+
+  // 经典菜谱
+  .classic {
+    position: relative;
+    padding-top: 0.6rem;
+    &__title {
+      color: #691a09;
+      font-size: 2.4rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      text-align: center;
+    }
+    &__titlebg {
+      position: absolute;
+      width: 80%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__desc {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #5b391b;
+      text-align: center;
+      margin-bottom: 0.8rem;
+    }
+    &__bee {
+      position: absolute;
+      width: 20%;
+      top: -4rem;
+      left: 2%;
+      z-index: 1;
+      animation: beefly infinite linear 3s;
+    }
+    &__chocolate {
+      position: absolute;
+      width: 23%;
+      top: 12%;
+      right: 2%;
+      z-index: 1;
+    }
+    &__chickenrice {
+      position: relative;
+      .chickenrice__desc {
+        position: absolute;
+        top: 4%;
+        left: 0%;
+        width: 100%;
+        text-align: center;
+        font-weight: 400;
+        font-size: 1.7rem;
+        color: #e60012;
+      }
+      .chickenrice__content {
+        width: 93%;
+        position: absolute;
+        top: 14%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+
+  // 花式菜谱
+  .fancy {
+    position: relative;
+    padding-top: 0.6rem;
+    padding-bottom: 1.8rem;
+    background-image: url('../../assets/fancy__bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__title {
+      color: #691a09;
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 0.7rem;
+      margin-top: -2.4rem;
+    }
+    &__titlebg {
+      width: 98%;
+      margin-top: 3rem;
+    }
+    &__tomato {
+      position: absolute;
+      width: 15%;
+      top: 48%;
+      left: 0%;
+      > img {
+        transition: all ease-in 0.5s;
+      }
+    }
+    &__seefood {
+      position: absolute;
+      width: 23%;
+      top: 83%;
+      right: 0;
+      > img {
+        transition: all ease-in 0.5s;
+      }
+    }
+    &__desc {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: #5b391b;
+      text-align: center;
+      margin-bottom: 0.8rem;
+    }
+
+    &__swiperwrap {
+      width: 80%;
+      margin-bottom: 1.3rem;
+      .fancy__swipercontainer {
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        height: 50vw;
+        .slideContainer {
+          > img {
+            border-radius: 10px;
+          }
+        }
+      }
+      .swiper__tips {
+        font-weight: 400;
+        font-size: 1rem;
+        color: #5b391b;
+        text-align: center;
+        margin-top: 0.3rem;
+      }
+      .fancy__prev {
+        position: absolute;
+        width: 7%;
+        top: 41%;
+        z-index: 9;
+        left: -10%;
+      }
+      .fancy__next {
+        position: absolute;
+        width: 7%;
+        top: 41%;
+        z-index: 9;
+        right: -10%;
+      }
+    }
+  }
+
+  // 日式咖喱课堂
+  .classroom {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    &__title {
+      color: #5b391b;
+      font-size: 2.4rem;
+      text-align: center;
+      margin-bottom: 2.7rem;
+      margin-top: -5.5rem;
+    }
+    &__titlebg1 {
+      width: 65%;
+      margin-top: 3rem;
+      margin-right: auto;
+      margin-left: 0.6rem;
+    }
+    &__bee {
+      z-index: 1;
+      position: absolute;
+      width: 23%;
+      right: 10%;
+      top: 45%;
+      animation: beefly infinite linear 3s;
+    }
+    &__coriander {
+      z-index: 1;
+      position: absolute;
+      width: 16%;
+      left: 0%;
+      top: 34%;
+    }
+    &__cassia {
+      z-index: 1;
+      position: absolute;
+      width: 21%;
+      left: 6%;
+      top: 54%;
+    }
+    &__xianggu {
+      z-index: 1;
+      position: absolute;
+      width: 10%;
+      left: 15%;
+      top: 46%;
+    }
+    &__titlebg2 {
+      width: 55%;
+      margin-left: auto;
+      margin-right: 0.6rem;
+    }
+    &__ricewrap {
+      position: relative;
+      width: 19rem;
+      height: 18rem;
+      margin-top: 4rem;
+      background-image: url('../../assets/ricetips.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .classroom__rice {
+        margin: 0 auto;
+        width: 80%;
+        animation: ricerotate infinite linear 14s;
+      }
+    }
+    &__btn {
+      margin-top: 3rem;
+      .btn__desc {
+        color: red;
+      }
+    }
+
+    &__content {
+      position: relative;
+      width: 100%;
+      .content__block1 {
+        position: relative;
+        z-index: 1;
+        padding-left: 2rem;
+        transform: translateX(-100%);
+        background-image: url('../../assets/classroom__block1.png');
+      }
+      .content__block2 {
+        width: 80%;
+        margin-left: auto;
+        margin-top: -1.4rem;
+        padding-left: 5.4rem;
+        transform: translateX(100%);
+        background-image: url('../../assets/classroom__block2.png');
+      }
+      .content__block {
+        transition: all ease-in 1.2s;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 90%;
+        height: 10rem;
+        opacity: 0.7;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .content__tips {
+          font-weight: 300;
+          font-size: 0.9rem;
+          color: #5b391b;
+          line-height: 1.4rem;
+        }
+      }
+    }
+  }
+
+  // 关于百梦多
+  .aboutbmd {
+    background-image: url('../../assets/aboutbmd__bg.png');
+    position: relative;
+    padding-top: 0.6rem;
+    padding-bottom: 2rem;
+    &__title {
+      color: #691a09;
+      font-size: 2.4rem;
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+      text-align: center;
+    }
+    &__titlebg {
+      position: absolute;
+      width: 80%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__brand {
+      margin-top: 0.5rem;
+      .brand__title {
+        background-image: url('../../assets/brand_bg.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        font-weight: 400;
+        font-size: 1.5rem;
+        color: #e60012;
+        text-align: center;
+        background-position: center;
+        line-height: 4rem;
+        margin-top: 2.5rem;
+      }
+      .brand__videocontainer {
+        border: 0.2rem solid #e60012;
+        border-radius: 10px;
+        padding: 0.8rem;
+        background: #fff;
+        width: 96%;
+        margin: 1rem auto 0;
+      }
+    }
+    &__step1,
+    &__step2,
+    &__step3 {
+      transition: all ease-in 1.5s;
+    }
+    &__step1,
+    &__step3 {
+      transform: translateX(-100%);
+    }
+    &__step2 {
+      transform: translateX(100%);
+    }
+  }
+
+  // 空模块
+  .block {
+    margin-top: -1px;
+  }
+
+  // 波浪
+  .wave {
+    position: relative;
+    top: 1px;
+    height: 3rem;
+    background-image: url('../../assets/wave.png');
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-position: center;
+    animation: move infinite linear 40s;
+    width: 600%;
+  }
+
+  // 关于好侍
+  .abouths {
+    position: relative;
+    &__title {
+      color: #691a09;
+      position: absolute;
+      top: 15%;
+      font-size: 2.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__backhome {
+      position: absolute;
+      top: 83%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__swipercontainer {
+      position: absolute;
+      top: 31%;
+      left: 50%;
+      width: 92%;
+      padding: 1rem 0.2rem 1.6rem;
+      background: #fff;
+      transform: translateX(-50%);
+      .swiper__tips {
+        position: absolute;
+        bottom: 3.5%;
+        color: #5b391b;
+        font-size: 0.7rem;
+        width: 100%;
+        text-align: center;
+        left: 0;
+      }
+    }
+    &__demo {
+      margin-bottom: 0.3rem;
+    }
+    &__titlebg {
+      position: absolute;
+      width: 57%;
+      top: 11%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.abouths__prev,
+.abouths__next {
+  position: absolute;
+  width: 9%;
+  top: 41%;
+  z-index: 9;
+}
+.abouths__prev {
+  left: -3%;
+}
+
+.abouths__next {
+  right: -3%;
+}
+
+/*
+* 动画
+*/
+
+@keyframes ricerotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(0); /* 起始位置 */
+  }
+
+  50% {
+    transform: translateY(-20px); /* 向上移动10px */
+  }
+
+  100% {
+    transform: translateY(0); /* 返回到起始位置 */
+  }
+}
+
+@keyframes scalePulse {
+  0% {
+    transform: scale(1); /* 初始大小 */
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1); /* 缩小回原始大小 */
+  }
+}
+
+@keyframes currcybox {
+  0% {
+    transform: rotate(0deg) translateX(0); /* 初始位置，不旋转 */
+  }
+
+  5% {
+    transform: rotate(-10deg) translateX(0); /* 向左倾斜15度 */
+  }
+
+  10% {
+    transform: rotate(0deg) translateX(0); /* 回到正常位置 */
+  }
+
+  15% {
+    transform: rotate(10deg) translateX(0); /* 向右倾斜15度 */
+  }
+
+  20% {
+    transform: rotate(0deg translateX(0)); /* 回到正常位置 */
+  }
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: -100% 0; /* 将背景移动到左边 */
+  }
+}
+
+@keyframes beefly {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-1.5rem);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(1.5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slogandown {
+  0% {
+    transform: translateY(-300%) rotateZ(-10deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(-10deg);
+  }
+}
+
+@keyframes trx0 {
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.trs(@x:0,@y:0) {
+  @keyframes trs {
+    100% {
+      transform: translate(@x, @y);
+    }
+  }
+}
+
+.transition(@x,@y:0) {
+  transform: translate(@x, @y);
+  transition: all ease-in 0.5s;
+}
