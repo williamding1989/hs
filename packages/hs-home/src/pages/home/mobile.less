@@ -1,3 +1,140 @@
 // Mobile
 @media only screen and (max-width: 767px) {
+  div.Home {
+    // 导航
+    div.header {
+      height: 73px;
+      margin-top: 0;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__nav {
+        display: none;
+      }
+      &__logo {
+        width: 155px;
+      }
+    }
+
+    .wave {
+      display: none;
+    }
+    // 轮播
+    .banner {
+      border-top: 1px solid #e60012;
+    }
+    // 日式咖喱课堂
+    .classroom {
+      padding-top: 10vw;
+      height: 156vw;
+      &__title {
+        width: 59vw;
+      }
+      .btn {
+        width: 44vw;
+        height: 10vw;
+        &__desc {
+          font-size: 1.4rem;
+        }
+        .icon {
+          width: 7vw;
+        }
+      }
+      &__book {
+        width: 43vw;
+        top: 51%;
+        margin-left: 0;
+        left: 0;
+      }
+      &__tips {
+        display: none;
+      }
+    }
+
+    div.hotfancy {
+      padding-bottom: 6vw;
+      // 人气菜谱
+      .hot {
+        padding-top: 23vw;
+        &__title {
+          width: 59vw;
+        }
+        &__showcase {
+          margin-top: 8vw;
+          width: 88vw;
+          flex-wrap: wrap;
+          .caseItem {
+            width: 100%;
+            padding: 9px 10px 22px;
+            border-radius: 10px;
+            margin-bottom: 9vw;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            .hot_title {
+              display: block;
+              width: 59vw;
+              margin-top: 3vw;
+            }
+            &__img {
+              margin-top: 0;
+            }
+            &__title {
+              display: none;
+            }
+            &__more {
+              margin-top: 3vw;
+              width: 44vw;
+            }
+          }
+        }
+      }
+      // 花式菜谱
+      .fancy {
+        margin-top: 18vw;
+        &__title {
+          width: 59vw;
+          margin-bottom: 7vw;
+        }
+        &__btn {
+          width: 50vw;
+          margin-top: 22vw;
+        }
+        &__swiperwrap {
+          width: 81vw;
+          .swiper__tips {
+            display: block;
+            font-weight: 400;
+            font-size: 1rem;
+            color: #5b391b;
+            text-align: center;
+            margin-top: 0.3rem;
+          }
+        }
+      }
+    }
+
+    // 产品介绍
+    .product {
+      &__title {
+        width: 59vw;
+      }
+    }
+
+    // 关于好侍
+    .abouths {
+    }
+
+    // 新闻中心
+    .news {
+      &__title {
+        width: 59vw;
+      }
+    }
+  }
+  .banner__next,
+  .banner__prev {
+    display: none;
+  }
 }

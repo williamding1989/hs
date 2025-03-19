@@ -5,7 +5,14 @@
     align-items: center;
     height: 100%;
     position: relative;
+    .slideItem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
     .slideContainer {
+      width: 100%;
       height: 100%;
       > img {
         height: 100%;
@@ -14,19 +21,18 @@
     .swiper-slide {
     }
     .slideDesc {
-      position: absolute;
-      bottom: 9px;
-      width: 100%;
+      cursor: pointer;
+      margin-top: 30px;
+      position: relative;
       font-weight: bold;
       font-size: 36px;
       color: #ffffff;
       background: #e60012;
       border-radius: 20px;
-      padding: 0px 54px 0px 15px;
+      padding: 0px 54px 0px 40px;
       line-height: 57px;
       width: max-content;
-      left: 50%;
-      transform: translateX(-50%);
+      font-family: STYuanti-SC-Bold, STYuanti-SC-Bold;
       &:after {
         content: '';
         position: absolute;

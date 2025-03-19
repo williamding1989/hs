@@ -10,6 +10,7 @@
     margin-top: 53px;
     &__logo {
       width: 183px;
+      cursor: pointer;
     }
     &__nav {
       margin-top: 15px;
@@ -17,7 +18,11 @@
       align-items: center;
       &__list {
         position: relative;
-        margin-right: 10px;
+        &:first-child {
+          &::after {
+            background: #d53927;
+          }
+        }
         &::after {
           position: absolute;
           z-index: 9;
@@ -72,9 +77,9 @@
   // 轮播
   .banner {
     position: relative;
-    margin-top: 15px;
     width: 100vw;
-    height: 40vw;
+    margin-top: 1px;
+    border-top: 1px solid #989898;
     .banner__prev {
       left: 10%;
     }
@@ -93,11 +98,12 @@
   }
 
   // 波浪
-  .wave1 {
+  .wave {
     position: relative;
     z-index: 1;
     top: 0px;
-    height: 80px;
+    margin-top: -39px;
+    height: 40px;
     background-image: url('../../assets/wave.png');
     background-size: cover;
     background-repeat: no-repeat;
@@ -110,8 +116,7 @@
     position: relative;
     width: 100vw;
     height: 780px;
-    margin-top: -80px;
-    padding-top: 140px;
+    padding-top: 78px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -151,8 +156,263 @@
     }
   }
 
+  .hotfancy {
+    padding-bottom: 152px;
+    width: 100vw;
+    background-image: url('../../assets/hot_bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    // 人气菜谱
+    .hot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 163px;
+      width: 100vw;
+      &__title {
+        width: 444px;
+      }
+      &__showcase {
+        margin-top: 85px;
+        width: 85%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .caseItem {
+          padding: 9px 23px 20px;
+          width: 48%;
+          background-color: #fff;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .hot_title {
+            display: none;
+          }
+          &__title {
+            font-size: 54px;
+            color: #e60012;
+          }
+          &__img {
+            margin-top: 8px;
+          }
+          &__more {
+            cursor: pointer;
+            margin-top: 23px;
+            width: 367px;
+          }
+        }
+      }
+    }
+
+    // 花式菜谱
+    .fancy {
+      margin-top: 149px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &__title {
+        width: 424px;
+        margin-bottom: 90px;
+      }
+      &__btn {
+        margin-top: 90px;
+        width: 508px;
+      }
+      &__swiperwrap {
+        width: 90%;
+        margin-bottom: 32px;
+        .fancy__swipercontainer {
+          position: relative;
+          border-radius: 10px;
+          .slideContainer {
+            > img {
+              border-radius: 10px;
+            }
+          }
+        }
+        .swiper__tips {
+          display: none;
+        }
+        .fancy__prev {
+          cursor: pointer;
+          position: absolute;
+          width: 7%;
+          top: 41%;
+          z-index: 9;
+          left: -10%;
+        }
+        .fancy__next {
+          cursor: pointer;
+          position: absolute;
+          width: 7%;
+          top: 41%;
+          z-index: 9;
+          right: -10%;
+        }
+      }
+    }
+  }
+
+  // 波浪
+  .wave1 {
+    position: relative;
+    z-index: 1;
+    top: 0px;
+    height: 80px;
+    background-image: url('../../assets/wave1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    width: 100vw;
+  }
+
+  // 产品介绍
+  .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../../assets/product_bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100vw;
+    padding-bottom: 150px;
+    margin-bottom: -70px;
+    &__title {
+      margin-top: 164px;
+      width: 439px;
+    }
+    &__container {
+      margin-top: 92px;
+      width: 85%;
+      .list1 {
+        .list__right {
+          position: absolute;
+          top: 20%;
+          right: 7%;
+          width: 36%;
+        }
+        .list__more {
+          right: 15%;
+        }
+      }
+      .list2 {
+        .list__left {
+          position: absolute;
+          top: 20%;
+          left: 3%;
+          width: 48%;
+        }
+        .list__more {
+          left: 15%;
+        }
+      }
+      &__list {
+        margin-bottom: 45px;
+        position: relative;
+        .list__more {
+          position: absolute;
+          width: 227px;
+          bottom: 8%;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  // 关于好侍
+  .abouths {
+    width: 100vw;
+    height: 650px;
+    display: flex;
+    flex-wrap: nowrap;
+    &__right {
+      margin-top: 47px;
+    }
+    &__left {
+      margin-top: 108px;
+    }
+    &__left,
+    &__right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__bg {
+      height: 40vw;
+    }
+    &__btn {
+      width: 451px;
+    }
+    &__desc {
+      margin-top: 47px;
+      font-family: STYuanti-SC-Regular, STYuanti-SC-Regular;
+      font-size: 23px;
+      color: #000000;
+      text-align: center;
+      line-height: 40px;
+    }
+  }
+  // 新闻中心
+  .news {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__title {
+      width: 455px;
+    }
+    &__container {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      .borderbottom {
+        padding-bottom: 42px;
+        border-bottom: 2px solid #707070;
+      }
+      .news__list {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        margin-top: 42px;
+        .news__type {
+          width: 128px;
+          line-height: 53px;
+          text-align: center;
+          font-size: 27px;
+          color: #fff;
+          border-radius: 10px;
+          &-company {
+            background: #e60012;
+          }
+          &-activity {
+            background: #f29800;
+          }
+        }
+        .news__date {
+          margin-left: 53px;
+          font-weight: bold;
+          font-size: 27px;
+          color: #000000;
+        }
+        .news__desc {
+          margin-left: 32px;
+          font-size: 27px;
+          color: #000000;
+        }
+      }
+    }
+    &__more {
+      margin-top: 65px;
+      width: 227px;
+    }
+  }
+
   // 底部
   .footer {
+    margin-top: 200px;
     width: 100vw;
     height: 382px;
     background: #e60012;
@@ -187,12 +447,37 @@
         .icon {
           width: 80px;
         }
-        .qrcode {
+        .qrcodeLeft,
+        .qrcodeRight {
+          display: none;
+          width: 185px;
+          height: 185px;
           position: absolute;
-          top: 0;
-          left: 0;
-          transform: translateX(-150%);
-          width: 200px;
+          top: 50%;
+          z-index: 1;
+          transform: translateY(-50%);
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center center;
+          padding: 20px 9px;
+          .qrcode {
+            width: 90%;
+            height: 100%;
+          }
+        }
+        .qrcodeLeft {
+          background-image: url('../../assets/qr_left.png');
+          left: -195px;
+        }
+        .qrcodeRight {
+          background-image: url('../../assets/qr_right.png');
+          right: -195px;
+          .qrcode {
+            margin-left: auto;
+          }
+        }
+        .qrcodeshow {
+          display: block;
         }
       }
     }

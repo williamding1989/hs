@@ -1,8 +1,17 @@
 // 模块
 import { useEffect, useRef, useState } from 'react'
 import { HsSwiper, HsVideo, HsLoading } from '../../components/index.jsx'
-import { navMap, bannerMap, footerMap1, footerMap2 } from './config.js'
+import {
+  navMap,
+  pcBannerMap,
+  mobBannerMap,
+  footerMap1,
+  footerMap2,
+  curryMap2,
+  curryMap1,
+} from './config.js'
 import './index.less'
+import { device } from '../../utils/index.js'
 
 // 资源
 import logo from '../../assets/logo.png'
@@ -16,8 +25,37 @@ import icon_right from '../../assets/icon_right.png'
 import icon_right1 from '../../assets/icon_right1.png'
 import qr_left from '../../assets/qr_left.png'
 import qr_right from '../../assets/qr_right.png'
+import news_title from '../../assets/news_title.png'
+import news_more from '../../assets/news_more.png'
+import abouths_bg from '../../assets/abouths_bg.png'
+import abouths_btn from '../../assets/abouths_btn.png'
+import product_title from '../../assets/product_title.png'
+import product1_left from '../../assets/product1_left.png'
+import product1_right from '../../assets/product1_right.png'
+import product2_left from '../../assets/product2_left.png'
+import product2_right from '../../assets/product2_right.png'
+import more from '../../assets/more.png'
+import more1 from '../../assets/more1.png'
+import hot_title from '../../assets/hot_title.png'
+import fancy_title from '../../assets/fancy_title.png'
+import fancy_btn from '../../assets/fancy_btn.png'
+import swiper_left1 from '../../assets/swiper_left1.png'
+import swiper_right1 from '../../assets/swiper_right1.png'
+import hot_title1 from '../../assets/hot_title1.png'
+import hot_title2 from '../../assets/hot_title2.png'
 
 const Home = () => {
+  const [active1, setActive1] = useState(0)
+  const [codeindex1, setCodeindex1] = useState(null)
+  const [codeindex2, setCodeindex2] = useState(null)
+  const [active2, setActive2] = useState(0)
+  const [showDesc, setShowDesc] = useState(false)
+  const [slidesPerView, setSlidesPerView] = useState(1)
+
+  const fancy__prev1 = useRef(null)
+  const fancy__prev2 = useRef(null)
+  const fancy__next1 = useRef(null)
+  const fancy__next2 = useRef(null)
   const banner__prev = useRef(null)
   const banner__next = useRef(null)
 
@@ -71,10 +109,39 @@ const Home = () => {
   }
 
   // 适配器
-  const adapter = () => {}
+  const adapter = () => {
+    switch (device()) {
+      // 移动
+      case 1:
+        setSlidesPerView(1)
+        setShowDesc(false)
+        break
+      // pad
+      case 2:
+        setSlidesPerView(2)
+        setShowDesc(true)
+        break
+      // pc
+      case 3:
+        setSlidesPerView(3)
+        setShowDesc(true)
+        break
+    }
+  }
 
   const navClick = (n) => {
     if (!n.sub) jump(n.link)
+  }
+
+  // 显示二维码
+  const showCode = (t, i) => {
+    if (t == 0) {
+      setCodeindex1(i)
+      setCodeindex2(null)
+      return
+    }
+    setCodeindex1(null)
+    setCodeindex2(i)
   }
 
   return (
@@ -94,26 +161,6 @@ const Home = () => {
               >
                 {/* 内容 */}
                 <div className="header__nav__list__content">{n.title}</div>
-                {/* 子导航 */}
-                {n.sub && (
-                  <div className="nav__sub">
-                    {n.sub.map((s, index) => {
-                      return (
-                        <div
-                          className="nav__sub__list"
-                          key={index}
-                          onClick={() => {
-                            navClick(s)
-                          }}
-                        >
-                          <div className="nav__sub__list__content">
-                            {s.title}
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </div>
-                )}
               </div>
             )
           })}
@@ -123,7 +170,7 @@ const Home = () => {
       {/* 轮播 */}
       <div className="banner">
         <HsSwiper
-          slides={bannerMap}
+          slides={device() == 1 ? mobBannerMap : pcBannerMap}
           prevRef={banner__prev}
           nextRef={banner__next}
         ></HsSwiper>
@@ -140,7 +187,7 @@ const Home = () => {
       </div>
 
       {/* 波浪 */}
-      <div className="wave1"></div>
+      <div className="wave"></div>
 
       {/* 日式咖喱课堂 */}
       <div className="classroom">
@@ -151,8 +198,9 @@ const Home = () => {
         <div className="classroom__tips">
           <img src={classroom_tips}></img>
         </div>
+
         <div
-          className="btn "
+          className="btn"
           onClick={() => {
             jump()
           }}
@@ -163,6 +211,152 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="hotfancy">
+        {/* 人气菜谱 */}
+        <div className="hot">
+          <img src={hot_title} className="hot__title"></img>
+          <div className="hot__showcase">
+            <div className="caseItem">
+              <div className="caseItem__title">百梦多鸡肉咖喱饭</div>
+              <img src={product2_left} className="caseItem__img" />
+              <img src={hot_title1} className="hot_title"></img>
+              <img src={more1} className="caseItem__more" />
+            </div>
+            <div className="caseItem">
+              <div className="caseItem__title">咖王牛肉咖喱蛋包饭</div>
+              <img src={product2_left} className="caseItem__img" />
+              <img src={hot_title2} className="hot_title"></img>
+              <img src={more1} className="caseItem__more" />
+            </div>
+          </div>
+        </div>
+
+        {/* 花式菜谱 */}
+        <div className="fancy">
+          <img src={fancy_title} className="fancy__title"></img>
+          {/* 轮播 */}
+          <div className="fancy__swiperwrap">
+            <div className="fancy__swipercontainer">
+              <HsSwiper
+                slides={curryMap1}
+                prevRef={fancy__prev1}
+                nextRef={fancy__next1}
+                onSlideChange={(i) => {
+                  setActive1(i)
+                }}
+                slidesPerView={slidesPerView}
+                showDesc={showDesc}
+              ></HsSwiper>
+              <img
+                src={swiper_left1}
+                ref={fancy__prev1}
+                className="fancy__prev"
+              ></img>
+              <img
+                src={swiper_right1}
+                ref={fancy__next1}
+                className="fancy__next"
+              ></img>
+            </div>
+            <div className="swiper__tips">{curryMap1[active1].desc}</div>
+          </div>
+          {/* 轮播 */}
+          <div className="fancy__swiperwrap">
+            <div className="fancy__swipercontainer">
+              <HsSwiper
+                slides={curryMap2}
+                prevRef={fancy__prev2}
+                nextRef={fancy__next2}
+                onSlideChange={(i) => {
+                  setActive2(i)
+                }}
+                slidesPerView={slidesPerView}
+                showDesc={showDesc}
+              ></HsSwiper>
+              <img
+                src={swiper_left1}
+                ref={fancy__prev2}
+                className="fancy__prev"
+              ></img>
+              <img
+                src={swiper_right1}
+                ref={fancy__next2}
+                className="fancy__next"
+              ></img>
+            </div>
+            <div className="swiper__tips">{curryMap2[active2].desc}</div>
+          </div>
+          <img src={fancy_btn} className="fancy__btn"></img>
+        </div>
+      </div>
+
+      {/* 产品介绍 */}
+      <div className="product">
+        <img src={product_title} className="product__title"></img>
+        <div className="product__container">
+          <div className="product__container__list list1">
+            <img src={product1_left} className="list__left"></img>
+            <img src={product1_right} className="list__right"></img>
+            <img src={more} className="list__more"></img>
+          </div>
+          <div className="product__container__list list2">
+            <img src={product2_right} className="list__right"></img>
+            <img src={product2_left} className="list__left"></img>
+            <img src={more} className="list__more"></img>
+          </div>
+        </div>
+      </div>
+
+      {/* 波浪 */}
+      <div className="wave1"></div>
+
+      {/* 关于好侍 */}
+      <div className="abouths">
+        <div className="abouths__left">
+          <img src={abouths_btn} className="abouths__btn"></img>
+          <div className="abouths__desc">
+            好侍集团作为拥有着百年历史的集团公司<br></br>
+            目前在全世界10多个国家和地区经营食品和饮料相关业务<br></br>
+            并且在市场规模庞大的中国<br></br>
+            我们也开展了20多年的咖喱方面的业务<br></br>
+            伴随中国的改革开放和经济飞速发展<br></br>
+            中国事业也实现了持续地成长<br></br>
+          </div>
+        </div>
+        <div className="abouths__right">
+          <img src={abouths_bg} className="abouths__bg"></img>
+        </div>
+      </div>
+
+      {/* 新闻中心 */}
+      <div className="news">
+        <img src={news_title} className="news__title"></img>
+        <div className="news__container">
+          <div className="news__list borderbottom">
+            <div className="news__type news__type-company">公司</div>
+            <div className="news__date">2020-04-13</div>
+            <div className="news__desc">
+              好侍食品开展打击知识产权侵权行动的事例公告
+            </div>
+          </div>
+          <div className="news__list">
+            <div className="news__type news__type-activity">活动</div>
+            <div className="news__date">2020-04-13</div>
+            <div className="news__desc">
+              好侍食品开展打击知识产权侵权行动的事例公告
+            </div>
+          </div>
+          <div className="news__list">
+            <div className="news__type"></div>
+            <div className="news__date">2020-04-13</div>
+            <div className="news__desc">
+              好侍食品开展打击知识产权侵权行动的事例公告
+            </div>
+          </div>
+        </div>
+        <img src={news_more} className="news__more"></img>
+      </div>
+
       {/* 底部 */}
       <div className="footer">
         <div className="footer__block block__left">
@@ -171,8 +365,18 @@ const Home = () => {
             {footerMap1.map((v, i) => {
               return (
                 <div className="footer__channel__list" key={i}>
-                  <img src={v.icon} className="icon"></img>
-                  <img src={v.qrcode} className="qrcode"></img>
+                  <img
+                    src={v.icon}
+                    className="icon"
+                    onClick={() => showCode(0, i)}
+                  ></img>
+                  <div
+                    className={
+                      i == codeindex1 ? 'qrcodeLeft qrcodeshow' : 'qrcodeLeft'
+                    }
+                  >
+                    <img src={v.qrcode} className="qrcode"></img>
+                  </div>
                 </div>
               )
             })}
@@ -184,7 +388,18 @@ const Home = () => {
             {footerMap2.map((v, i) => {
               return (
                 <div className="footer__channel__list" key={i}>
-                  <img src={v.icon} className="icon"></img>
+                  <img
+                    src={v.icon}
+                    className="icon"
+                    onClick={() => showCode(1, i)}
+                  ></img>
+                  <div
+                    className={
+                      i == codeindex2 ? 'qrcodeRight qrcodeshow' : 'qrcodeRight'
+                    }
+                  >
+                    <img src={v.qrcode} className="qrcode"></img>
+                  </div>
                 </div>
               )
             })}
