@@ -43,6 +43,9 @@ import swiper_left1 from '../../assets/swiper_left1.png'
 import swiper_right1 from '../../assets/swiper_right1.png'
 import hot_title1 from '../../assets/hot_title1.png'
 import hot_title2 from '../../assets/hot_title2.png'
+import abouths_title from '../../assets/abouths_title.png'
+import knowmore from '../../assets/knowmore.png'
+import mob_nav from '../../assets/mob_nav.png'
 
 const Home = () => {
   const [active1, setActive1] = useState(0)
@@ -51,6 +54,7 @@ const Home = () => {
   const [active2, setActive2] = useState(0)
   const [showDesc, setShowDesc] = useState(false)
   const [slidesPerView, setSlidesPerView] = useState(1)
+  const [mobnavshow, setMobnavshow] = useState(false)
 
   const fancy__prev1 = useRef(null)
   const fancy__prev2 = useRef(null)
@@ -129,10 +133,15 @@ const Home = () => {
     }
   }
 
+  // pc导航切换
   const navClick = (n) => {
     if (!n.sub) jump(n.link)
   }
 
+  // 移动端导航切换
+  const togglemobnav = () => {
+    setMobnavshow(!mobnavshow)
+  }
   // 显示二维码
   const showCode = (t, i) => {
     if (t == 0) {
@@ -165,6 +174,16 @@ const Home = () => {
             )
           })}
         </div>
+
+        {/* 移动端导航 */}
+        <img
+          src={mob_nav}
+          className="mob__nav__btn"
+          onClick={togglemobnav}
+        ></img>
+        <div
+          className={mobnavshow ? 'mob__nav mob__nav-show' : 'mob__nav'}
+        ></div>
       </div>
 
       {/* 轮播 */}
@@ -305,6 +324,7 @@ const Home = () => {
             <img src={more} className="list__more"></img>
           </div>
         </div>
+        <img src={more} className="more"></img>
       </div>
 
       {/* 波浪 */}
@@ -312,20 +332,22 @@ const Home = () => {
 
       {/* 关于好侍 */}
       <div className="abouths">
+        <img src={abouths_title} className="abouths__title"></img>
         <div className="abouths__left">
           <img src={abouths_btn} className="abouths__btn"></img>
           <div className="abouths__desc">
-            好侍集团作为拥有着百年历史的集团公司<br></br>
-            目前在全世界10多个国家和地区经营食品和饮料相关业务<br></br>
-            并且在市场规模庞大的中国<br></br>
-            我们也开展了20多年的咖喱方面的业务<br></br>
-            伴随中国的改革开放和经济飞速发展<br></br>
-            中国事业也实现了持续地成长<br></br>
+            <div>好侍集团作为拥有着百年历史的集团公司</div>
+            <div>目前在全世界10多个国家和地区经营食品和饮料相关业务</div>
+            <div>并且在市场规模庞大的中国</div>
+            <div>我们也开展了20多年的咖喱方面的业务</div>
+            <div>伴随中国的改革开放和经济飞速发展</div>
+            <div>中国事业也实现了持续地成长</div>
           </div>
         </div>
         <div className="abouths__right">
           <img src={abouths_bg} className="abouths__bg"></img>
         </div>
+        <img src={knowmore} className="abouths__knowmore"></img>
       </div>
 
       {/* 新闻中心 */}

@@ -15,6 +15,23 @@
       &__logo {
         width: 155px;
       }
+      .mob__nav__btn {
+        display: block;
+        width: 5vw;
+      }
+      .mob__nav {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 700px;
+        background: red;
+        left: 0;
+        top: 73px;
+        z-index: 2;
+        &-show {
+          display: block;
+        }
+      }
     }
 
     .wave {
@@ -105,11 +122,28 @@
           width: 81vw;
           .swiper__tips {
             display: block;
-            font-weight: 400;
-            font-size: 1rem;
-            color: #5b391b;
-            text-align: center;
-            margin-top: 0.3rem;
+            font-family: Yuanti SC, Yuanti SC;
+            font-weight: bold;
+            font-size: 20px;
+            color: #ffffff;
+            line-height: 33px;
+            padding: 5px 45px 7px 28px;
+            position: relative;
+            background: #e60012;
+            border-radius: 50px;
+            width: max-content;
+            margin: 3vw auto 0;
+            &::after {
+              content: '';
+              position: absolute;
+              right: 6%;
+              top: 50%;
+              transform: translateY(-50%);
+              background: url('../../assets/arrow-r.png') no-repeat;
+              width: 20px;
+              height: 20px;
+              background-size: contain;
+            }
           }
         }
       }
@@ -118,19 +152,84 @@
     // 产品介绍
     .product {
       &__title {
+        margin-top: 16vw;
         width: 59vw;
+      }
+      &__container {
+        margin-top: 9vw;
+        width: 100%;
+        &__list {
+          margin-bottom: 9vw;
+          .list1 {
+            .list__right {
+              right: 5%;
+              width: 39vw;
+            }
+          }
+          .list2 {
+            .list__left {
+              width: 46vw;
+              top: 28%;
+            }
+          }
+          .list__more {
+            display: none;
+          }
+        }
+      }
+      .more {
+        margin-top: 1vw;
+        display: block;
+        width: 44vw;
       }
     }
 
+    // 波浪
+    .wave1 {
+      height: 15vw;
+      top: 7px;
+    }
     // 关于好侍
     .abouths {
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+      &__btn {
+        display: none;
+      }
+      &__title {
+        display: block;
+        width: 59vw;
+      }
+      &__left {
+        margin-top: 15vw;
+      }
+      &__right {
+        margin-top: 5vw;
+      }
+      &__knowmore {
+        width: 44vw;
+        display: block;
+        margin-top: 15vw;
+      }
     }
 
     // 新闻中心
     .news {
+      margin-top: 31vw;
       &__title {
         width: 59vw;
       }
+      &__more {
+        margin-top: 9vw;
+        width: 44vw;
+      }
+    }
+
+    // 底部
+    .footer {
+      margin-top: 25vw;
+      height: auto;
     }
   }
   .banner__next,

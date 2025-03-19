@@ -8,6 +8,7 @@
   // 导航
   .header {
     margin-top: 53px;
+    position: relative;
     &__logo {
       width: 183px;
       cursor: pointer;
@@ -72,6 +73,10 @@
           }
         }
       }
+    }
+    .mob__nav__btn,
+    .mob__nav {
+      display: none;
     }
   }
   // 轮播
@@ -319,6 +324,9 @@
         }
       }
     }
+    .more {
+      display: none;
+    }
   }
 
   // 关于好侍
@@ -327,6 +335,9 @@
     height: 650px;
     display: flex;
     flex-wrap: nowrap;
+    &__title {
+      display: none;
+    }
     &__right {
       margin-top: 47px;
     }
@@ -353,6 +364,9 @@
       color: #000000;
       text-align: center;
       line-height: 40px;
+    }
+    &__knowmore {
+      display: none;
     }
   }
   // 新闻中心
