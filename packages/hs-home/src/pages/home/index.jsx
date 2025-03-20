@@ -1,6 +1,6 @@
 // 模块
 import { useEffect, useRef, useState } from 'react'
-import { HsSwiper, HsVideo, HsLoading } from '../../components/index.jsx'
+import { HsSwiper, HsLoading } from '../../components/index.jsx'
 import {
   navMap,
   pcBannerMap,
@@ -21,10 +21,7 @@ import classroom_title from '../../assets/classroom_title.png'
 import classroom_tips from '../../assets/classroom_tips.png'
 import book from '../../assets/book.png'
 import btn__bg from '../../assets/btn__bg.png'
-import icon_right from '../../assets/icon_right.png'
 import icon_right1 from '../../assets/icon_right1.png'
-import qr_left from '../../assets/qr_left.png'
-import qr_right from '../../assets/qr_right.png'
 import news_title from '../../assets/news_title.png'
 import news_more from '../../assets/news_more.png'
 import abouths_bg from '../../assets/abouths_bg.png'
@@ -46,6 +43,10 @@ import hot_title2 from '../../assets/hot_title2.png'
 import abouths_title from '../../assets/abouths_title.png'
 import knowmore from '../../assets/knowmore.png'
 import mob_nav from '../../assets/mob_nav.png'
+import news_more1 from '../../assets/news_more1.png'
+import mob_navdrop from '../../assets/mob_nav-drop.png'
+import icon1 from '../../assets/icon1.png'
+import icon2 from '../../assets/icon2.png'
 
 const Home = () => {
   const [active1, setActive1] = useState(0)
@@ -55,6 +56,7 @@ const Home = () => {
   const [showDesc, setShowDesc] = useState(false)
   const [slidesPerView, setSlidesPerView] = useState(1)
   const [mobnavshow, setMobnavshow] = useState(false)
+  const [navData, setNavData] = useState(navMap)
 
   const fancy__prev1 = useRef(null)
   const fancy__prev2 = useRef(null)
@@ -138,12 +140,51 @@ const Home = () => {
     if (!n.sub) jump(n.link)
   }
 
+  // mob导航切换
+  const mobnavClick = (n) => {
+    // 没子菜单，直接跳转
+    if (!n.sub) {
+      return jump(n.link)
+    }
+
+    // clone
+    const _navData = JSON.parse(JSON.stringify(navData))
+
+    // Set
+    setNavData(toogleExpand(n.id, _navData))
+  }
+
+  // 切换状态
+  const toogleExpand = (id, data) => {
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].id == id) {
+        data[i].expand = !data[i].expand
+        break
+      }
+      data[i].sub && toogleExpand(id, data[i].sub)
+    }
+
+    return data
+  }
+
   // 移动端导航切换
   const togglemobnav = () => {
     setMobnavshow(!mobnavshow)
   }
   // 显示二维码
-  const showCode = (t, i) => {
+  const showCode = (t, v, i) => {
+    // mob
+    if (device() == 1) {
+      const { type, link } = v
+      // 店铺直接跳转
+      if (type === '1') {
+        return jump(link)
+      }
+      // 去二级页面扫码
+      //////======
+      return
+    }
+    // pc - 显示二维码
     if (t == 0) {
       setCodeindex1(i)
       setCodeindex2(null)
@@ -153,6 +194,38 @@ const Home = () => {
     setCodeindex2(i)
   }
 
+  // 渲染mob菜单
+  const renderMobNav = (data, level, expand) => {
+    return (
+      <div className={`list-wrap level-${level}-wrap visible-${expand}`}>
+        {data.map((n, i) => {
+          return (
+            <div className={`mob__nav__list level-${level}-container `} key={i}>
+              <div
+                className={`level-${level}`}
+                onClick={() => {
+                  mobnavClick(n)
+                }}
+              >
+                <div className="mob__nav__list__title">{n.title}</div>
+                <div className="mob__nav__list__icon">
+                  {/* 有子菜单，没展开 */}
+                  {n.sub && !n.expand && <img src={icon1}></img>}
+                  {/* 有子菜单，展开了 */}
+                  {n.sub && n.expand && <img src={icon2}></img>}
+                  {/* 没子菜单 */}
+                  {!n.sub && <img src={icon_right1} className="unsub"></img>}
+                </div>
+              </div>
+
+              {/* 递归 */}
+              {n.sub && renderMobNav(n.sub, level + 1, n.expand)}
+            </div>
+          )
+        })}
+      </div>
+    )
+  }
   return (
     <div className="Home">
       {/* 导航 */}
@@ -177,13 +250,14 @@ const Home = () => {
 
         {/* 移动端导航 */}
         <img
-          src={mob_nav}
+          src={mobnavshow ? mob_navdrop : mob_nav}
           className="mob__nav__btn"
           onClick={togglemobnav}
         ></img>
-        <div
-          className={mobnavshow ? 'mob__nav mob__nav-show' : 'mob__nav'}
-        ></div>
+
+        <div className={mobnavshow ? 'mob__nav mob__nav-show' : 'mob__nav'}>
+          {renderMobNav(navData, 1, true)}
+        </div>
       </div>
 
       {/* 轮播 */}
@@ -377,6 +451,7 @@ const Home = () => {
           </div>
         </div>
         <img src={news_more} className="news__more"></img>
+        <img src={news_more1} className="news__more1"></img>
       </div>
 
       {/* 底部 */}
@@ -390,7 +465,7 @@ const Home = () => {
                   <img
                     src={v.icon}
                     className="icon"
-                    onClick={() => showCode(0, i)}
+                    onClick={() => showCode(0, v, i)}
                   ></img>
                   <div
                     className={
@@ -413,7 +488,7 @@ const Home = () => {
                   <img
                     src={v.icon}
                     className="icon"
-                    onClick={() => showCode(1, i)}
+                    onClick={() => showCode(1, v, i)}
                   ></img>
                   <div
                     className={

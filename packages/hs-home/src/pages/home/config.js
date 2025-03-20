@@ -28,30 +28,80 @@ export const navMap = [
     link: 'http://www.baidu.com',
     title: '首页',
     sub: null,
+    id: 1,
+    expand: false,
   },
   {
     link: 'xxx',
     title: '产品介绍',
+    id: 2,
+    expand: false,
+    sub: [
+      {
+        link: 'xxx',
+        title: '产品介绍1-1',
+        sub: null,
+        id: 21,
+        expand: false,
+      },
+      {
+        link: 'xxx',
+        title: '产品介绍2-1',
+        id: 22,
+        expand: false,
+        sub: [
+          {
+            link: 'xxx',
+            title: '产品介绍1-1-1',
+            sub: null,
+            id: 221,
+            expand: false,
+          },
+          {
+            link: 'xxx',
+            title: '产品介绍2-1-1',
+            sub: null,
+            id: 222,
+            expand: false,
+          },
+          {
+            link: 'xxx',
+            title: '产品介绍3-1-1',
+            sub: null,
+            id: 223,
+            expand: false,
+          },
+        ],
+      },
+    ],
   },
   {
     link: 'xxx',
     title: '好侍菜谱',
     sub: null,
+    id: 3,
+    expand: false,
   },
   {
     link: 'xxx',
     title: '公司介绍',
     sub: null,
+    id: 4,
+    expand: false,
   },
   {
     link: 'xxx',
     title: '业务合作',
     sub: null,
+    id: 5,
+    expand: false,
   },
   {
     link: 'xxx',
     title: '联系我们',
     sub: null,
+    id: 6,
+    expand: false,
   },
 ]
 
@@ -104,18 +154,22 @@ export const footerMap1 = [
   {
     icon: wechat,
     qrcode: abouths_bg,
+    type: '0', // 0 - 官方
   },
   {
     icon: wechatvideo,
     qrcode: abouths_bg,
+    type: '0',
   },
   {
     icon: redbook,
     qrcode: abouths_bg,
+    type: '0',
   },
   {
     icon: weibo,
     qrcode: abouths_bg,
+    type: '0',
   },
 ]
 
@@ -124,18 +178,26 @@ export const footerMap2 = [
   {
     icon: tiktok,
     qrcode: abouths_bg,
+    type: '1', // 1 - 店铺
+    link: 'https://z.douyin.com/p53t?scheme=snssdk1128%3A%2F%2Fgoods%2Fstore%3Fsec_shop_id%3DlxYptmZY%26entrance_location%3Ddou_shop_ad_101_2%26tab_id%3D16%26url_maker%3Dshop_sdk',
   },
   {
     icon: tmall,
     qrcode: abouths_bg,
+    type: '1',
+    link: 'https://haoshishipin.tmall.com/',
   },
   {
     icon: jd,
     qrcode: abouths_bg,
+    type: '1',
+    link: 'https://mall.jd.com/index-190008.html',
   },
   {
     icon: pdd,
     qrcode: abouths_bg,
+    type: '1',
+    link: 'https://mobile.yangkeduo.com/mall_page.html?refer_share_uin=LDVQ3FQQ5EUFRWZB62H2OUQO4M_GEXDA&amp;refer_share_id=k2CghMHgUMRpZ45axMjmYxeC7IR5yd0S&amp;msn=q67rxhgwr2bpeq5gn43jfwfism_axbuy&amp;_wv=41729&amp;refer_share_channel=copy_link&amp;has_decoration=1&amp;mall_id=378996690&amp;_wvx=10',
   },
 ]
 
