@@ -1,4 +1,36 @@
 // Pad
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
   @containerW: 100%;
+  div.Home {
+    width: @containerW;
+    // 轮播
+    .banner ,
+    // 波浪
+    .wave ,
+    // 日式咖喱课堂
+    .classroom,
+     .hotfancy,
+    // 产品介绍
+    .product ,
+     // 波浪
+    .wave1 ,
+    // 关于好侍
+    .abouths ,
+    // 底部
+    .footer {
+      margin-left: calc(-50vw + @containerW / 2);
+    }
+    .fancy__prev,
+    .fancy__next {
+      display: none;
+    }
+
+    .hotfancy {
+      .hot__showcase {
+        .caseItem__title {
+          font-size: 2.4rem;
+        }
+      }
+    }
+  }
 }

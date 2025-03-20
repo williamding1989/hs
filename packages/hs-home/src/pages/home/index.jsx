@@ -1,6 +1,6 @@
 // 模块
 import { useEffect, useRef, useState } from 'react'
-import { HsSwiper, HsLoading } from '../../components/index.jsx'
+import { HsSwiper, HsLoading, Totop } from '../../components/index.jsx'
 import { useNavigate } from 'react-router-dom'
 import {
   navMap,
@@ -68,6 +68,12 @@ const Home = () => {
   const fancy__next2 = useRef(null)
   const banner__prev = useRef(null)
   const banner__next = useRef(null)
+  const _classroom__book = useRef(null)
+  const _classroom__tips = useRef(null)
+  const _product__list1 = useRef(null)
+  const _product__list2 = useRef(null)
+  const _abouths__left = useRef(null)
+  const _abouths__right = useRef(null)
 
   useEffect(() => {
     adapter()
@@ -89,10 +95,23 @@ const Home = () => {
       })
     })
 
+    observe(observer, _classroom__book)
+    observe(observer, _classroom__tips)
+    observe(observer, _product__list1)
+    observe(observer, _product__list2)
+    observe(observer, _abouths__left)
+    observe(observer, _abouths__right)
+
     // 监听窗口大小变化
     window.addEventListener('resize', adapter)
 
     return () => {
+      unobserve(observer, _classroom__book)
+      unobserve(observer, _classroom__tips)
+      unobserve(observer, _product__list1)
+      unobserve(observer, _product__list2)
+      unobserve(observer, _abouths__left)
+      unobserve(observer, _abouths__right)
       window.removeEventListener('resize', adapter)
     }
   }, [])
@@ -185,8 +204,6 @@ const Home = () => {
         return jump(link)
       }
       // 去二级页面扫码
-      //////======
-      console.log(t, v, i)
       navigate(`/qrcode/${i}`)
       return
     }
@@ -291,10 +308,10 @@ const Home = () => {
       {/* 日式咖喱课堂 */}
       <div className="classroom">
         <img src={classroom_title} className="classroom__title"></img>
-        <div className="classroom__book">
+        <div className="classroom__book" ref={_classroom__book}>
           <img src={book}></img>
         </div>
-        <div className="classroom__tips">
+        <div className="classroom__tips" ref={_classroom__tips}>
           <img src={classroom_tips}></img>
         </div>
 
@@ -401,12 +418,12 @@ const Home = () => {
       <div className="product">
         <img src={product_title} className="product__title"></img>
         <div className="product__container">
-          <div className="product__container__list list1">
+          <div className="product__container__list list1" ref={_product__list1}>
             <img src={product1_left} className="list__left"></img>
             <img src={product1_right} className="list__right"></img>
             <img src={more} className="list__more"></img>
           </div>
-          <div className="product__container__list list2">
+          <div className="product__container__list list2" ref={_product__list2}>
             <img src={product2_right} className="list__right"></img>
             <img src={product2_left} className="list__left"></img>
             <img src={more} className="list__more"></img>
@@ -421,7 +438,7 @@ const Home = () => {
       {/* 关于好侍 */}
       <div className="abouths">
         <img src={abouths_title} className="abouths__title"></img>
-        <div className="abouths__left">
+        <div className="abouths__left" ref={_abouths__left}>
           <img src={abouths_btn} className="abouths__btn"></img>
           <div className="abouths__desc">
             <div>好侍集团作为拥有着百年历史的集团公司</div>
@@ -437,7 +454,7 @@ const Home = () => {
             <div>并且在市场规模庞大的中国也实现了持续地成长</div>
           </div>
         </div>
-        <div className="abouths__right">
+        <div className="abouths__right" ref={_abouths__right}>
           <img src={abouths_bg} className="abouths__bg"></img>
         </div>
         <img src={knowmore} className="abouths__knowmore"></img>
@@ -522,6 +539,9 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* 返回顶部 */}
+      <Totop></Totop>
     </div>
   )
 }

@@ -155,21 +155,25 @@ export const footerMap1 = [
     icon: wechat,
     qrcode: abouths_bg,
     type: '0', // 0 - 官方
+    desc: '家庭用微信', // 业务用微信，家庭用微信
   },
   {
     icon: wechatvideo,
     qrcode: abouths_bg,
     type: '0',
+    desc: '视频号',
   },
   {
     icon: redbook,
     qrcode: abouths_bg,
     type: '0',
+    desc: '官方用小红书',
   },
   {
     icon: weibo,
     qrcode: abouths_bg,
     type: '0',
+    desc: '官方微博',
   },
 ]
 
