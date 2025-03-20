@@ -1,6 +1,7 @@
 // 模块
 import { useEffect, useRef, useState } from 'react'
 import { HsSwiper, HsLoading } from '../../components/index.jsx'
+import { useNavigate } from 'react-router-dom'
 import {
   navMap,
   pcBannerMap,
@@ -47,8 +48,11 @@ import news_more1 from '../../assets/news_more1.png'
 import mob_navdrop from '../../assets/mob_nav-drop.png'
 import icon1 from '../../assets/icon1.png'
 import icon2 from '../../assets/icon2.png'
+import classroom_mob1 from '../../assets/classroom_mob1.png'
+import classroom_mob2 from '../../assets/classroom_mob2.png'
 
 const Home = () => {
+  const navigate = useNavigate()
   const [active1, setActive1] = useState(0)
   const [codeindex1, setCodeindex1] = useState(null)
   const [codeindex2, setCodeindex2] = useState(null)
@@ -182,6 +186,8 @@ const Home = () => {
       }
       // 去二级页面扫码
       //////======
+      console.log(t, v, i)
+      navigate(`/qrcode/${i}`)
       return
     }
     // pc - 显示二维码
@@ -290,6 +296,14 @@ const Home = () => {
         </div>
         <div className="classroom__tips">
           <img src={classroom_tips}></img>
+        </div>
+
+        <div className="classroom__mob1">
+          <img src={classroom_mob1}></img>
+        </div>
+
+        <div className="classroom__mob2">
+          <img src={classroom_mob2}></img>
         </div>
 
         <div
@@ -416,6 +430,11 @@ const Home = () => {
             <div>我们也开展了20多年的咖喱方面的业务</div>
             <div>伴随中国的改革开放和经济飞速发展</div>
             <div>中国事业也实现了持续地成长</div>
+          </div>
+          <div className="abouths__desc-mob">
+            <div>好侍集团作为拥有着百年历史的集团公司</div>
+            <div>目前在全世界10多个国家和地区经营食品和饮料相关业务</div>
+            <div>并且在市场规模庞大的中国也实现了持续地成长</div>
           </div>
         </div>
         <div className="abouths__right">

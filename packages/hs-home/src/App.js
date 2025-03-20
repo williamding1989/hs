@@ -1,11 +1,15 @@
-import { Home } from './pages/index.jsx'
+import { Home, Qrcode } from './pages/index.jsx'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <div className="hs_container">
-        <Home />
-      </div>
+    <div className="hs_container">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/qrcode/:index" element={<Qrcode />} />
+        </Routes>
+      </Router>
     </div>
   )
 }
