@@ -12,7 +12,7 @@ import {
   curryMap1,
 } from './config.js'
 import './index.less'
-import { device } from '../../utils/index.js'
+import { device, overload } from '../../utils/index.js'
 
 // 资源
 import logo from '../../assets/logo.png'
