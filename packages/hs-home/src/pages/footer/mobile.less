@@ -1,0 +1,49 @@
+// Mobile
+@media only screen and (max-width: 767px) {
+  // 底部
+  div.footer {
+    margin-top: 16vw;
+    height: auto;
+    padding-top: 11vw;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 19vw;
+    &__block {
+      margin-top: 9vw;
+      width: auto;
+      .footer__title {
+        font-family: Yuanti SC, Yuanti SC;
+        font-size: 2rem;
+        color: #fff;
+        letter-spacing: 10px;
+      }
+    }
+    &__channel {
+      margin-top: 5vw;
+    }
+
+    .footer__channel__list {
+      width: auto;
+      padding: 0 7vw;
+      position: relative;
+      &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 5vw;
+        background: #fff;
+      }
+      &:last-child {
+        &:after {
+          background: transparent;
+        }
+      }
+      .icon {
+        width: 10vw;
+      }
+    }
+  }
+}

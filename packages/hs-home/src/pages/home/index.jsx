@@ -1,21 +1,12 @@
 // 模块
 import { useEffect, useRef, useState } from 'react'
 import { HsSwiper, HsLoading, Totop } from '../../components/index.jsx'
-import { useNavigate } from 'react-router-dom'
-import {
-  navMap,
-  pcBannerMap,
-  mobBannerMap,
-  footerMap1,
-  footerMap2,
-  curryMap2,
-  curryMap1,
-} from './config.js'
+import { pcBannerMap, mobBannerMap, curryMap2, curryMap1 } from './config.js'
 import './index.less'
 import { device, overload } from '../../utils/index.js'
+import { useJump } from '../../hooks/index.js'
 
 // 资源
-import logo from '../../assets/logo.png'
 import swiper_right from '../../assets/swiper_right.png'
 import swiper_left from '../../assets/swiper_left.png'
 import classroom_title from '../../assets/classroom_title.png'
@@ -43,24 +34,17 @@ import hot_title1 from '../../assets/hot_title1.png'
 import hot_title2 from '../../assets/hot_title2.png'
 import abouths_title from '../../assets/abouths_title.png'
 import knowmore from '../../assets/knowmore.png'
-import mob_nav from '../../assets/mob_nav.png'
 import news_more1 from '../../assets/news_more1.png'
-import mob_navdrop from '../../assets/mob_nav-drop.png'
-import icon1 from '../../assets/icon1.png'
-import icon2 from '../../assets/icon2.png'
+
 import classroom_mob1 from '../../assets/classroom_mob1.png'
 import classroom_mob2 from '../../assets/classroom_mob2.png'
 
 const Home = () => {
-  const navigate = useNavigate()
+  const jump = useJump()
   const [active1, setActive1] = useState(0)
-  const [codeindex1, setCodeindex1] = useState(null)
-  const [codeindex2, setCodeindex2] = useState(null)
   const [active2, setActive2] = useState(0)
   const [showDesc, setShowDesc] = useState(false)
   const [slidesPerView, setSlidesPerView] = useState(1)
-  const [mobnavshow, setMobnavshow] = useState(false)
-  const [navData, setNavData] = useState(navMap)
 
   const fancy__prev1 = useRef(null)
   const fancy__prev2 = useRef(null)
@@ -126,17 +110,6 @@ const Home = () => {
     if (target.current) observer.unobserve(target.current)
   }
 
-  // 返回顶部
-  const backtotop = () =>
-    window.scrollTo({
-      top: 0,
-    })
-
-  // 跳转
-  const jump = (link) => {
-    window.location.href = link
-  }
-
   // 适配器
   const adapter = () => {
     switch (device()) {
@@ -158,131 +131,8 @@ const Home = () => {
     }
   }
 
-  // pc导航切换
-  const navClick = (n) => {
-    if (!n.sub) jump(n.link)
-  }
-
-  // mob导航切换
-  const mobnavClick = (n) => {
-    // 没子菜单，直接跳转
-    if (!n.sub) {
-      return jump(n.link)
-    }
-
-    // clone
-    const _navData = JSON.parse(JSON.stringify(navData))
-
-    // Set
-    setNavData(toogleExpand(n.id, _navData))
-  }
-
-  // 切换状态
-  const toogleExpand = (id, data) => {
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].id == id) {
-        data[i].expand = !data[i].expand
-        break
-      }
-      data[i].sub && toogleExpand(id, data[i].sub)
-    }
-
-    return data
-  }
-
-  // 移动端导航切换
-  const togglemobnav = () => {
-    setMobnavshow(!mobnavshow)
-  }
-  // 显示二维码
-  const showCode = (t, v, i) => {
-    // mob
-    if (device() == 1) {
-      const { type, link } = v
-      // 店铺直接跳转
-      if (type === '1') {
-        return jump(link)
-      }
-      // 去二级页面扫码
-      navigate(`/qrcode/${i}`)
-      return
-    }
-    // pc - 显示二维码
-    if (t == 0) {
-      setCodeindex1(i)
-      setCodeindex2(null)
-      return
-    }
-    setCodeindex1(null)
-    setCodeindex2(i)
-  }
-
-  // 渲染mob菜单
-  const renderMobNav = (data, level, expand) => {
-    return (
-      <div className={`list-wrap level-${level}-wrap visible-${expand}`}>
-        {data.map((n, i) => {
-          return (
-            <div className={`mob__nav__list level-${level}-container `} key={i}>
-              <div
-                className={`level-${level}`}
-                onClick={() => {
-                  mobnavClick(n)
-                }}
-              >
-                <div className="mob__nav__list__title">{n.title}</div>
-                <div className="mob__nav__list__icon">
-                  {/* 有子菜单，没展开 */}
-                  {n.sub && !n.expand && <img src={icon1}></img>}
-                  {/* 有子菜单，展开了 */}
-                  {n.sub && n.expand && <img src={icon2}></img>}
-                  {/* 没子菜单 */}
-                  {!n.sub && <img src={icon_right1} className="unsub"></img>}
-                </div>
-              </div>
-
-              {/* 递归 */}
-              {n.sub && renderMobNav(n.sub, level + 1, n.expand)}
-            </div>
-          )
-        })}
-      </div>
-    )
-  }
   return (
     <div className="Home">
-      {/* 导航 */}
-      <div className="header">
-        <img src={logo} className="header__logo"></img>
-        <div className="header__nav">
-          {navMap.map((n, i) => {
-            return (
-              <div
-                className="header__nav__list"
-                onClick={() => {
-                  navClick(n)
-                }}
-                key={i}
-              >
-                {/* 内容 */}
-                <div className="header__nav__list__content">{n.title}</div>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* 移动端导航 */}
-        <img
-          src={mobnavshow ? mob_navdrop : mob_nav}
-          className="mob__nav__btn"
-          onClick={togglemobnav}
-        ></img>
-
-        <div className={mobnavshow ? 'mob__nav mob__nav-show' : 'mob__nav'}>
-          {renderMobNav(navData, 1, true)}
-        </div>
-      </div>
-
       {/* 轮播 */}
       <div className="banner">
         <HsSwiper
@@ -489,57 +339,6 @@ const Home = () => {
         <img src={news_more} className="news__more"></img>
         <img src={news_more1} className="news__more1"></img>
       </div>
-
-      {/* 底部 */}
-      <div className="footer">
-        <div className="footer__block block__left">
-          <div className="footer__title">好侍官方账号</div>
-          <div className="footer__channel">
-            {footerMap1.map((v, i) => {
-              return (
-                <div className="footer__channel__list" key={i}>
-                  <img
-                    src={v.icon}
-                    className="icon"
-                    onClick={() => showCode(0, v, i)}
-                  ></img>
-                  <div
-                    className={
-                      i == codeindex1 ? 'qrcodeLeft qrcodeshow' : 'qrcodeLeft'
-                    }
-                  >
-                    <img src={v.qrcode} className="qrcode"></img>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-        <div className="footer__block block__right">
-          <div className="footer__title">好侍官方店铺</div>
-          <div className="footer__channel">
-            {footerMap2.map((v, i) => {
-              return (
-                <div className="footer__channel__list" key={i}>
-                  <img
-                    src={v.icon}
-                    className="icon"
-                    onClick={() => showCode(1, v, i)}
-                  ></img>
-                  <div
-                    className={
-                      i == codeindex2 ? 'qrcodeRight qrcodeshow' : 'qrcodeRight'
-                    }
-                  >
-                    <img src={v.qrcode} className="qrcode"></img>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-
       {/* 返回顶部 */}
       <Totop></Totop>
     </div>

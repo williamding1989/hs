@@ -1,6 +1,9 @@
 /**
  *  设备检测
- * @returns 1 手机端  2 pad  3 pc
+ * @returns {1 | 2 | 3} 设备类型标识：
+ *   - 1: 手机端（viewport < 768px）
+ *   - 2: Pad 或平板类设备（768px ≤ viewport ≤ 1200px）
+ *   - 3: PC 或桌面设备（viewport > 1200px）
  */
 export const device = function device() {
   const { innerWidth } = window
@@ -12,9 +15,9 @@ export const device = function device() {
 
 /**
  * 函数重载
- * @param {JSON} target   需要重载的对象
- * @param {String} name   方法名
- * @param {Function} fn   具体方法
+ * @param {JSON} target - 需要重载的对象
+ * @param {String} name - 方法名
+ * @param {Function} fn - 具体方法
  */
 export const overload = function (target, name, fn) {
   let old = target[name]

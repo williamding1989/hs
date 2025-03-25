@@ -2,6 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.less'
 import App from './App'
+import { business } from 'requests-sdk'
+
+// Inject Business
+const { hs } = business
+
+window.$hs = hs
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
