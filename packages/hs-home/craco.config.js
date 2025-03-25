@@ -6,6 +6,7 @@ module.exports = {
     configure: {
       globals: {
         arguments: 'readonly', // 允许 arguments 作为全局变量
+        globalThis: 'readonly', // 允许 globalThis 作为全局变量
       },
       rules: {
         'no-undef': 'off', // 关闭 no-undef 规则

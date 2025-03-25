@@ -1,7 +1,7 @@
 // 模块
 import { useEffect, useRef, useState } from 'react'
 import { HsSwiper, HsLoading, Totop } from '../../components/index.jsx'
-import { pcBannerMap, mobBannerMap, curryMap2, curryMap1 } from './config.js'
+import { curryMap2, curryMap1, newsOptions } from './config.js'
 import './index.less'
 import { device, overload } from '../../utils/index.js'
 import { useJump } from '../../hooks/index.js'
@@ -45,6 +45,14 @@ const Home = () => {
   const [active2, setActive2] = useState(0)
   const [showDesc, setShowDesc] = useState(false)
   const [slidesPerView, setSlidesPerView] = useState(1)
+  // Banner数据
+  const [cv, setCv] = useState([])
+  // 日式咖喱课堂数据
+  const [classData, setClassData] = useState(null)
+  // 人气菜谱数据
+  const [cookbook, setCookbook] = useState([])
+  // 新闻数据
+  const [newsData, setNewsData] = useState([])
 
   const fancy__prev1 = useRef(null)
   const fancy__prev2 = useRef(null)
@@ -60,6 +68,8 @@ const Home = () => {
   const _abouths__right = useRef(null)
 
   useEffect(() => {
+    getData()
+
     adapter()
 
     setTimeout(() => {}, 2500)
@@ -100,6 +110,29 @@ const Home = () => {
     }
   }, [])
 
+  // 获取首页数据
+  const getData = async () => {
+    const { home } = globalThis.$hs
+    const { data } = await home()
+
+    setCv(formatCv(data.cv.item))
+    setClassData(data.class)
+    setCookbook(data.cookbook.item)
+    setNewsData(data.news.item)
+  }
+
+  // 格式化轮播数据
+  const formatCv = (data) => {
+    return data.map((v) => {
+      const { image, url, name } = v
+      return {
+        url: image,
+        desc: name,
+        link: url,
+      }
+    })
+  }
+
   // 观察
   const observe = (observer, target) => {
     if (target.current) observer.observe(target.current)
@@ -131,12 +164,31 @@ const Home = () => {
     }
   }
 
+  // 计算新闻class
+  const calcNewsClass = (type) => {
+    switch (type) {
+      // 公司
+      case 1:
+        type = 'company'
+        break
+      // 产品
+      case 2:
+        type = 'productor'
+        break
+      // 活动
+      case 3:
+        type = 'activity'
+        break
+    }
+    return `news__type news__type-${type}`
+  }
+
   return (
     <div className="Home">
       {/* 轮播 */}
       <div className="banner">
         <HsSwiper
-          slides={device() == 1 ? mobBannerMap : pcBannerMap}
+          slides={cv}
           prevRef={banner__prev}
           nextRef={banner__next}
         ></HsSwiper>
@@ -176,7 +228,7 @@ const Home = () => {
         <div
           className="btn"
           onClick={() => {
-            jump()
+            jump(classData.url)
           }}
         >
           <img src={btn__bg} className="btn__bg"></img>
@@ -190,18 +242,22 @@ const Home = () => {
         <div className="hot">
           <img src={hot_title} className="hot__title"></img>
           <div className="hot__showcase">
-            <div className="caseItem">
-              <div className="caseItem__title">百梦多鸡肉咖喱饭</div>
-              <img src={product2_left} className="caseItem__img" />
-              <img src={hot_title1} className="hot_title"></img>
-              <img src={more1} className="caseItem__more" />
-            </div>
-            <div className="caseItem">
-              <div className="caseItem__title">咖王牛肉咖喱蛋包饭</div>
-              <img src={product2_left} className="caseItem__img" />
-              <img src={hot_title2} className="hot_title"></img>
-              <img src={more1} className="caseItem__more" />
-            </div>
+            {cookbook.map((v, i) => {
+              return (
+                <div className="caseItem" key={i}>
+                  <div className="caseItem__title">{v.name}</div>
+                  <img src={v.image} className="caseItem__img" />
+                  <img src={hot_title1} className="hot_title"></img>
+                  <img
+                    src={more1}
+                    className="caseItem__more"
+                    onClick={() => {
+                      jump(v.url)
+                    }}
+                  />
+                </div>
+              )
+            })}
           </div>
         </div>
 
@@ -314,27 +370,24 @@ const Home = () => {
       <div className="news">
         <img src={news_title} className="news__title"></img>
         <div className="news__container">
-          <div className="news__list borderbottom">
-            <div className="news__type news__type-company">公司</div>
-            <div className="news__date">2020-04-13</div>
-            <div className="news__desc">
-              好侍食品开展打击知识产权侵权行动的事例公告
-            </div>
-          </div>
-          <div className="news__list">
-            <div className="news__type news__type-activity">活动</div>
-            <div className="news__date">2020-04-13</div>
-            <div className="news__desc">
-              好侍食品开展打击知识产权侵权行动的事例公告
-            </div>
-          </div>
-          <div className="news__list">
-            <div className="news__type"></div>
-            <div className="news__date">2020-04-13</div>
-            <div className="news__desc">
-              好侍食品开展打击知识产权侵权行动的事例公告
-            </div>
-          </div>
+          {newsData.map((v, i) => {
+            return (
+              <div className="news__list borderbottom" key={i}>
+                <div className={calcNewsClass(v.type)}>
+                  {newsOptions[v.type]}
+                </div>
+                <div className="news__date">{v.date}</div>
+                <div
+                  className="news__desc"
+                  onClick={() => {
+                    jump(v.url)
+                  }}
+                >
+                  {v.title}
+                </div>
+              </div>
+            )
+          })}
         </div>
         <img src={news_more} className="news__more"></img>
         <img src={news_more1} className="news__more1"></img>

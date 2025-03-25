@@ -337,6 +337,9 @@
           &-activity {
             background: #f29800;
           }
+          &-productor {
+            background: #0071e2;
+          }
         }
         .news__date {
           margin-left: 53px;
@@ -357,79 +360,6 @@
     }
     &__more1 {
       display: none;
-    }
-  }
-
-  // 底部
-  .footer {
-    margin-top: 200px;
-    width: 100vw;
-    height: 382px;
-    background: #e60012;
-    display: flex;
-    padding-top: 97px;
-    justify-content: center;
-    &__block {
-      width: 34%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .footer__title {
-        font-family: STYuanti-SC-Bold, STYuanti-SC-Bold;
-        font-size: 39px;
-        color: #fff;
-        letter-spacing: 10px;
-      }
-    }
-    .block__left {
-    }
-    .block__right {
-    }
-    &__channel {
-      display: flex;
-      justify-content: space-evenly;
-      margin-top: 40px;
-      width: 100%;
-      &__list {
-        cursor: pointer;
-        width: 80px;
-        position: relative;
-        .icon {
-          width: 80px;
-        }
-        .qrcodeLeft,
-        .qrcodeRight {
-          display: none;
-          width: 185px;
-          height: 185px;
-          position: absolute;
-          top: 50%;
-          z-index: 1;
-          transform: translateY(-50%);
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-position: center center;
-          padding: 20px 9px;
-          .qrcode {
-            width: 90%;
-            height: 100%;
-          }
-        }
-        .qrcodeLeft {
-          background-image: url('../../assets/qr_left.png');
-          left: -195px;
-        }
-        .qrcodeRight {
-          background-image: url('../../assets/qr_right.png');
-          right: -195px;
-          .qrcode {
-            margin-left: auto;
-          }
-        }
-        .qrcodeshow {
-          display: block;
-        }
-      }
     }
   }
 }

@@ -7,7 +7,7 @@ import { business } from 'requests-sdk'
 // Inject Business
 const { hs } = business
 
-window.$hs = hs
+globalThis.$hs = hs
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
