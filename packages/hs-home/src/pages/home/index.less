@@ -69,12 +69,20 @@
       top: 348px;
       margin-left: -750px;
       z-index: 1;
+      > img {
+        transition: all 0.8s ease-in;
+        transform: translate(0, 100px);
+      }
     }
     &__tips {
       width: 1376px;
       position: absolute;
       top: 25px;
       margin-left: 700px;
+      > img {
+        transition: all 0.8s ease-in 0.8s;
+        transform: translate(-100px, 0);
+      }
     }
     .btn {
       position: absolute;
@@ -227,9 +235,17 @@
           top: 20%;
           right: 7%;
           width: 36%;
+          transition: all 0.8s ease-in 0.8s;
+          transform: translate(100px, 0);
         }
         .list__more {
           right: 15%;
+          transition: all 0.8s ease-in 1.2s;
+          transform: translate(100px, 0);
+        }
+        .list__left {
+          transition: all 0.8s ease-in;
+          transform: translate(-100px, 0);
         }
       }
       .list2 {
@@ -238,9 +254,17 @@
           top: 20%;
           left: 3%;
           width: 48%;
+          transition: all 0.8s ease-in 0.8s;
+          transform: translate(-100px, 0);
         }
         .list__more {
           left: 15%;
+          transition: all 0.8s ease-in 1.2s;
+          transform: translate(-100px, 0);
+        }
+        .list__right {
+          transition: all 0.8s ease-in;
+          transform: translate(100px, 0);
         }
       }
       &__list {

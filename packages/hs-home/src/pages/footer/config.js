@@ -12,25 +12,55 @@ import pdd from '../../assets/pdd.png'
 export const footerMap1 = [
   {
     icon: wechat,
-    qrcode: abouths_bg,
+    qrcode: [
+      {
+        image:
+          'https://www.housefoods.com.cn/storage/assets/home/images/house_contact_weixin01.jpg?v1',
+        desc: '家庭用微信',
+      },
+      {
+        image:
+          'https://www.housefoods.com.cn/storage/assets/home/images/ywy.png',
+        desc: '业务用微信',
+      },
+    ],
+    abouths_bg,
     type: '0', // 0 - 官方
-    desc: '家庭用微信', // 业务用微信，家庭用微信
+    desc: '微信',
   },
   {
     icon: wechatvideo,
-    qrcode: abouths_bg,
+    qrcode: [
+      {
+        image:
+          'https://www.housefoods.com.cn/storage/assets/home/images/house_contact_weixin02.jpg',
+        desc: '视频号',
+      },
+    ],
     type: '0',
     desc: '视频号',
   },
   {
     icon: redbook,
-    qrcode: abouths_bg,
+    qrcode: [
+      {
+        image:
+          'https://www.housefoods.com.cn/storage/assets/home/images/xhscode.jpg?v1',
+        desc: '官方用小红书',
+      },
+    ],
     type: '0',
     desc: '官方用小红书',
   },
   {
     icon: weibo,
-    qrcode: abouths_bg,
+    qrcode: [
+      {
+        image:
+          'https://www.housefoods.com.cn/storage/assets/home/images/house_contact_weibo.jpg',
+        desc: '官方微博',
+      },
+    ],
     type: '0',
     desc: '官方微博',
   },

@@ -7,7 +7,6 @@ import './index.less'
 const Footer = () => {
   const jump = useJump()
   const [codeindex1, setCodeindex1] = useState(null)
-  const [codeindex2, setCodeindex2] = useState(null)
 
   // 显示二维码
   const showCode = (t, v, i) => {
@@ -26,11 +25,9 @@ const Footer = () => {
     // pc - 显示二维码
     if (t == 0) {
       setCodeindex1(i)
-      setCodeindex2(null)
       return
     }
     setCodeindex1(null)
-    setCodeindex2(i)
   }
 
   return (
@@ -51,7 +48,20 @@ const Footer = () => {
                     i == codeindex1 ? 'qrcodeLeft qrcodeshow' : 'qrcodeLeft'
                   }
                 >
-                  <img src={v.qrcode} className="qrcode"></img>
+                  {v.qrcode.map((code, index) => {
+                    return (
+                      <div className="qrcodeLeft__list">
+                        <div className="qrcodeLeft__list__title">
+                          {code.desc}
+                        </div>
+                        <img
+                          src={code.image}
+                          className="qrcode"
+                          key={index}
+                        ></img>
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             )
@@ -67,15 +77,8 @@ const Footer = () => {
                 <img
                   src={v.icon}
                   className="icon"
-                  onClick={() => showCode(1, v, i)}
+                  onClick={() => jump(v.link)}
                 ></img>
-                <div
-                  className={
-                    i == codeindex2 ? 'qrcodeRight qrcodeshow' : 'qrcodeRight'
-                  }
-                >
-                  <img src={v.qrcode} className="qrcode"></img>
-                </div>
               </div>
             )
           })}

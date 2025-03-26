@@ -4,6 +4,7 @@
 
 // Common
 .footer {
+  width: 100vw;
   margin-top: 200px;
   height: 382px;
   background: #e60012;
@@ -38,37 +39,36 @@
       .icon {
         width: 80px;
       }
-      .qrcodeLeft,
-      .qrcodeRight {
+      .qrcodeLeft {
+        width: max-content;
         display: none;
-        width: 185px;
-        height: 185px;
         position: absolute;
         top: 50%;
         z-index: 1;
         transform: translateY(-50%);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center center;
-        padding: 20px 9px;
+        padding: 10px 9px;
+        &__list {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex: 1;
+          height: 155px;
+          &__title {
+            font-size: 12px;
+          }
+        }
         .qrcode {
-          width: 90%;
-          height: 100%;
+          height: 90%;
         }
       }
       .qrcodeLeft {
-        background-image: url('../../assets/qr_left.png');
         left: -195px;
-      }
-      .qrcodeRight {
-        background-image: url('../../assets/qr_right.png');
-        right: -195px;
-        .qrcode {
-          margin-left: auto;
-        }
+        background: #fff;
       }
       .qrcodeshow {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }

@@ -1,7 +1,8 @@
-import { Navigation, Autoplay } from 'swiper/modules'
+import { Navigation, Autoplay, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/less/navigation'
+import 'swiper/css/pagination'
 import { useEffect, useRef } from 'react'
 import './index.less'
 
@@ -57,7 +58,7 @@ const HsSwiper = ({
       <Swiper
         className="HsSwiper"
         ref={swiperRef}
-        modules={[Navigation, Autoplay]}
+        modules={[Navigation, Autoplay, Pagination]}
         spaceBetween={30}
         loop={true}
         onSlideChange={(swiper) => {

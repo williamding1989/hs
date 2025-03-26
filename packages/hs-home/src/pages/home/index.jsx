@@ -31,7 +31,6 @@ import fancy_btn from '../../assets/fancy_btn.png'
 import swiper_left1 from '../../assets/swiper_left1.png'
 import swiper_right1 from '../../assets/swiper_right1.png'
 import hot_title1 from '../../assets/hot_title1.png'
-import hot_title2 from '../../assets/hot_title2.png'
 import abouths_title from '../../assets/abouths_title.png'
 import knowmore from '../../assets/knowmore.png'
 import news_more1 from '../../assets/news_more1.png'
@@ -66,6 +65,8 @@ const Home = () => {
   const _product__list2 = useRef(null)
   const _abouths__left = useRef(null)
   const _abouths__right = useRef(null)
+  const _classroom__mob1 = useRef(null)
+  const _classroom__mob2 = useRef(null)
 
   useEffect(() => {
     getData()
@@ -95,6 +96,8 @@ const Home = () => {
     observe(observer, _product__list2)
     observe(observer, _abouths__left)
     observe(observer, _abouths__right)
+    observe(observer, _classroom__mob1)
+    observe(observer, _classroom__mob2)
 
     // 监听窗口大小变化
     window.addEventListener('resize', adapter)
@@ -106,6 +109,8 @@ const Home = () => {
       unobserve(observer, _product__list2)
       unobserve(observer, _abouths__left)
       unobserve(observer, _abouths__right)
+      unobserve(observer, _classroom__mob1)
+      unobserve(observer, _classroom__mob2)
       window.removeEventListener('resize', adapter)
     }
   }, [])
@@ -191,6 +196,7 @@ const Home = () => {
           slides={cv}
           prevRef={banner__prev}
           nextRef={banner__next}
+          pagination={device() == 1 ? true : false}
         ></HsSwiper>
         <img
           src={swiper_left}
@@ -217,11 +223,11 @@ const Home = () => {
           <img src={classroom_tips}></img>
         </div>
 
-        <div className="classroom__mob1">
+        <div className="classroom__mob1" ref={_classroom__mob1}>
           <img src={classroom_mob1}></img>
         </div>
 
-        <div className="classroom__mob2">
+        <div className="classroom__mob2" ref={_classroom__mob2}>
           <img src={classroom_mob2}></img>
         </div>
 
