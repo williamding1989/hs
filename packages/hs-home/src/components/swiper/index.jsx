@@ -64,10 +64,10 @@ const HsSwiper = ({
         onSlideChange={(swiper) => {
           onSlideChange && onSlideChange(swiper.realIndex)
         }}
-        // autoplay={{
-        //   delay: 5500,
-        //   disableOnInteraction: false, // 用户交互后不禁用自动播放
-        // }}
+        autoplay={{
+          delay: 5500,
+          disableOnInteraction: false, // 用户交互后不禁用自动播放
+        }}
         {...props}
       >
         {slides.map((item, i) => {
