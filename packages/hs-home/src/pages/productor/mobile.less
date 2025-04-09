@@ -1,0 +1,86 @@
+// Mobile
+@media only screen and (max-width: 767px) {
+  div.productor {
+    &__nav {
+      padding-top: 8.8vw;
+      margin-bottom: 8vw;
+      &__item {
+        height: auto;
+        width: 45%;
+      }
+    }
+    &__secondnav {
+      flex-wrap: wrap;
+      //   display: none;
+      width: 90%;
+      margin-bottom: 8.8vw;
+      > a {
+        flex: auto;
+        margin-right: 0;
+        font-size: 1.125rem;
+        padding: 0.023vw 0.042vw;
+      }
+    }
+    &__container {
+      width: 90%;
+      .productor__list {
+        margin-bottom: 0.5vw;
+        &__title {
+          width: 100%;
+          border-bottom: 2px solid #e60012;
+          background-size: 56%;
+          font-size: 1.125rem;
+          background-position: center 100%;
+          line-height: 8vw;
+          background-size: contain;
+        }
+        &__goods {
+          padding: 6vw 0;
+          border: none;
+          &__item {
+            border: 1px solid #707070;
+            border-radius: 10px;
+            width: 43vw;
+            padding: 2vw 2vw 0;
+            margin-bottom: 4.6vw;
+            height: max-content;
+            &__img {
+              width: 100%;
+              height: 20vw;
+              margin-bottom: 2vw;
+            }
+            &__title {
+              font-size: 0.875rem;
+              margin-bottom: 1.6vw;
+            }
+            &__desc {
+              font-size: 0.6rem;
+              margin-bottom: 1.6vw;
+            }
+            &__detailbtn {
+              width: 43vw;
+              line-height: 7vw;
+              font-size: 0.93rem;
+              color: #fff;
+              background: #e60012;
+              border-radius: 0 0 10px 10px;
+              &::after {
+                display: none;
+              }
+            }
+            &__sku {
+              margin-bottom: 0.2vw;
+              &__title,
+              &__content {
+                font-size: 0.625rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    .backhome {
+      display: none;
+    }
+  }
+}
