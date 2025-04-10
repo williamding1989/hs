@@ -6,12 +6,12 @@ import {
   Productor,
   Cookbook,
   Prodetail,
+  Cookdetail,
 } from "./pages/index.jsx";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
   Outlet,
 } from "react-router-dom";
 
@@ -32,12 +32,20 @@ function App() {
       <Router>
         <Routes>
           <Route element={<Standards />}>
+            {/* 首页 */}
             <Route path="/" element={<Home />} />
+            {/* 产品介绍 */}
             <Route path="/productor" element={<Productor />} />
-            <Route path="/cookbook" element={<Cookbook />} />
+            {/* 产品详情 */}
             <Route path="/prodetail/:id" element={<Prodetail />} />
+            {/* 菜谱 */}
+            <Route path="/cookbook" element={<Cookbook />}>
+              {/* 菜谱详情 */}
+              <Route path="cookdetail/:id" element={<Cookdetail />} />
+            </Route>
           </Route>
 
+          {/* 二维码 */}
           <Route path="/qrcode/:index" element={<Qrcode />} />
         </Routes>
       </Router>

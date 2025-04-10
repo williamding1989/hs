@@ -1,10 +1,10 @@
-import { Navigation, Autoplay, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/less/navigation'
-import 'swiper/css/pagination'
-import { useEffect, useRef } from 'react'
-import './index.less'
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/less/navigation";
+import "swiper/css/pagination";
+import { useEffect, useRef } from "react";
+import "./index.less";
 
 /**
  * 轮播组件 https://www.npmjs.com/package/swiper
@@ -22,35 +22,35 @@ const HsSwiper = ({
   showDesc = false,
   ...props
 }) => {
-  const swiperRef = useRef(null)
+  const swiperRef = useRef(null);
 
   useEffect(() => {
     if (
-      swiperRef.current &&
-      swiperRef.current.swiper &&
-      prevRef.current &&
-      nextRef.current
+      swiperRef?.current &&
+      swiperRef?.current.swiper &&
+      prevRef?.current &&
+      nextRef?.current
     ) {
-      const swiper = swiperRef.current.swiper
+      const swiper = swiperRef.current.swiper;
 
       // 绑定导航按钮
-      swiper.params.navigation.prevEl = prevRef.current
-      swiper.params.navigation.nextEl = nextRef.current
+      swiper.params.navigation.prevEl = prevRef.current;
+      swiper.params.navigation.nextEl = nextRef.current;
 
       // 重新初始化导航模块
-      swiper.navigation.destroy() // 销毁旧的导航模块
-      swiper.navigation.init() // 重新初始化导航模块
-      swiper.navigation.update() // 更新导航按钮状态
+      swiper.navigation.destroy(); // 销毁旧的导航模块
+      swiper.navigation.init(); // 重新初始化导航模块
+      swiper.navigation.update(); // 更新导航按钮状态
 
       // 更新 Swiper
-      swiper.update()
+      swiper.update();
     }
-  }, [prevRef, nextRef])
+  }, [prevRef, nextRef]);
 
   const jump = (link) => {
-    if (!link) return
-    window.location.href = link
-  }
+    if (!link) return;
+    window.location.href = link;
+  };
 
   return (
     <>
@@ -62,12 +62,12 @@ const HsSwiper = ({
         spaceBetween={30}
         loop={true}
         onSlideChange={(swiper) => {
-          onSlideChange && onSlideChange(swiper.realIndex)
+          onSlideChange && onSlideChange(swiper.realIndex);
         }}
-        autoplay={{
-          delay: 5500,
-          disableOnInteraction: false, // 用户交互后不禁用自动播放
-        }}
+        // autoplay={{
+        //   delay: 5500,
+        //   disableOnInteraction: false, // 用户交互后不禁用自动播放
+        // }}
         {...props}
       >
         {slides.map((item, i) => {
@@ -83,11 +83,11 @@ const HsSwiper = ({
               </div>
               {showDesc && <div className="slideDesc">{item.desc}</div>}
             </SwiperSlide>
-          )
+          );
         })}
       </Swiper>
     </>
-  )
-}
+  );
+};
 
-export default HsSwiper
+export default HsSwiper;

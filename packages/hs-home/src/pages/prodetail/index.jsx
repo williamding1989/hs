@@ -3,8 +3,12 @@ import "./index.less";
 import { HsVideo } from "../../components/index";
 import video1 from "../../assets/video2.mp4";
 import chickenrice__content from "../../assets/mob-banner1.jpg";
+import recommandbook from "../../assets/recommandbook.png";
+import { useJump } from "../../hooks/index.js";
 
-const prodetail = () => {
+const Prodetail = () => {
+  const jump = useJump();
+
   const dataSource = [
     {
       key: "1",
@@ -96,11 +100,15 @@ const prodetail = () => {
         {/* 菜谱 */}
         <div className="prodetail__container__cookbook">
           <div className="prodetail__title">菜谱</div>
-          <img src=""></img>
+          <img
+            className="prodetail__container__cookbook__more"
+            src={recommandbook}
+            onClick={() => jump("/cookbook", true)}
+          ></img>
         </div>
       </div>
     </div>
   );
 };
 
-export default prodetail;
+export default Prodetail;

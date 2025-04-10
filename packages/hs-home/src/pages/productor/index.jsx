@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./index.less";
 import { navMap } from "./config.js";
 import { device } from "../../utils/index.js";
+import { useJump } from "../../hooks/index.js";
 
 const Productor = () => {
   const [navIndex, setNavIndex] = React.useState(0);
   const [secondNavindex, setSecondNavindex] = React.useState(0);
-  const navigate = useNavigate();
+  const jump = useJump();
 
   useEffect(() => {}, []);
 
@@ -117,7 +117,7 @@ const Productor = () => {
         })}
       </div>
       {/* 返回首页 */}
-      <div className="backhome" onClick={() => navigate("/")}>
+      <div className="backhome" onClick={() => jump("/", true)}>
         返回首页
       </div>
     </div>

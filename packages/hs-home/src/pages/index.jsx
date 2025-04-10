@@ -11,3 +11,5 @@ export { default as Productor } from "./productor/index.jsx";
 export { default as Cookbook } from "./cookbook/index.jsx";
 
 export { default as Prodetail } from "./prodetail/index.jsx";
+
+export { default as Cookdetail } from "./cookdetail/index.jsx";
