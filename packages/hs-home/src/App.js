@@ -1,4 +1,12 @@
-import { Home, Qrcode, Footer, Header, Productor } from "./pages/index.jsx";
+import {
+  Home,
+  Qrcode,
+  Footer,
+  Header,
+  Productor,
+  Cookbook,
+  Prodetail,
+} from "./pages/index.jsx";
 import {
   BrowserRouter as Router,
   Routes,
@@ -26,6 +34,8 @@ function App() {
           <Route element={<Standards />}>
             <Route path="/" element={<Home />} />
             <Route path="/productor" element={<Productor />} />
+            <Route path="/cookbook" element={<Cookbook />} />
+            <Route path="/prodetail/:id" element={<Prodetail />} />
           </Route>
 
           <Route path="/qrcode/:index" element={<Qrcode />} />

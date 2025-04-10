@@ -1,0 +1,136 @@
+@import "./pc.less";
+@import "./pad.less";
+@import "./mobile.less";
+
+.cookbook {
+  &__nav {
+    height: 216px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    &__container {
+      width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-self: center;
+      justify-content: space-between;
+      &__list {
+        width: 252px;
+        line-height: 96px;
+        background: #f7f7f7;
+        border-radius: 48px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #333333;
+        text-align: right;
+        padding-right: 40px;
+        position: relative;
+        &:hover {
+          background: #e60012;
+          color: #fff;
+        }
+        > img {
+          content: "";
+          position: absolute;
+          left: -10px;
+          top: -6px;
+          width: 112px;
+          height: 112px;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+  &__goods {
+    background: linear-gradient(
+      180deg,
+      rgba(239, 205, 142, 0.1) 0%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+    padding-top: 60px;
+    &__title {
+      margin: 0 auto;
+      position: relative;
+      width: 280px;
+      height: 72px;
+      margin-bottom: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        height: 4px;
+        background: #e60012;
+        width: 417px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      &::before {
+        left: 0;
+        transform: translateX(-100%);
+      }
+      &::after {
+        right: 0;
+        transform: translateX(100%);
+      }
+      &__tips {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__chinese {
+          font-weight: 600;
+          font-size: 32px;
+          color: #e60012;
+        }
+        &__english {
+          font-size: 14px;
+          color: #e60012;
+        }
+      }
+
+      &__fork {
+        width: 50px;
+      }
+    }
+    &__list {
+      &__container {
+        width: 1140px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .cookbook__goods__item {
+          width: 254px;
+          height: 224px;
+          margin-right: 30px;
+          background: #ffffff;
+          box-shadow: 0px 0px 10px 0px rgba(54, 62, 68, 0.24);
+          border-radius: 16px;
+          padding: 10px 10px 20px;
+          cursor: pointer;
+          margin-bottom: 60px;
+          &:hover {
+            .cookbook__goods__item__title {
+              color: #ed1b23;
+              text-decoration: underline;
+            }
+          }
+          &__img {
+            height: 150px;
+            box-shadow: 0px 2px 10px 0px rgba(42, 43, 60, 0.14);
+            border-radius: 16px;
+            margin-bottom: 18px;
+          }
+          &__title {
+            font-weight: 500;
+            font-size: 18px;
+            color: #333333;
+          }
+        }
+      }
+    }
+  }
+}

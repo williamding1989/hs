@@ -1,0 +1,85 @@
+@import "./pc.less";
+@import "./pad.less";
+@import "./mobile.less";
+
+.prodetail {
+  .odd-row {
+    background: #fafafa;
+  }
+  &__title {
+    background: #fdfaf3;
+    padding-left: 30px;
+    line-height: 60px;
+    font-weight: 600;
+    font-size: 24px;
+    color: #000000;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background-color: #e60012;
+    }
+  }
+  &__container {
+    width: 1140px;
+    margin: 0 auto;
+    &__intro {
+      margin-bottom: 80px;
+      &__tips {
+        margin-top: 27px;
+        font-weight: 400;
+        font-size: 18px;
+        color: #000000;
+        line-height: 40px;
+      }
+    }
+    &__additional {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 100px;
+      &__sku {
+        .prodetail__title {
+          margin-bottom: 35px;
+        }
+        width: 560px;
+      }
+      &__allergy {
+        .prodetail__title {
+          margin-bottom: 35px;
+        }
+        width: 500px;
+        &__info {
+          padding: 40px;
+          background: #fafafa;
+          border-radius: 14px;
+
+          &__tips {
+            font-size: 18px;
+            color: #000000;
+            line-height: 40px;
+          }
+        }
+      }
+    }
+    &__video {
+      margin-bottom: 85px;
+      .prodetail__title {
+        margin-bottom: 60px;
+      }
+      .videocontainer {
+        width: 100%;
+        height: 650px;
+      }
+    }
+    &__cookbook {
+      .prodetail__title {
+        margin-bottom: 80px;
+      }
+    }
+  }
+}
