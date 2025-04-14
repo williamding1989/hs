@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.less";
 import { ModalService } from "../../service";
 
@@ -6,13 +6,15 @@ const Modal = () => {
   const [visible, setVisible] = useState(false);
   const [options, setOptions] = useState({});
 
-  const modal = new ModalService();
+  useEffect(() => {
+    const modal = new ModalService();
+    //  注册
+    modal.registry((options) => {
+      setVisible(true);
+      setOptions(options);
+    });
+  }, []);
 
-  //  注册
-  modal.registry((options) => {
-    setVisible(true);
-    setOptions(options);
-  });
   if (!visible) return null;
 
   return (
