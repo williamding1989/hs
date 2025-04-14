@@ -29,7 +29,17 @@ export const overload = function (target, name, fn) {
   };
 };
 
-export const createOverload = function () {
-  const fnMap = new Map();
-  function overload() {}
+/**
+ * 主题工具类
+ * @returns {Object} 主题工具类
+ * @property {String} theme - 当前主题
+ * @property {Function} setTheme - 设置主题
+ */
+export const themeUtil = {
+  get theme() {
+    return document.documentElement.getAttribute("data-theme") || "default";
+  },
+  set theme(theme) {
+    return document.documentElement.setAttribute("data-theme", theme);
+  },
 };

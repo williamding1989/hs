@@ -7,3 +7,7 @@ export { default as HsLoading } from "./loading/index.jsx";
 export { default as Totop } from "./totop/index.jsx";
 
 export { default as Modal } from "./modal/index.jsx";
+
+export { default as EduButton } from "./button/edu/index.jsx";
+
+export { default as FinButton } from "./button/fin/index.jsx";
