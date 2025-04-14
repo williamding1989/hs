@@ -6,12 +6,11 @@
  *   - 3: PC 或桌面设备（viewport > 1200px）
  */
 export const device = function device() {
-  const { innerWidth } = window
-  if (innerWidth < 768) return 1
-  if (innerWidth > 1200) return 3
-
-  return 2
-}
+  const { innerWidth } = window;
+  if (innerWidth < 768) return 1;
+  if (innerWidth > 1200) return 3;
+  return 2;
+};
 
 /**
  * 函数重载
@@ -20,17 +19,17 @@ export const device = function device() {
  * @param {Function} fn - 具体方法
  */
 export const overload = function (target, name, fn) {
-  let old = target[name]
+  let old = target[name];
   target[name] = function () {
     if (fn.length === arguments.length) {
-      return fn.apply(this, arguments)
-    } else if (typeof old === 'function') {
-      return old.apply(this, arguments)
+      return fn.apply(this, arguments);
+    } else if (typeof old === "function") {
+      return old.apply(this, arguments);
     }
-  }
-}
+  };
+};
 
 export const createOverload = function () {
-  const fnMap = new Map()
+  const fnMap = new Map();
   function overload() {}
-}
+};
