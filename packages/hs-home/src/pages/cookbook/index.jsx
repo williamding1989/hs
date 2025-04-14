@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import "./index.less";
 import { navMap } from "./config.js";
-import { useJump } from "../../hooks/index.js";
+import { useJump, useI18n } from "../../hooks/index.js";
 import fork from "../../assets/fork.png";
 import banner from "../../assets/pc-banner2.jpg";
 
@@ -24,7 +24,6 @@ const Cookbook = () => {
           })}
         </div>
       </div>
-
       {isDetailPage ? (
         <Outlet />
       ) : (
