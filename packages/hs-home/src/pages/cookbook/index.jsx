@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./index.less";
 import { navMap } from "./config.js";
@@ -27,7 +28,14 @@ const Cookbook = () => {
       {isDetailPage ? (
         <Outlet />
       ) : (
-        <div className="cookbook__goods">
+        <div
+          className="cookbook__goods"
+          onClick={() =>
+            jump(
+              "https://www.housefoods.com.cn/index/Recipe/detail.html?id=720"
+            )
+          }
+        >
           <div className="cookbook__goods__title">
             <img src={fork} className="cookbook__goods__title__fork"></img>
             <div className="cookbook__goods__title__tips">
