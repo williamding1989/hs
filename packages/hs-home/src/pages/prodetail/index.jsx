@@ -59,7 +59,7 @@ const Prodetail = () => {
           className="prodetail__coverImage__img"
         ></img>
       </div>
-      {/* 品牌入口 */}
+      {/* 品牌入口  */}
       <img
         src={recommandbook}
         className="prodetail__brand"

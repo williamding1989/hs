@@ -76,21 +76,6 @@ const Newslist = () => {
       {/* 内容 */}
       <div className="Newslist__content">
         {news.map((v, i) => {
-          const typeMap = {
-            1: {
-              className: "company",
-              text: "公司",
-            },
-            2: {
-              className: "product",
-              text: "产品",
-            },
-            3: {
-              className: "activity",
-              text: "活动",
-            },
-          };
-
           return (
             <div
               className="Newslist__content__item"
