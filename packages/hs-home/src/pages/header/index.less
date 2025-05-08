@@ -1,6 +1,6 @@
-@import './mobile.less';
-@import './pc.less';
-@import './pad.less';
+@import "./mobile.less";
+@import "./pc.less";
+@import "./pad.less";
 
 // Common
 .header {
@@ -14,19 +14,21 @@
     margin-top: 15px;
     display: flex;
     align-items: center;
+    .active {
+      color: red;
+      &::after {
+        background: #d53927;
+      }
+    }
     &__list {
       position: relative;
-      &:first-child {
-        &::after {
-          background: #d53927;
-        }
-      }
+
       &::after {
         position: absolute;
         z-index: 9;
         left: 0;
         bottom: 0;
-        content: '';
+        content: "";
         display: block;
         width: 100%;
         height: 2px;

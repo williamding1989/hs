@@ -1,15 +1,14 @@
 import { Table } from "antd";
 import "./index.less";
 import { HsVideo } from "../../components/index";
-import video1 from "../../assets/video2.mp4";
-import chickenrice__content from "../../assets/mob-banner1.jpg";
 import recommandbook from "../../assets/recommandbook.png";
 import { useJump } from "../../hooks/index.js";
 import { useParams } from "react-router-dom";
 import { getProDetail } from "../../request/index.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Prodetail = () => {
+  const [detail, setDetail] = useState(null);
   const jump = useJump();
   const { id } = useParams(); // 获取 URL 参数
 
@@ -23,40 +22,22 @@ const Prodetail = () => {
     try {
       const data = await getProDetail(id);
       console.log(data);
-      // setDetail(data);
+      setDetail(data);
     } catch (error) {}
   };
-
-  const dataSource = [
-    {
-      key: "1",
-      name: "胡彦斌",
-      age: 32,
-      address: "西湖区湖底公园1号",
-    },
-    {
-      key: "2",
-      name: "胡彦祖",
-      age: 42,
-      address: "西湖区湖底公园1号",
-    },
-  ];
 
   const columns = [
     {
       title: "口味",
-      dataIndex: "name",
-      key: "name",
+      dataIndex: "taste",
     },
     {
       title: "产品规格（净含量）",
-      dataIndex: "age",
-      key: "age",
+      dataIndex: "net_content",
     },
     {
       title: "保质期",
-      dataIndex: "address",
-      key: "address",
+      dataIndex: "expiration",
     },
   ];
 
@@ -68,18 +49,30 @@ const Prodetail = () => {
     return "odd-row";
   };
 
+  if (!detail) return;
+
   return (
     <div className="prodetail">
+      <div className="prodetail__coverImage">
+        <img
+          src={detail.cover_image}
+          className="prodetail__coverImage__img"
+        ></img>
+      </div>
       {/* 品牌入口 */}
-      <div>品牌入口</div>
+      <img
+        src={recommandbook}
+        className="prodetail__brand"
+        onClick={() => jump(detail.brand_linkurl)}
+      ></img>
+
       {/* 商品详情 */}
       <div className="prodetail__container">
         {/* 商品介绍 */}
         <div className="prodetail__container__intro">
           <div className="prodetail__title">商品介绍</div>
           <div className="prodetail__container__intro__tips">
-            口感柔和，美味醇香，色泽金黄，一款适合全家人食用的咖喱。
-            爱好咖喱的浓浓醇香，又不要过分刺激，那么百梦多咖喱的柔和口感和醇香味道也许正好是你想要的。
+            {detail.description}
           </div>
         </div>
         <div className="prodetail__container__additional">
@@ -88,7 +81,7 @@ const Prodetail = () => {
             <div className="prodetail__title">产品规格</div>
             <Table
               pagination={false}
-              dataSource={dataSource}
+              dataSource={detail.sku}
               columns={columns}
               rowClassName={getRowClassName} // 绑定类名函数
             />
@@ -97,12 +90,10 @@ const Prodetail = () => {
           <div className="prodetail__container__additional__allergy">
             <div className="prodetail__title">过敏信息</div>
             <div className="prodetail__container__additional__allergy__info">
-              <div className="prodetail__container__additional__allergy__info__tips">
-                本产品含有：小麦、大豆、乳成分 可能含有
-              </div>
-              <div className="prodetail__container__additional__allergy__info__tips">
-                可能含有微量：花生、鱼、虾、蟹、蛋、坚果成分
-              </div>
+              <div
+                className="prodetail__container__additional__allergy__info__tips"
+                dangerouslySetInnerHTML={{ __html: detail.allergy_info }}
+              ></div>
             </div>
           </div>
         </div>
@@ -111,8 +102,8 @@ const Prodetail = () => {
           <div className="prodetail__title">视频介绍</div>
           <HsVideo
             className="prodetail__container__video__item"
-            src={video1}
-            poster={chickenrice__content}
+            src={detail.video}
+            poster={detail.video_image}
           ></HsVideo>
         </div>
         {/* 菜谱 */}

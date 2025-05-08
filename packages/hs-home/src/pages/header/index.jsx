@@ -14,11 +14,7 @@ const Header = () => {
   const jump = useJump();
   const [mobnavshow, setMobnavshow] = useState(false);
   const [navData, setNavData] = useState(navMap);
-
-  // pc导航切换
-  const navClick = (n) => {
-    if (!n.sub) jump(n.link);
-  };
+  const [active, setActive] = useState(0);
 
   // mob导航切换
   const mobnavClick = (n) => {
@@ -98,14 +94,15 @@ const Header = () => {
         {navMap.map((n, i) => {
           return (
             <div
-              className="header__nav__list"
+              className={`header__nav__list ${active == i && "active"}`}
               onClick={() => {
-                navClick(n);
+                setActive(i);
+                jump(n.link, !n.isExternal);
               }}
               key={i}
             >
               {/* 内容 */}
-              <div className="header__nav__list__content">{n.title}</div>
+              <div className={`header__nav__list__content `}>{n.title}</div>
             </div>
           );
         })}
