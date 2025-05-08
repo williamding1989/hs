@@ -5,9 +5,27 @@ import video1 from "../../assets/video2.mp4";
 import chickenrice__content from "../../assets/mob-banner1.jpg";
 import recommandbook from "../../assets/recommandbook.png";
 import { useJump } from "../../hooks/index.js";
+import { useParams } from "react-router-dom";
+import { getProDetail } from "../../request/index.js";
+import { useEffect } from "react";
 
 const Prodetail = () => {
   const jump = useJump();
+  const { id } = useParams(); // 获取 URL 参数
+
+  useEffect(() => {
+    if (!id) return;
+
+    getDetail(id);
+  }, [id]);
+
+  const getDetail = async (id) => {
+    try {
+      const data = await getProDetail(id);
+      console.log(data);
+      // setDetail(data);
+    } catch (error) {}
+  };
 
   const dataSource = [
     {

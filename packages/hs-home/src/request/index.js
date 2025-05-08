@@ -52,3 +52,23 @@ export const getCookDetail = async (id) => {
     throw new Error(e);
   }
 };
+
+export const getProList = async () => {
+  try {
+    const { data } = await createRequest.post(API.PRODUCTORLIST);
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+};
+
+export const getProDetail = async (id) => {
+  try {
+    const { data } = await createRequest.post(API.PRODUCTORDETAIL, {
+      id,
+    });
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+};

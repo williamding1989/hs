@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./index.less";
 import { navMap } from "./config.js";
-import { useJump, useI18n } from "../../hooks/index.js";
+import { useJump } from "../../hooks/index.js";
 import fork from "../../assets/fork.png";
-import banner from "../../assets/pc-banner2.jpg";
 import { getCookList } from "../../request/index.js";
+import { Pagination } from "antd";
 
 const Cookbook = () => {
   const [category_id, setCategory_id] = useState(1);
   const [total_page, setTotal_page] = useState(0);
+  const [total_count, setTotal_count] = useState(0);
   const [page, setPage] = useState(1);
   const [cookList, setCookList] = useState([]);
   const jump = useJump();
@@ -24,14 +25,23 @@ const Cookbook = () => {
 
   const getList = async () => {
     try {
-      const { list, total_page } = await getCookList({ category_id, page });
+      const { list, total_page, total_count } = await getCookList({
+        category_id,
+        page,
+      });
       setTotal_page(total_page ?? []);
       setCookList(list);
+      setTotal_count(total_count);
     } catch (error) {}
   };
 
   const switchNav = (id) => {
     setCategory_id(id);
+    setPage(1);
+  };
+
+  const changePagination = (page) => {
+    setPage(page);
   };
 
   return (
@@ -93,6 +103,15 @@ const Cookbook = () => {
               })}
             </div>
           </div>
+          <Pagination
+            align="center"
+            defaultCurrent={1}
+            total={total_count}
+            pageSize={20}
+            onChange={(page) => {
+              changePagination(page);
+            }}
+          />
         </div>
       )}
     </div>
