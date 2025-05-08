@@ -1,0 +1,50 @@
+@import "./mobile.less";
+@import "./pc.less";
+@import "./pad.less";
+
+// Common
+.Newsdetail {
+  &__title {
+    margin-top: 60px;
+    &__img {
+      margin: 0 auto;
+      width: 435px;
+    }
+  }
+  &__newstitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    &__tag {
+      margin-right: 18px;
+      width: 64px;
+      line-height: 29px;
+    }
+    &__content {
+      font-weight: 600;
+      font-size: 24px;
+      color: #333333;
+      line-height: 33px;
+    }
+  }
+  &__date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 33px;
+    &__clock {
+      width: 14px;
+      margin-right: 5px;
+    }
+    &__content {
+      font-size: 14px;
+      color: #999999;
+      line-height: 20px;
+    }
+  }
+
+  &__content {
+    margin: 70px auto 0;
+  }
+}

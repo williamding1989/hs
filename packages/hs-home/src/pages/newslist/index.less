@@ -1,0 +1,57 @@
+@import "./mobile.less";
+@import "./pc.less";
+@import "./pad.less";
+
+// Common
+.Newslist {
+  &__title {
+    padding-top: 77px;
+    &__img {
+      margin: 0 auto;
+      width: 425px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px auto 0;
+    &__item {
+      cursor: pointer;
+      text-align: center;
+      padding: 0 56px;
+      font-size: 18px;
+      color: #333333;
+      line-height: 25px;
+      border-right: 1px solid #333333;
+      &:last-child {
+        padding-right: 0;
+        border: none;
+      }
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  &__content {
+    margin: 120px auto 0;
+    &__item {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      margin-bottom: 60px;
+      &__tag {
+        margin-right: 20px;
+      }
+      &__news {
+        flex: 1;
+        font-weight: 600;
+        font-size: 14px;
+        color: #333333;
+        line-height: 20px;
+      }
+    }
+  }
+}

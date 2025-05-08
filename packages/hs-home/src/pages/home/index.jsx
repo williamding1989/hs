@@ -1,192 +1,197 @@
 // 模块
-import { useEffect, useRef, useState } from 'react'
-import { HsSwiper, HsLoading, Totop } from '../../components/index.jsx'
-import { curryMap2, curryMap1, newsOptions } from './config.js'
-import './index.less'
-import { device, overload } from '../../utils/index.js'
-import { useJump } from '../../hooks/index.js'
+import { useEffect, useRef, useState } from "react";
+import { HsSwiper, HsLoading, Totop } from "../../components/index.jsx";
+import { curryMap2, curryMap1, newsOptions } from "./config.js";
+import "./index.less";
+import { device, overload } from "../../utils/index.js";
+import { useJump } from "../../hooks/index.js";
+import { getHomeData } from "../../request/index.js";
 
 // 资源
-import swiper_right from '../../assets/swiper_right.png'
-import swiper_left from '../../assets/swiper_left.png'
-import classroom_title from '../../assets/classroom_title.png'
-import classroom_tips from '../../assets/classroom_tips.png'
-import book from '../../assets/book.png'
-import btn__bg from '../../assets/btn__bg.png'
-import icon_right1 from '../../assets/icon_right1.png'
-import news_title from '../../assets/news_title.png'
-import news_more from '../../assets/news_more.png'
-import abouths_bg from '../../assets/abouths_bg.png'
-import abouths_btn from '../../assets/abouths_btn.png'
-import product_title from '../../assets/product_title.png'
-import product1_left from '../../assets/product1_left.png'
-import product1_right from '../../assets/product1_right.png'
-import product2_left from '../../assets/product2_left.png'
-import product2_right from '../../assets/product2_right.png'
-import more from '../../assets/more.png'
-import more1 from '../../assets/more1.png'
-import hot_title from '../../assets/hot_title.png'
-import fancy_title from '../../assets/fancy_title.png'
-import fancy_btn from '../../assets/fancy_btn.png'
-import swiper_left1 from '../../assets/swiper_left1.png'
-import swiper_right1 from '../../assets/swiper_right1.png'
-import hot_title1 from '../../assets/hot_title1.png'
-import abouths_title from '../../assets/abouths_title.png'
-import knowmore from '../../assets/knowmore.png'
-import news_more1 from '../../assets/news_more1.png'
+import swiper_right from "../../assets/swiper_right.png";
+import swiper_left from "../../assets/swiper_left.png";
+import classroom_title from "../../assets/classroom_title.png";
+import classroom_tips from "../../assets/classroom_tips.png";
+import book from "../../assets/book.png";
+import btn__bg from "../../assets/btn__bg.png";
+import icon_right1 from "../../assets/icon_right1.png";
+import news_title from "../../assets/news_title.png";
+import news_more from "../../assets/news_more.png";
+import abouths_bg from "../../assets/abouths_bg.png";
+import abouths_btn from "../../assets/abouths_btn.png";
+import product_title from "../../assets/product_title.png";
+import product1_left from "../../assets/product1_left.png";
+import product1_right from "../../assets/product1_right.png";
+import product2_left from "../../assets/product2_left.png";
+import product2_right from "../../assets/product2_right.png";
+import more from "../../assets/more.png";
+import more1 from "../../assets/more1.png";
+import hot_title from "../../assets/hot_title.png";
+import fancy_title from "../../assets/fancy_title.png";
+import fancy_btn from "../../assets/fancy_btn.png";
+import swiper_left1 from "../../assets/swiper_left1.png";
+import swiper_right1 from "../../assets/swiper_right1.png";
+import hot_title1 from "../../assets/hot_title1.png";
+import abouths_title from "../../assets/abouths_title.png";
+import knowmore from "../../assets/knowmore.png";
+import news_more1 from "../../assets/news_more1.png";
 
-import classroom_mob1 from '../../assets/classroom_mob1.png'
-import classroom_mob2 from '../../assets/classroom_mob2.png'
+import classroom_mob1 from "../../assets/classroom_mob1.png";
+import classroom_mob2 from "../../assets/classroom_mob2.png";
 
 const Home = () => {
-  const jump = useJump()
-  const [active1, setActive1] = useState(0)
-  const [active2, setActive2] = useState(0)
-  const [showDesc, setShowDesc] = useState(false)
-  const [slidesPerView, setSlidesPerView] = useState(1)
+  const jump = useJump();
+  const [active1, setActive1] = useState(0);
+  const [active2, setActive2] = useState(0);
+  const [showDesc, setShowDesc] = useState(false);
+  const [slidesPerView, setSlidesPerView] = useState(1);
   // Banner数据
-  const [cv, setCv] = useState([])
+  const [cv, setCv] = useState([]);
   // 日式咖喱课堂数据
-  const [classData, setClassData] = useState(null)
+  const [classData, setClassData] = useState(null);
   // 人气菜谱数据
-  const [cookbook, setCookbook] = useState([])
+  const [cookbook, setCookbook] = useState([]);
   // 新闻数据
-  const [newsData, setNewsData] = useState([])
+  const [newsData, setNewsData] = useState([]);
 
-  const fancy__prev1 = useRef(null)
-  const fancy__prev2 = useRef(null)
-  const fancy__next1 = useRef(null)
-  const fancy__next2 = useRef(null)
-  const banner__prev = useRef(null)
-  const banner__next = useRef(null)
-  const _classroom__book = useRef(null)
-  const _classroom__tips = useRef(null)
-  const _product__list1 = useRef(null)
-  const _product__list2 = useRef(null)
-  const _abouths__left = useRef(null)
-  const _abouths__right = useRef(null)
-  const _classroom__mob1 = useRef(null)
-  const _classroom__mob2 = useRef(null)
+  const fancy__prev1 = useRef(null);
+  const fancy__prev2 = useRef(null);
+  const fancy__next1 = useRef(null);
+  const fancy__next2 = useRef(null);
+  const banner__prev = useRef(null);
+  const banner__next = useRef(null);
+  const _classroom__book = useRef(null);
+  const _classroom__tips = useRef(null);
+  const _product__list1 = useRef(null);
+  const _product__list2 = useRef(null);
+  const _abouths__left = useRef(null);
+  const _abouths__right = useRef(null);
+  const _classroom__mob1 = useRef(null);
+  const _classroom__mob2 = useRef(null);
 
   useEffect(() => {
-    getData()
+    getData();
 
-    adapter()
+    adapter();
 
-    setTimeout(() => {}, 2500)
+    setTimeout(() => {}, 2500);
 
     // 创建 IntersectionObserver 实例
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           Array.from(entry.target.children).map((dom) => {
-            dom.classList.add('show')
-          })
+            dom.classList.add("show");
+          });
         } else {
           Array.from(entry.target.children).map((dom) => {
-            dom.classList.remove('show')
-          })
+            dom.classList.remove("show");
+          });
         }
-      })
-    })
+      });
+    });
 
-    observe(observer, _classroom__book)
-    observe(observer, _classroom__tips)
-    observe(observer, _product__list1)
-    observe(observer, _product__list2)
-    observe(observer, _abouths__left)
-    observe(observer, _abouths__right)
-    observe(observer, _classroom__mob1)
-    observe(observer, _classroom__mob2)
+    observe(observer, _classroom__book);
+    observe(observer, _classroom__tips);
+    observe(observer, _product__list1);
+    observe(observer, _product__list2);
+    observe(observer, _abouths__left);
+    observe(observer, _abouths__right);
+    observe(observer, _classroom__mob1);
+    observe(observer, _classroom__mob2);
 
     // 监听窗口大小变化
-    window.addEventListener('resize', adapter)
+    window.addEventListener("resize", adapter);
 
     return () => {
-      unobserve(observer, _classroom__book)
-      unobserve(observer, _classroom__tips)
-      unobserve(observer, _product__list1)
-      unobserve(observer, _product__list2)
-      unobserve(observer, _abouths__left)
-      unobserve(observer, _abouths__right)
-      unobserve(observer, _classroom__mob1)
-      unobserve(observer, _classroom__mob2)
-      window.removeEventListener('resize', adapter)
-    }
-  }, [])
+      unobserve(observer, _classroom__book);
+      unobserve(observer, _classroom__tips);
+      unobserve(observer, _product__list1);
+      unobserve(observer, _product__list2);
+      unobserve(observer, _abouths__left);
+      unobserve(observer, _abouths__right);
+      unobserve(observer, _classroom__mob1);
+      unobserve(observer, _classroom__mob2);
+      window.removeEventListener("resize", adapter);
+    };
+  }, []);
 
   // 获取首页数据
   const getData = async () => {
-    const { home } = globalThis.$hs
-    const { data } = await home()
+    try {
+      const data = await getHomeData();
+      console.log("data", data);
 
-    setCv(formatCv(data.cv.item))
-    setClassData(data.class)
-    setCookbook(data.cookbook.item)
-    setNewsData(data.news.item)
-  }
+      setCv(formatCv(data.cv.item));
+      setClassData(data.class);
+      setCookbook(data.cookbook.item);
+      setNewsData(data.news.item);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   // 格式化轮播数据
   const formatCv = (data) => {
     return data.map((v) => {
-      const { image, url, name } = v
+      const { image, url, name } = v;
       return {
         url: image,
         desc: name,
         link: url,
-      }
-    })
-  }
+      };
+    });
+  };
 
   // 观察
   const observe = (observer, target) => {
-    if (target.current) observer.observe(target.current)
-  }
+    if (target.current) observer.observe(target.current);
+  };
 
   // 取消观察
   const unobserve = (observer, target) => {
-    if (target.current) observer.unobserve(target.current)
-  }
+    if (target.current) observer.unobserve(target.current);
+  };
 
   // 适配器
   const adapter = () => {
     switch (device()) {
       // 移动
       case 1:
-        setSlidesPerView(1)
-        setShowDesc(false)
-        break
+        setSlidesPerView(1);
+        setShowDesc(false);
+        break;
       // pad
       case 2:
-        setSlidesPerView(2)
-        setShowDesc(true)
-        break
+        setSlidesPerView(2);
+        setShowDesc(true);
+        break;
       // pc
       case 3:
-        setSlidesPerView(3)
-        setShowDesc(true)
-        break
+        setSlidesPerView(3);
+        setShowDesc(true);
+        break;
     }
-  }
+  };
 
   // 计算新闻class
   const calcNewsClass = (type) => {
     switch (type) {
       // 公司
       case 1:
-        type = 'company'
-        break
+        type = "company";
+        break;
       // 产品
       case 2:
-        type = 'productor'
-        break
+        type = "productor";
+        break;
       // 活动
       case 3:
-        type = 'activity'
-        break
+        type = "activity";
+        break;
     }
-    return `news__type news__type-${type}`
-  }
+    return `news__type news__type-${type}`;
+  };
 
   return (
     <div className="Home">
@@ -234,7 +239,7 @@ const Home = () => {
         <div
           className="btn"
           onClick={() => {
-            jump(classData.url)
+            jump(classData.url);
           }}
         >
           <img src={btn__bg} className="btn__bg"></img>
@@ -258,11 +263,11 @@ const Home = () => {
                     src={more1}
                     className="caseItem__more"
                     onClick={() => {
-                      jump(v.url)
+                      jump(v.url);
                     }}
                   />
                 </div>
-              )
+              );
             })}
           </div>
         </div>
@@ -278,7 +283,7 @@ const Home = () => {
                 prevRef={fancy__prev1}
                 nextRef={fancy__next1}
                 onSlideChange={(i) => {
-                  setActive1(i)
+                  setActive1(i);
                 }}
                 slidesPerView={slidesPerView}
                 showDesc={showDesc}
@@ -304,7 +309,7 @@ const Home = () => {
                 prevRef={fancy__prev2}
                 nextRef={fancy__next2}
                 onSlideChange={(i) => {
-                  setActive2(i)
+                  setActive2(i);
                 }}
                 slidesPerView={slidesPerView}
                 showDesc={showDesc}
@@ -386,22 +391,30 @@ const Home = () => {
                 <div
                   className="news__desc"
                   onClick={() => {
-                    jump(v.url)
+                    jump(`/newsdetail/${v.news_id}`, true);
                   }}
                 >
                   {v.title}
                 </div>
               </div>
-            )
+            );
           })}
         </div>
-        <img src={news_more} className="news__more"></img>
-        <img src={news_more1} className="news__more1"></img>
+        <img
+          src={news_more}
+          className="news__more"
+          onClick={() => jump("/newslist", true)}
+        ></img>
+        <img
+          src={news_more1}
+          className="news__more1"
+          onClick={() => jump("/newslist", true)}
+        ></img>
       </div>
       {/* 返回顶部 */}
       <Totop></Totop>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

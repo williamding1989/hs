@@ -1,16 +1,19 @@
-@import './mobile.less';
-@import './pc.less';
-@import './pad.less';
+@import "./mobile.less";
+@import "./pc.less";
+@import "./pad.less";
 
 // Common
 .footer {
   width: 100vw;
   margin-top: 200px;
-  height: 382px;
-  background: #e60012;
-  display: flex;
-  padding-top: 97px;
-  justify-content: center;
+  &__shop {
+    width: 100vw;
+    height: 382px;
+    background: #e60012;
+    display: flex;
+    padding-top: 97px;
+    justify-content: center;
+  }
   &__block {
     width: 34%;
     display: flex;
@@ -23,9 +26,59 @@
       letter-spacing: 10px;
     }
   }
+
   .block__left {
   }
   .block__right {
+  }
+
+  &__rights {
+    background-color: #e70012;
+    height: 52px;
+    &__container {
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__item {
+        font-size: 14px;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+  }
+  &__links {
+    background-color: #fff;
+    height: 82px;
+    &__container {
+      height: 100%;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__logo {
+        width: 195px;
+        cursor: pointer;
+      }
+      &__inner {
+        display: flex;
+        align-items: center;
+        &__item {
+          cursor: pointer;
+          font-weight: 500;
+          font-size: 16px;
+          color: #333333;
+          padding: 0 36px;
+          line-height: 18px;
+          border-right: 1px solid #333333;
+          &:last-child {
+            border-right: none;
+            padding-right: 0;
+          }
+        }
+      }
+    }
   }
   &__channel {
     display: flex;

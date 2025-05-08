@@ -7,6 +7,8 @@ import {
   Cookbook,
   Prodetail,
   Cookdetail,
+  Newslist,
+  Newsdetail,
 } from "./pages/index.jsx";
 import {
   BrowserRouter as Router,
@@ -43,6 +45,10 @@ function App() {
               {/* 菜谱详情 */}
               <Route path="cookdetail/:id" element={<Cookdetail />} />
             </Route>
+            {/* 新闻列表 */}
+            <Route path="/newslist" element={<Newslist />} />
+            {/* 新闻详情 */}
+            <Route path="/newsdetail/:id" element={<Newsdetail />} />
           </Route>
 
           {/* 二维码 */}

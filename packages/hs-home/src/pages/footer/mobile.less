@@ -4,10 +4,15 @@
   div.footer {
     margin-top: 16vw;
     height: auto;
-    padding-top: 11vw;
     flex-direction: column;
     align-items: center;
     padding-bottom: 19vw;
+    &__shop {
+      flex-direction: column;
+      height: auto;
+      padding-top: 0;
+      padding-bottom: 9.33vw;
+    }
     &__block {
       margin-top: 9vw;
       width: auto;
@@ -27,7 +32,7 @@
       padding: 0 7vw;
       position: relative;
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         top: 50%;
         right: 0;
@@ -43,6 +48,41 @@
       }
       .icon {
         width: 10vw;
+      }
+    }
+
+    &__links {
+      height: 32.35vw;
+      &__container {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        .footer__links__container__logo {
+          margin-left: 5.2vw;
+          width: 31.2vw;
+        }
+        &__inner {
+          margin-top: 5.33vw;
+          width: 100%;
+          &__item {
+            font-size: 0.875rem;
+            padding: 0;
+            text-align: center;
+            flex: 1;
+          }
+        }
+      }
+    }
+
+    &__rights {
+      height: 21.33vw;
+      &__container {
+        flex-direction: column;
+        justify-content: center;
+        &__item {
+          font-size: 0.625rem;
+          margin-top: 0.2rem;
+        }
       }
     }
   }
