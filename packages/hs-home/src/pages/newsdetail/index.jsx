@@ -21,7 +21,6 @@ const Newsdetail = () => {
   const getDetail = async (id) => {
     try {
       const data = await getNewsDetail(id);
-      console.log(data);
       setDetail(data);
     } catch (error) {}
   };

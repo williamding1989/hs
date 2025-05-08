@@ -89,12 +89,12 @@
     &__way {
       width: 100%;
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+      flex-direction: column;
       margin-bottom: 34px;
 
       &__material {
-        width: 505px;
+        flex: 1;
+        margin-bottom: 80px;
         .cookDetail__container__titlegroup {
           &::after {
             background-image: url("../../assets/cookdetail_2.png");
@@ -122,7 +122,8 @@
         }
       }
       &__method {
-        width: 480px;
+        flex: 1;
+        margin-bottom: 80px;
         .cookDetail__container__titlegroup {
           &::after {
             background-image: url("../../assets/cookdetail_1.png");
@@ -130,6 +131,7 @@
         }
         &__list {
           &__item {
+            padding: 50px 0;
             display: flex;
             align-items: flex-start;
             border-bottom: 1px dashed #221714;
@@ -145,6 +147,12 @@
               font-size: 18px;
               color: #221714;
               line-height: 38px;
+              flex: 1;
+            }
+            &__img {
+              width: 360px;
+              height: 200px;
+              margin-left: 50px;
             }
           }
         }

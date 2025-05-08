@@ -29,3 +29,26 @@ export const getNewsDetail = async (id) => {
     throw new Error(e);
   }
 };
+
+export const getCookList = async ({ category_id, page }) => {
+  try {
+    const { data } = await createRequest.post(API.COOKBOOKLIST, {
+      category_id,
+      page,
+    });
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+};
+
+export const getCookDetail = async (id) => {
+  try {
+    const { data } = await createRequest.post(API.COOKBOOKDETAIL, {
+      id,
+    });
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+};
