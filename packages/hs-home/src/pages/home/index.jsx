@@ -1,9 +1,9 @@
 // 模块
 import { useEffect, useRef, useState } from "react";
 import { HsSwiper, HsLoading, Totop } from "../../components/index.jsx";
-import { curryMap2, curryMap1, newsOptions } from "./config.js";
+import { newsOptions } from "./config.js";
 import "./index.less";
-import { device, overload } from "../../utils/index.js";
+import { device } from "../../utils/index.js";
 import { useJump } from "../../hooks/index.js";
 import { getHomeData } from "../../request/index.js";
 
