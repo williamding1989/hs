@@ -7,9 +7,13 @@ import swiper_right from "../../assets/arr_right.png";
 import swiper_left from "../../assets/arr_left.png";
 import play_1 from "../../assets/play_1.png";
 import { getCookDetail } from "../../request/index.js";
+import { useJump } from "../../hooks/index.js";
 
 const CookDetail = () => {
+  const jump = useJump();
+
   const [detail, setDetail] = useState({});
+  const [recommend, setRecommend] = useState([]);
   const { id } = useParams(); // 获取 URL 参数
   useEffect(() => {
     if (!id) return;
@@ -20,25 +24,24 @@ const CookDetail = () => {
   const getDetail = async (id) => {
     try {
       const data = await getCookDetail(id);
-      console.log(data.recommend);
+
       setDetail(data);
+      setRecommend(format(data.recommend));
     } catch (error) {}
+  };
+
+  const format = (data) => {
+    return data.map((v) => {
+      return {
+        id: v.id,
+        url: v.image,
+        desc: v.title,
+      };
+    });
   };
 
   const banner__prev = useRef(null);
   const banner__next = useRef(null);
-  const cv = [
-    {
-      url: "https://www.housefoods.com.cn/storage//home/assets/img/cms/files/20241231/b51e6bf4b6db61b129fbeaba945e8248.jpg",
-      link: "https://www.housefoods.com.cn/index.php/index/Product/detail.html?id=6069",
-      desc: "20周年",
-    },
-    {
-      url: "https://www.housefoods.com.cn/storage//home/assets/img/cms/files/20241231/b51e6bf4b6db61b129fbeaba945e8248.jpg",
-      link: "https://www.housefoods.com.cn/index.php/index/Product/detail.html?id=6069",
-      desc: "咖王咖喱",
-    },
-  ];
 
   if (!detail.id) return;
 
@@ -100,10 +103,12 @@ const CookDetail = () => {
                     <div className="cookDetail__container__way__method__list__item__content">
                       {v.content}
                     </div>
-                    <img
-                      src={v.image}
-                      className="cookDetail__container__way__method__list__item__img"
-                    ></img>
+                    {v.image && (
+                      <img
+                        src={v.image}
+                        className="cookDetail__container__way__method__list__item__img"
+                      ></img>
+                    )}
                   </div>
                 );
               })}
@@ -115,10 +120,13 @@ const CookDetail = () => {
           <div className="cookDetail__container__titlegroup">推荐菜谱</div>
           <div className="cookDetail__container__recommand__banner">
             <HsSwiper
-              slides={cv}
+              slides={recommend}
               prevRef={banner__prev}
               nextRef={banner__next}
               pagination={device() == 1 ? true : false}
+              clickEvent={(item) => {
+                jump(`/cookbook/cookdetail/${item.id}`);
+              }}
             ></HsSwiper>
             <img
               src={swiper_left}

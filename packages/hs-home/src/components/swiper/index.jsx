@@ -20,6 +20,7 @@ const HsSwiper = ({
   nextRef,
   onSlideChange,
   showDesc = false,
+  clickEvent,
   ...props
 }) => {
   const swiperRef = useRef(null);
@@ -47,7 +48,11 @@ const HsSwiper = ({
     }
   }, [prevRef, nextRef]);
 
-  const jump = (link) => {
+  const jump = (link, item) => {
+    if (clickEvent) {
+      return clickEvent(item);
+    }
+
     if (!link) return;
     window.location.href = link;
   };
@@ -64,10 +69,10 @@ const HsSwiper = ({
         onSlideChange={(swiper) => {
           onSlideChange && onSlideChange(swiper.realIndex);
         }}
-        // autoplay={{
-        //   delay: 5500,
-        //   disableOnInteraction: false, // 用户交互后不禁用自动播放
-        // }}
+        autoplay={{
+          delay: 5500,
+          disableOnInteraction: false, // 用户交互后不禁用自动播放
+        }}
         {...props}
       >
         {slides.map((item, i) => {
@@ -75,7 +80,7 @@ const HsSwiper = ({
             <SwiperSlide
               className="slideItem"
               key={i}
-              onClick={() => jump(item.link)}
+              onClick={() => jump(item.link, item)}
             >
               <div className="slideContainer">
                 <img src={item.url} loading="lazy"></img>

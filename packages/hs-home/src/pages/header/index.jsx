@@ -9,12 +9,23 @@ import mob_nav from "../../assets/mob_nav.png";
 import icon1 from "../../assets/icon1.png";
 import icon2 from "../../assets/icon2.png";
 import icon_right1 from "../../assets/icon_right1.png";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const jump = useJump();
   const [mobnavshow, setMobnavshow] = useState(false);
   const [navData, setNavData] = useState(navMap);
   const [active, setActive] = useState(0);
+
+  const pathname = useLocation().pathname;
+
+  useEffect(() => {
+    setActive(
+      navMap.findIndex((n) => {
+        return n.link == pathname;
+      })
+    );
+  }, [pathname]);
 
   // mob导航切换
   const mobnavClick = (n) => {

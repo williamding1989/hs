@@ -9,12 +9,15 @@ const Newslist = () => {
   const jump = useJump();
   const [news, setNews] = useState([]);
   const [newsMap, setNewsMap] = useState({});
+  const [active, setActive] = useState(0);
+  let _years = [];
 
   useEffect(() => {
     getData();
   }, []);
 
-  const switchNav = (year) => {
+  const switchNav = (year, i) => {
+    setActive(i);
     setNews(newsMap[year] ?? []);
   };
 
@@ -25,6 +28,7 @@ const Newslist = () => {
     for (let i = 0; i < 7; i++) {
       years.push(currentYear - i + "年");
     }
+
     return years;
   };
 
@@ -32,13 +36,15 @@ const Newslist = () => {
   const renderNav = () => {
     const years = generateYearList();
 
+    _years = years;
+
     return (
       <div className="Newslist__nav">
         {years.map((year, i) => (
           <div
             key={i}
-            className="Newslist__nav__item"
-            onClick={() => switchNav(year)}
+            className={`Newslist__nav__item ${active == i ? "active" : ""}`}
+            onClick={() => switchNav(year, i)}
           >
             {year}
           </div>
@@ -57,7 +63,7 @@ const Newslist = () => {
         newsMap[v.year] = v.list;
       });
 
-      setNews(news);
+      setNews(newsMap[_years[active]] ?? []);
       setNewsMap(newsMap);
     } catch (e) {
       console.log(e);

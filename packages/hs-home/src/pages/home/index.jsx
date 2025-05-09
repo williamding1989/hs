@@ -53,6 +53,8 @@ const Home = () => {
   const [cookbook, setCookbook] = useState([]);
   // 新闻数据
   const [newsData, setNewsData] = useState([]);
+  // 花式菜谱数据
+  const [fancyData, setFancyData] = useState([]);
 
   const fancy__prev1 = useRef(null);
   const fancy__prev2 = useRef(null);
@@ -122,17 +124,17 @@ const Home = () => {
       const data = await getHomeData();
       console.log("data", data);
 
-      setCv(formatCv(data.cv.item));
+      setCv(format(data.cv.item));
       setClassData(data.class);
       setCookbook(data.cookbook.item);
       setNewsData(data.news.item);
+      setFancyData(format(data.cookbook2.item));
     } catch (e) {
       console.log(e);
     }
   };
 
-  // 格式化轮播数据
-  const formatCv = (data) => {
+  const format = (data) => {
     return data.map((v) => {
       const { image, url, name } = v;
       return {
@@ -279,7 +281,7 @@ const Home = () => {
           <div className="fancy__swiperwrap">
             <div className="fancy__swipercontainer">
               <HsSwiper
-                slides={curryMap1}
+                slides={fancyData}
                 prevRef={fancy__prev1}
                 nextRef={fancy__next1}
                 onSlideChange={(i) => {
@@ -299,35 +301,14 @@ const Home = () => {
                 className="fancy__next"
               ></img>
             </div>
-            <div className="swiper__tips">{curryMap1[active1].desc}</div>
+            <div className="swiper__tips">{fancyData[active1]?.desc}</div>
           </div>
-          {/* 轮播 */}
-          <div className="fancy__swiperwrap">
-            <div className="fancy__swipercontainer">
-              <HsSwiper
-                slides={curryMap2}
-                prevRef={fancy__prev2}
-                nextRef={fancy__next2}
-                onSlideChange={(i) => {
-                  setActive2(i);
-                }}
-                slidesPerView={slidesPerView}
-                showDesc={showDesc}
-              ></HsSwiper>
-              <img
-                src={swiper_left1}
-                ref={fancy__prev2}
-                className="fancy__prev"
-              ></img>
-              <img
-                src={swiper_right1}
-                ref={fancy__next2}
-                className="fancy__next"
-              ></img>
-            </div>
-            <div className="swiper__tips">{curryMap2[active2].desc}</div>
-          </div>
-          <img src={fancy_btn} className="fancy__btn"></img>
+
+          <img
+            src={fancy_btn}
+            className="fancy__btn"
+            onClick={() => jump("/cookbook", true)}
+          ></img>
         </div>
       </div>
 
@@ -338,12 +319,20 @@ const Home = () => {
           <div className="product__container__list list1" ref={_product__list1}>
             <img src={product1_left} className="list__left"></img>
             <img src={product1_right} className="list__right"></img>
-            <img src={more} className="list__more"></img>
+            <img
+              src={more}
+              className="list__more"
+              onClick={() => jump("/productor", true)}
+            ></img>
           </div>
           <div className="product__container__list list2" ref={_product__list2}>
             <img src={product2_right} className="list__right"></img>
             <img src={product2_left} className="list__left"></img>
-            <img src={more} className="list__more"></img>
+            <img
+              src={more}
+              className="list__more"
+              onClick={() => jump("/productor", true)}
+            ></img>
           </div>
         </div>
         <img src={more} className="more"></img>
@@ -356,7 +345,13 @@ const Home = () => {
       <div className="abouths">
         <img src={abouths_title} className="abouths__title"></img>
         <div className="abouths__left" ref={_abouths__left}>
-          <img src={abouths_btn} className="abouths__btn"></img>
+          <img
+            src={abouths_btn}
+            className="abouths__btn"
+            onClick={() =>
+              jump("https://www.housefoods.com.cn/index/company/index.html")
+            }
+          ></img>
           <div className="abouths__desc">
             <div>好侍集团作为拥有着百年历史的集团公司</div>
             <div>目前在全世界10多个国家和地区经营食品和饮料相关业务</div>
@@ -374,7 +369,13 @@ const Home = () => {
         <div className="abouths__right" ref={_abouths__right}>
           <img src={abouths_bg} className="abouths__bg"></img>
         </div>
-        <img src={knowmore} className="abouths__knowmore"></img>
+        <img
+          src={knowmore}
+          className="abouths__knowmore"
+          onClick={() =>
+            jump("https://www.housefoods.com.cn/index/company/index.html")
+          }
+        ></img>
       </div>
 
       {/* 新闻中心 */}
