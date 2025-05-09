@@ -2,6 +2,9 @@ import { Table } from "antd";
 import "./index.less";
 import { HsVideo } from "../../components/index";
 import recommandbook from "../../assets/recommandbook.png";
+import brand1 from "../../assets/brand1.png";
+import brand2 from "../../assets/brand2.png";
+import brand3 from "../../assets/brand3.png";
 import { useJump } from "../../hooks/index.js";
 import { useParams } from "react-router-dom";
 import { getProDetail } from "../../request/index.js";
@@ -12,6 +15,12 @@ const Prodetail = () => {
   const jump = useJump();
   const { id } = useParams(); // 获取 URL 参数
 
+  const brandMap = {
+    1: brand1,
+    2: brand2,
+    3: brand3,
+  };
+
   useEffect(() => {
     if (!id) return;
 
@@ -21,7 +30,6 @@ const Prodetail = () => {
   const getDetail = async (id) => {
     try {
       const data = await getProDetail(id);
-      console.log(data);
       setDetail(data);
     } catch (error) {}
   };
@@ -60,11 +68,17 @@ const Prodetail = () => {
         ></img>
       </div>
       {/* 品牌入口  */}
-      <img
-        src={recommandbook}
+      <div
         className="prodetail__brand"
         onClick={() => jump(detail.brand_linkurl)}
-      ></img>
+      >
+        品牌专题页入口
+        <img
+          src={`${brandMap[detail.brand_id]}`}
+          className="prodetail__brand__img"
+          onClick={() => jump(detail.brand_linkurl)}
+        ></img>
+      </div>
 
       {/* 商品详情 */}
       <div className="prodetail__container">

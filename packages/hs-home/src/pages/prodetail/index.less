@@ -14,10 +14,36 @@
     margin-bottom: 36px;
   }
   &__brand {
+    position: relative;
     cursor: pointer;
     width: 520px;
-    height: 90px;
+    line-height: 90px;
     margin: 0 auto 74px;
+    background: linear-gradient(90deg, #e80f10 0%, #fb3d03 100%);
+    border-radius: 45px;
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+    color: #ffffff;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 30px;
+      height: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url("../../assets/arrow-r-half.png");
+      background-repeat: no-repeat;
+      right: 53px;
+      background-size: contain;
+    }
+    &__img {
+      position: absolute;
+      width: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 20px;
+    }
   }
   &__title {
     background: #fdfaf3;
