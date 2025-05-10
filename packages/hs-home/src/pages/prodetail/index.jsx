@@ -5,6 +5,7 @@ import recommandbook from "../../assets/recommandbook.png";
 import brand1 from "../../assets/brand1.png";
 import brand2 from "../../assets/brand2.png";
 import brand3 from "../../assets/brand3.png";
+import play2 from "../../assets/play_2.png";
 import { useJump } from "../../hooks/index.js";
 import { useParams } from "react-router-dom";
 import { getProDetail } from "../../request/index.js";
@@ -118,6 +119,7 @@ const Prodetail = () => {
             className="prodetail__container__video__item"
             src={detail.video}
             poster={detail.video_image}
+            playbtn={play2}
           ></HsVideo>
         </div>
         {/* 菜谱 */}
