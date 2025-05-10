@@ -6,21 +6,26 @@ import { useParams } from "react-router-dom";
 import news_title from "../../assets/news_title.png";
 import clock from "../../assets/clock.png";
 import { HsTag } from "../../components/index.jsx";
+import { parseUrl } from "../../utils/index.js";
+import { useLocation } from "react-router-dom";
 
 const Newsdetail = () => {
   const jump = useJump();
+  const pathname = useLocation();
   const [detail, setDetail] = useState({});
   const { id } = useParams(); // 获取 URL 参数
 
   useEffect(() => {
     if (!id) return;
 
-    getDetail(id);
+    const { isPreview } = parseUrl(pathname.search);
+
+    getDetail(id, !!isPreview);
   }, [id]);
 
-  const getDetail = async (id) => {
+  const getDetail = async (id, isPreview) => {
     try {
-      const data = await getNewsDetail(id);
+      const data = await getNewsDetail({ id, isPreview });
       setDetail(data);
     } catch (error) {}
   };

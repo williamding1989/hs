@@ -10,10 +10,13 @@ import { useJump } from "../../hooks/index.js";
 import { useParams } from "react-router-dom";
 import { getProDetail } from "../../request/index.js";
 import { useEffect, useState } from "react";
+import { parseUrl } from "../../utils/index.js";
+import { useLocation } from "react-router-dom";
 
 const Prodetail = () => {
   const [detail, setDetail] = useState(null);
   const jump = useJump();
+  const pathname = useLocation();
   const { id } = useParams(); // 获取 URL 参数
 
   const brandMap = {
@@ -25,12 +28,14 @@ const Prodetail = () => {
   useEffect(() => {
     if (!id) return;
 
-    getDetail(id);
+    const { isPreview } = parseUrl(pathname.search);
+
+    getDetail(id, !!isPreview);
   }, [id]);
 
-  const getDetail = async (id) => {
+  const getDetail = async (id, isPreview) => {
     try {
-      const data = await getProDetail(id);
+      const data = await getProDetail({ id, isPreview });
       setDetail(data);
     } catch (error) {}
   };

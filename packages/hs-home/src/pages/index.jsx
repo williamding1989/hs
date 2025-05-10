@@ -17,3 +17,5 @@ export { default as Cookdetail } from "./cookdetail/index.jsx";
 export { default as Newslist } from "./newslist/index.jsx";
 
 export { default as Newsdetail } from "./newsdetail/index.jsx";
+
+export { default as Preview } from "./preview/index.jsx";

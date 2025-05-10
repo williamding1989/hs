@@ -6,6 +6,8 @@ import "./index.less";
 import { device } from "../../utils/index.js";
 import { useJump } from "../../hooks/index.js";
 import { getHomeData } from "../../request/index.js";
+import { parseUrl } from "../../utils/index.js";
+import { useLocation } from "react-router-dom";
 
 // 资源
 import swiper_right from "../../assets/swiper_right.png";
@@ -41,8 +43,8 @@ import classroom_mob2 from "../../assets/classroom_mob2.png";
 
 const Home = () => {
   const jump = useJump();
+  const pathname = useLocation();
   const [active1, setActive1] = useState(0);
-  const [active2, setActive2] = useState(0);
   const [showDesc, setShowDesc] = useState(false);
   const [slidesPerView, setSlidesPerView] = useState(1);
   // Banner数据
@@ -72,7 +74,9 @@ const Home = () => {
   const _classroom__mob2 = useRef(null);
 
   useEffect(() => {
-    getData();
+    const { isPreview } = parseUrl(pathname.search);
+
+    getData(!!isPreview);
 
     adapter();
 
@@ -119,9 +123,9 @@ const Home = () => {
   }, []);
 
   // 获取首页数据
-  const getData = async () => {
+  const getData = async (isPreview) => {
     try {
-      const data = await getHomeData();
+      const data = await getHomeData({ isPreview });
       console.log("data", data);
 
       setCv(format(data.cv.item));

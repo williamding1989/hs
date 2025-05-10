@@ -1,9 +1,9 @@
 import { API } from "./config.js";
 import { createRequest } from "./axiosadapter.js";
 
-export const getHomeData = async () => {
+export const getHomeData = async (options) => {
   try {
-    const { data } = await createRequest.post(API.HOME);
+    const { data } = await createRequest.post(API.HOME, options);
     return data;
   } catch (e) {
     throw new Error(e);
@@ -19,11 +19,9 @@ export const getNewsList = async () => {
   }
 };
 
-export const getNewsDetail = async (id) => {
+export const getNewsDetail = async (options) => {
   try {
-    const { data } = await createRequest.post(API.NEWSDETAIL, {
-      id,
-    });
+    const { data } = await createRequest.post(API.NEWSDETAIL, options);
     return data;
   } catch (e) {
     throw new Error(e);
@@ -42,11 +40,9 @@ export const getCookList = async ({ category_id, page }) => {
   }
 };
 
-export const getCookDetail = async (id) => {
+export const getCookDetail = async (options) => {
   try {
-    const { data } = await createRequest.post(API.COOKBOOKDETAIL, {
-      id,
-    });
+    const { data } = await createRequest.post(API.COOKBOOKDETAIL, options);
     return data;
   } catch (e) {
     throw new Error(e);
@@ -62,11 +58,9 @@ export const getProList = async () => {
   }
 };
 
-export const getProDetail = async (id) => {
+export const getProDetail = async (options) => {
   try {
-    const { data } = await createRequest.post(API.PRODUCTORDETAIL, {
-      id,
-    });
+    const { data } = await createRequest.post(API.PRODUCTORDETAIL, options);
     return data;
   } catch (e) {
     throw new Error(e);

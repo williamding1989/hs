@@ -8,22 +8,26 @@ import swiper_left from "../../assets/arr_left.png";
 import play_1 from "../../assets/play_1.png";
 import { getCookDetail } from "../../request/index.js";
 import { useJump } from "../../hooks/index.js";
+import { parseUrl } from "../../utils/index.js";
+import { useLocation } from "react-router-dom";
 
 const CookDetail = () => {
   const jump = useJump();
-
+  const pathname = useLocation();
   const [detail, setDetail] = useState({});
   const [recommend, setRecommend] = useState([]);
   const { id } = useParams(); // 获取 URL 参数
   useEffect(() => {
     if (!id) return;
 
-    getDetail(id);
+    const { isPreview } = parseUrl(pathname.search);
+
+    getDetail(id, !!isPreview);
   }, [id]);
 
-  const getDetail = async (id) => {
+  const getDetail = async (id, isPreview) => {
     try {
-      const data = await getCookDetail(id);
+      const data = await getCookDetail({ id, isPreview });
 
       setDetail(data);
       setRecommend(format(data.recommend));

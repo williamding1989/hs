@@ -43,3 +43,17 @@ export const themeUtil = {
     return document.documentElement.setAttribute("data-theme", theme);
   },
 };
+
+/**
+ * 解析 URL 参数
+ * @param {*} url
+ * @returns
+ */
+export const parseUrl = (url) => {
+  const params = {};
+  const queryString = url.split("?")[1]?.split("#")[0] || "";
+  new URLSearchParams(queryString).forEach((value, key) => {
+    params[key] = value;
+  });
+  return params;
+};
