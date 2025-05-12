@@ -111,10 +111,9 @@ const CookDetail = () => {
                       {v.content}
                     </div>
                     {v.image && (
-                      <img
-                        src={v.image}
-                        className="cookDetail__container__way__method__list__item__img"
-                      ></img>
+                      <div className="cookDetail__container__way__method__list__item__img">
+                        <img src={v.image}></img>
+                      </div>
                     )}
                   </div>
                 );
