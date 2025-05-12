@@ -93,10 +93,10 @@ const Cookbook = () => {
                       jump(`cookdetail/${v.id}`, true);
                     }}
                   >
-                    <img
-                      src={v.image}
-                      className="cookbook__goods__item__img"
-                    ></img>
+                    <div className="cookbook__goods__item__img">
+                      <img src={v.image}></img>
+                    </div>
+
                     <div className="cookbook__goods__item__title">{v.name}</div>
                   </div>
                 );
@@ -104,6 +104,7 @@ const Cookbook = () => {
             </div>
           </div>
           <Pagination
+            className="cookbook__pagination"
             align="center"
             defaultCurrent={1}
             total={total_count}

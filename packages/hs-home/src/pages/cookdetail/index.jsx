@@ -61,12 +61,15 @@ const CookDetail = () => {
             {detail.title}
           </div>
         </div>
+
         {/* 视频 */}
-        <HsVideo
-          src={detail.video}
-          poster={detail.video_cover}
-          playbtn={play_1}
-        ></HsVideo>
+        <div className="cookDetail__container__video">
+          <HsVideo
+            src={detail.video}
+            poster={detail.video_cover}
+            playbtn={play_1}
+          ></HsVideo>
+        </div>
 
         {/* 用料 && 做法 */}
         <div className="cookDetail__container__way">

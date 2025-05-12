@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import play from "../../assets/play.png";
-
+import "./index.less";
 import pause from "../../assets/pause.png";
 
 /**
@@ -33,7 +33,7 @@ const HsVideo = ({ src, poster, playbtn }) => {
   if (!src) return null;
 
   return (
-    <div className="videocontainer">
+    <div className="Hsvideo videocontainer">
       {isPlaying ? null : (
         <img src={playbtn || play} className="play" onClick={playVideo}></img>
       )}

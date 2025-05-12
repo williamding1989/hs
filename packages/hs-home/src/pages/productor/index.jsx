@@ -142,10 +142,10 @@ const Productor = () => {
                 {v.goods.map((g, index) => {
                   return (
                     <div key={index} className="productor__list__goods__item">
-                      <img
-                        src={g.img}
-                        className="productor__list__goods__item__img"
-                      ></img>
+                      <div className="productor__list__goods__item__img">
+                        <img src={g.img}></img>
+                      </div>
+
                       <div className="productor__list__goods__item__title">
                         {g.title}
                       </div>

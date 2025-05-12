@@ -68,10 +68,11 @@ const Prodetail = () => {
   return (
     <div className="prodetail">
       <div className="prodetail__coverImage">
-        <img
-          src={detail.cover_image}
-          className="prodetail__coverImage__img"
-        ></img>
+        <div className="prodetail__coverImage__img">
+          <img src={detail.cover_image}></img>
+        </div>
+
+        <div className="prodetail__coverImage__name">{detail.name}</div>
       </div>
       {/* 品牌入口  */}
       <div
