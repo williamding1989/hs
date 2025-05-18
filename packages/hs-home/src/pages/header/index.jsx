@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useJump } from "../../hooks/index.js";
 import { navMap } from "./config.js";
 
+import { HsBreadcrumb } from "../../components";
 import "./index.less";
 import logo from "../../assets/logo.png";
 import mob_navdrop from "../../assets/mob_nav-drop.png";
@@ -15,9 +16,10 @@ const Header = () => {
   const jump = useJump();
   const [mobnavshow, setMobnavshow] = useState(false);
   const [navData, setNavData] = useState(navMap);
+  const [showBreadcrumb, setShowBreadcrumb] = useState(false);
   const [active, setActive] = useState(0);
 
-  const pathname = useLocation().pathname;
+  const { pathname } = useLocation();
 
   useEffect(() => {
     setActive(
@@ -25,6 +27,8 @@ const Header = () => {
         return n.link == pathname;
       })
     );
+
+    setShowBreadcrumb(pathname !== "/");
   }, [pathname]);
 
   // mob导航切换
@@ -129,6 +133,8 @@ const Header = () => {
       <div className={mobnavshow ? "mob__nav mob__nav-show" : "mob__nav"}>
         {renderMobNav(navData, 1, true)}
       </div>
+
+      {showBreadcrumb && <HsBreadcrumb pathname={pathname} />}
     </div>
   );
 };

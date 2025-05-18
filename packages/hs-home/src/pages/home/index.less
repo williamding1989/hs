@@ -4,13 +4,13 @@
 
 // Common
 .Home {
-  margin: 0 auto;
+  margin: 10px auto 0;
   // 轮播
   .banner {
+    height: 600px;
     position: relative;
     width: 100vw;
     margin-top: 1px;
-    border-top: 1px solid #989898;
     .banner__prev {
       left: 10%;
     }
@@ -21,7 +21,7 @@
     .banner__next {
       cursor: pointer;
       position: absolute;
-      width: 78px;
+      width: 41px;
       top: 50%;
       transform: translateY(-50%);
       z-index: 9;
@@ -47,7 +47,7 @@
     position: relative;
     width: 100vw;
     height: 780px;
-    padding-top: 78px;
+    padding-top: 68px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -100,7 +100,7 @@
   }
 
   .hotfancy {
-    padding-bottom: 152px;
+    padding-bottom: 60px;
     width: 100vw;
     background-image: url("../../assets/hot_bg.png");
     background-size: cover;
@@ -111,20 +111,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-top: 163px;
+      padding-top: 70px;
       width: 100vw;
       &__title {
-        width: 444px;
+        width: 232px;
       }
       &__showcase {
-        margin-top: 85px;
-        width: 92%;
+        margin-top: 53px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         .caseItem {
-          padding: 9px 23px 20px;
-          width: 48%;
+          padding: 20px 15px 22px;
+          width: 538px;
+          margin-right: 45px;
           background-color: #fff;
           display: flex;
           flex-direction: column;
@@ -133,16 +133,22 @@
             display: none;
           }
           &__title {
-            font-size: 54px;
+            font-size: 24px;
             color: #e60012;
           }
           &__img {
             margin-top: 8px;
+            height: 320px;
+            & > img {
+              max-width: 100%;
+              max-height: 100%;
+              width: auto;
+            }
           }
           &__more {
             cursor: pointer;
-            margin-top: 23px;
-            width: 367px;
+            margin-top: 20px;
+            width: 180px;
           }
         }
       }
@@ -150,22 +156,21 @@
 
     // 花式菜谱
     .fancy {
-      margin-top: 149px;
+      margin-top: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
       &__title {
-        width: 424px;
-        margin-bottom: 90px;
+        width: 228px;
+        margin-bottom: 63px;
       }
       &__btn {
         cursor: pointer;
-        margin-top: 90px;
-        width: 508px;
+        margin-top: 113px;
+        width: 240px;
       }
       &__swiperwrap {
-        width: 96%;
-        margin-bottom: 32px;
+        width: 1120px;
         .fancy__swipercontainer {
           position: relative;
           border-radius: 10px;
@@ -173,6 +178,11 @@
             > img {
               border-radius: 10px;
             }
+          }
+          .slideDesc {
+            margin-top: 10px;
+            font-size: 18px;
+            line-height: 34px;
           }
         }
         .swiper__tips {
@@ -221,15 +231,15 @@
     background-repeat: no-repeat;
     background-position: center center;
     width: 100vw;
-    padding-bottom: 150px;
+    padding-bottom: 100px;
     margin-bottom: -70px;
     &__title {
-      margin-top: 164px;
+      margin-top: 96px;
       width: 228px;
     }
     &__container {
-      margin-top: 92px;
-      width: 85%;
+      margin-top: 38px;
+      width: 972px;
       .list1 {
         .list__right {
           position: absolute;
@@ -254,7 +264,7 @@
           position: absolute;
           top: 20%;
           left: 3%;
-          width: 48%;
+          width: 47%;
           transition: all 0.8s ease-in 0.8s;
           transform: translate(-100px, 0);
         }
@@ -273,8 +283,8 @@
         position: relative;
         .list__more {
           position: absolute;
-          width: 227px;
-          bottom: 8%;
+          width: 154px;
+          bottom: 12%;
           cursor: pointer;
         }
       }

@@ -263,7 +263,10 @@ const Home = () => {
               return (
                 <div className="caseItem" key={i}>
                   <div className="caseItem__title">{v.name}</div>
-                  <img src={v.image} className="caseItem__img" />
+                  <div className="caseItem__img">
+                    <img src={v.image} />
+                  </div>
+
                   <img src={hot_title1} className="hot_title"></img>
                   <img
                     src={more1}
