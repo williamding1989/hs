@@ -11,6 +11,7 @@ import icon1 from "../../assets/icon1.png";
 import icon2 from "../../assets/icon2.png";
 import icon_right1 from "../../assets/icon_right1.png";
 import { useLocation } from "react-router-dom";
+import { device } from "../../utils/index.js";
 
 const Header = () => {
   const jump = useJump();
@@ -134,7 +135,7 @@ const Header = () => {
         {renderMobNav(navData, 1, true)}
       </div>
 
-      {showBreadcrumb && <HsBreadcrumb pathname={pathname} />}
+      {showBreadcrumb && device() == 3 && <HsBreadcrumb pathname={pathname} />}
     </div>
   );
 };
