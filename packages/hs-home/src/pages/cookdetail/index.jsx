@@ -11,11 +11,19 @@ import { useJump } from "../../hooks/index.js";
 import { parseUrl } from "../../utils/index.js";
 import { useLocation } from "react-router-dom";
 
+import { Pagination, EffectCoverflow } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/less/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
+
 const CookDetail = () => {
   const jump = useJump();
   const pathname = useLocation();
   const [detail, setDetail] = useState({});
   const [recommend, setRecommend] = useState([]);
+  const [swiperIndex, setSwiperIndex] = useState(0);
   const { id } = useParams(); // 获取 URL 参数
   useEffect(() => {
     if (!id) return;
@@ -39,7 +47,7 @@ const CookDetail = () => {
       return {
         id: v.id,
         url: v.image,
-        desc: v.title,
+        desc: v.name,
       };
     });
   };
@@ -125,25 +133,34 @@ const CookDetail = () => {
         <div className="cookDetail__container__recommand">
           <div className="cookDetail__container__titlegroup">推荐菜谱</div>
           <div className="cookDetail__container__recommand__banner">
-            <HsSwiper
-              slides={recommend}
-              prevRef={banner__prev}
-              nextRef={banner__next}
-              pagination={device() == 1 ? true : false}
-              clickEvent={(item) => {
-                jump(`/cookbook/cookdetail/${item.id}`);
+            <Swiper
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={3}
+              coverflowEffect={{
+                rotate: 10,
+                stretch: 120,
+                depth: 200,
+                modifier: 1,
+                slideShadows: false,
               }}
-            ></HsSwiper>
-            <img
-              src={swiper_left}
-              ref={banner__prev}
-              className="banner__prev"
-            ></img>
-            <img
-              src={swiper_right}
-              ref={banner__next}
-              className="banner__next"
-            ></img>
+              pagination={true}
+              modules={[EffectCoverflow]}
+              className="mySwiper"
+              onSlideChange={(swiper) => setSwiperIndex(swiper.activeIndex)}
+            >
+              {recommend.map((v, i) => {
+                return (
+                  <SwiperSlide key={i} onClick={() => jump(v.link)}>
+                    <img src={v.url} />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+            <div className="cookDetail__container__recommand__banner__desc">
+              {recommend[swiperIndex]?.desc}
+            </div>
           </div>
         </div>
       </div>

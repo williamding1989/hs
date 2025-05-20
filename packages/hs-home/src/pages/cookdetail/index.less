@@ -16,6 +16,8 @@
     height: 40px;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 9999;
+    cursor: pointer;
   }
   .banner__prev {
     left: 0;
@@ -183,11 +185,31 @@
       }
       &__banner {
         position: relative;
-        width: 468px;
+        width: 908px;
+        height: 312px;
         margin: 0 auto;
-        .swiper .swiper-wrapper .slideItem {
-          width: 468px;
-          height: 312px;
+        .mySwiper {
+          width: 100%;
+          .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 405px;
+            height: 270px;
+            display: flex;
+            align-items: center;
+          }
+
+          .swiper-slide img {
+            display: block;
+            width: 100%;
+          }
+        }
+        &__desc {
+          font-weight: 500;
+          font-size: 23px;
+          color: #221714;
+          line-height: 32px;
+          text-align: center;
         }
       }
     }

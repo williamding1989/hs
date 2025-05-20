@@ -2,6 +2,7 @@ import cookbook_nav1 from "../../assets/cookbook_nav1.png";
 import cookbook_nav2 from "../../assets/cookbook_nav2.png";
 import cookbook_nav3 from "../../assets/cookbook_nav3.png";
 import cookbook_nav4 from "../../assets/cookbook_nav4.png";
+import cookbook_nav5 from "../../assets/cookbook_nav5.png";
 
 export const navMap = [
   {
@@ -27,5 +28,11 @@ export const navMap = [
     category_id: 4,
     goods: [],
     bg: cookbook_nav4,
+  },
+  {
+    title: "家庭西餐",
+    category_id: 5,
+    goods: [],
+    bg: cookbook_nav5,
   },
 ];

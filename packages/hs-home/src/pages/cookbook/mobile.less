@@ -3,22 +3,27 @@
   @containerW: 100%;
   div.cookbook {
     &__nav {
-      height: 41vw;
+      padding-top: 8vw;
+      height: auto;
       &__container {
         width: @containerW;
         flex-wrap: wrap;
-        padding: 0 5.1vw;
+        padding: 0 5vw;
         &__list {
           width: 42vw;
           line-height: 12.8vw;
           font-size: 0.75rem;
           margin-bottom: 5.3vw;
-          padding-right: 9.5vw;
+          padding-right: 8.5vw;
+          margin-right: 5.3vw;
+          &:nth-child(2n) {
+            margin-right: 0;
+          }
           > img {
-            left: -10px;
-            top: 50%;
+            left: -5px;
+            top: 51%;
             transform: translateY(-50%);
-            width: 12.8vw;
+            width: 14.8vw;
             height: inherit;
           }
         }

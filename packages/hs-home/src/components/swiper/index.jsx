@@ -1,8 +1,14 @@
-import { Navigation, Autoplay, Pagination } from "swiper/modules";
+import {
+  Navigation,
+  Autoplay,
+  Pagination,
+  EffectCoverflow,
+} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/less/navigation";
 import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 import { useEffect, useRef } from "react";
 import "./index.less";
 
@@ -21,6 +27,8 @@ const HsSwiper = ({
   onSlideChange,
   showDesc = false,
   clickEvent,
+  coverflow = false,
+  autoplay = false,
   ...props
 }) => {
   const swiperRef = useRef(null);
@@ -63,16 +71,18 @@ const HsSwiper = ({
       <Swiper
         className="HsSwiper"
         ref={swiperRef}
-        modules={[Navigation, Autoplay, Pagination]}
+        modules={[Navigation, Autoplay, Pagination, EffectCoverflow]}
         spaceBetween={30}
         loop={true}
         onSlideChange={(swiper) => {
           onSlideChange && onSlideChange(swiper.realIndex);
         }}
-        // autoplay={{
-        //   delay: 5500,
-        //   disableOnInteraction: false, // 用户交互后不禁用自动播放
-        // }}
+        autoplay={
+          autoplay && {
+            delay: 5500,
+            disableOnInteraction: false, // 用户交互后不禁用自动播放
+          }
+        }
         {...props}
       >
         {slides.map((item, i) => {
