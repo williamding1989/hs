@@ -301,7 +301,7 @@ const Home = () => {
             })}
           </div>
           <div className="fancy__showcase row-2">
-            {fancyData.slice(2, 7).map((v, i) => {
+            {fancyData.slice(3, 7).map((v, i) => {
               return (
                 <div
                   className="fancy__showcase__item "
