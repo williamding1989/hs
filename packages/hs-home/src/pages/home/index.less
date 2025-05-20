@@ -128,6 +128,10 @@
           display: flex;
           flex-direction: column;
           align-items: center;
+          box-shadow: 0 0px 30px rgba(6, 0, 1, 0.1);
+          &:last-child {
+            margin-right: 0;
+          }
           .hot_title {
             display: none;
           }
@@ -159,13 +163,65 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      &__showcase {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+        width: 1554px;
+        &__item {
+          cursor: pointer;
+          width: 375px;
+          margin-right: 13px;
+          &__img {
+            padding: 6px;
+            border-radius: 24px;
+            background: #fff;
+            height: 222px;
+            border-radius: 24px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            & > img {
+              border-radius: 24px;
+              height: 100%;
+            }
+          }
+          &__desc {
+            width: fit-content;
+            margin: 18px auto 0;
+            position: relative;
+            // display: inline-block;
+            padding: 10px 64px 10px 48px;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 18px;
+            background-color: #e60012;
+            border-radius: 18px;
+            color: #fff;
+            &:after {
+              content: "";
+              position: absolute;
+              right: 20px;
+              top: 50%;
+              transform: translateY(-50%);
+              background: url("../../assets/arrow-r.png") no-repeat;
+              width: 20px;
+              height: 20px;
+              background-size: contain;
+            }
+          }
+        }
+      }
       &__title {
         width: 228px;
         margin-bottom: 63px;
       }
       &__btn {
         cursor: pointer;
-        margin-top: 113px;
+        margin-top: 95px;
         width: 240px;
       }
       &__swiperwrap {
@@ -182,6 +238,11 @@
             margin-top: 10px;
             font-size: 18px;
             line-height: 34px;
+            &:after {
+              width: 14px;
+              height: 11px;
+              right: 12px;
+            }
           }
         }
         .swiper__tips {
@@ -231,7 +292,6 @@
     background-position: center center;
     width: 100vw;
     padding-bottom: 100px;
-    margin-bottom: -70px;
     &__title {
       margin-top: 96px;
       width: 228px;
@@ -278,8 +338,11 @@
         }
       }
       &__list {
-        margin-bottom: 45px;
+        margin-bottom: 30px;
         position: relative;
+        &:last-child {
+          margin-bottom: 0;
+        }
         .list__more {
           position: absolute;
           width: 154px;

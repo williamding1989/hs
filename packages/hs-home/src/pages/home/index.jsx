@@ -284,33 +284,38 @@ const Home = () => {
         {/* 花式菜谱 */}
         <div className="fancy">
           <img src={fancy_title} className="fancy__title"></img>
-          {/* 轮播 */}
-          <div className="fancy__swiperwrap">
-            <div className="fancy__swipercontainer">
-              <HsSwiper
-                slides={fancyData}
-                prevRef={fancy__prev1}
-                nextRef={fancy__next1}
-                onSlideChange={(i) => {
-                  setActive1(i);
-                }}
-                slidesPerView={slidesPerView}
-                showDesc={showDesc}
-              ></HsSwiper>
-              <img
-                src={swiper_left1}
-                ref={fancy__prev1}
-                className="fancy__prev"
-              ></img>
-              <img
-                src={swiper_right1}
-                ref={fancy__next1}
-                className="fancy__next"
-              ></img>
-            </div>
-            <div className="swiper__tips">{fancyData[active1]?.desc}</div>
+          <div className="fancy__showcase row-1">
+            {fancyData.slice(0, 3).map((v, i) => {
+              return (
+                <div
+                  className="fancy__showcase__item "
+                  key={i}
+                  onClick={() => jump(v.link)}
+                >
+                  <div className="fancy__showcase__item__img">
+                    <img src={v.url} />
+                  </div>
+                  <div className="fancy__showcase__item__desc">{v.desc}</div>
+                </div>
+              );
+            })}
           </div>
-
+          <div className="fancy__showcase row-2">
+            {fancyData.slice(2, 7).map((v, i) => {
+              return (
+                <div
+                  className="fancy__showcase__item "
+                  key={i}
+                  onClick={() => jump(v.link)}
+                >
+                  <div className="fancy__showcase__item__img">
+                    <img src={v.url} />
+                  </div>
+                  <div className="fancy__showcase__item__desc">{v.desc}</div>
+                </div>
+              );
+            })}
+          </div>
           <img
             src={fancy_btn}
             className="fancy__btn"
@@ -346,7 +351,7 @@ const Home = () => {
       </div>
 
       {/* 波浪 */}
-      <div className="wave1"></div>
+      {/* <div className="wave1"></div> */}
 
       {/* 关于好侍 */}
       <div className="abouths">

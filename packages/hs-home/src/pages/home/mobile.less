@@ -1,6 +1,7 @@
 // Mobile
 @media only screen and (max-width: 767px) {
   div.Home {
+    margin: 0 auto;
     .wave {
       display: none;
     }
@@ -74,6 +75,7 @@
             padding: 9px 10px 22px;
             border-radius: 10px;
             margin-bottom: 9vw;
+            margin-right: 0;
             &:last-child {
               margin-bottom: 0;
             }
@@ -102,6 +104,13 @@
           width: 59vw;
           margin-bottom: 7vw;
         }
+        &__showcase {
+          width: 100vw;
+          margin-bottom: 4vw;
+          &__item {
+            margin-bottom: 4vw;
+          }
+        }
         &__btn {
           width: 50vw;
           margin-top: 22vw;
@@ -122,12 +131,12 @@
             width: max-content;
             margin: 3vw auto 0;
             &::after {
-              content: '';
+              content: "";
               position: absolute;
               right: 6%;
               top: 50%;
               transform: translateY(-50%);
-              background: url('../../assets/arrow-r.png') no-repeat;
+              background: url("../../assets/arrow-r.png") no-repeat;
               width: 20px;
               height: 20px;
               background-size: contain;
