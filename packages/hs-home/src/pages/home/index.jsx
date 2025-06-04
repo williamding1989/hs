@@ -356,31 +356,34 @@ const Home = () => {
       {/* 关于好侍 */}
       <div className="abouths">
         <img src={abouths_title} className="abouths__title"></img>
-        <div className="abouths__left" ref={_abouths__left}>
-          <img
-            src={abouths_btn}
-            className="abouths__btn"
-            onClick={() =>
-              jump("https://www.housefoods.com.cn/index/company/index.html")
-            }
-          ></img>
-          <div className="abouths__desc">
-            <div>好侍集团作为拥有着百年历史的集团公司</div>
-            <div>目前在全世界10多个国家和地区经营食品和饮料相关业务</div>
-            <div>并且在市场规模庞大的中国</div>
-            <div>我们也开展了20多年的咖喱方面的业务</div>
-            <div>伴随中国的改革开放和经济飞速发展</div>
-            <div>中国事业也实现了持续地成长</div>
+        <div className="abouths__container">
+          <div className="abouths__left" ref={_abouths__left}>
+            <img
+              src={abouths_btn}
+              className="abouths__btn"
+              onClick={() =>
+                jump("https://www.housefoods.com.cn/index/company/index.html")
+              }
+            ></img>
+            <div className="abouths__desc">
+              <div>好侍集团作为拥有着百年历史的集团公司</div>
+              <div>目前在全世界10多个国家和地区经营食品和饮料相关业务</div>
+              <div>并且在市场规模庞大的中国</div>
+              <div>我们也开展了20多年的咖喱方面的业务</div>
+              <div>伴随中国的改革开放和经济飞速发展</div>
+              <div>中国事业也实现了持续地成长</div>
+            </div>
+            <div className="abouths__desc-mob">
+              <div>好侍集团作为拥有着百年历史的集团公司</div>
+              <div>目前在全世界10多个国家和地区经营食品和饮料相关业务</div>
+              <div>并且在市场规模庞大的中国也实现了持续地成长</div>
+            </div>
           </div>
-          <div className="abouths__desc-mob">
-            <div>好侍集团作为拥有着百年历史的集团公司</div>
-            <div>目前在全世界10多个国家和地区经营食品和饮料相关业务</div>
-            <div>并且在市场规模庞大的中国也实现了持续地成长</div>
+          <div className="abouths__right" ref={_abouths__right}>
+            <img src={abouths_bg} className="abouths__bg"></img>
           </div>
         </div>
-        <div className="abouths__right" ref={_abouths__right}>
-          <img src={abouths_bg} className="abouths__bg"></img>
-        </div>
+
         <img
           src={knowmore}
           className="abouths__knowmore"
