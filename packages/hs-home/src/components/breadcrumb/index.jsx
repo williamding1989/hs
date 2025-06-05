@@ -19,8 +19,11 @@ const HsBreadcrumb = ({ pathname }) => {
   useEffect(() => {
     let item = items;
     item.lengths = 2;
-    item[1] = make(pathname);
-    setItems([...item]);
+    const current = make(pathname);
+    if (current.title) {
+      item[1] = make(pathname);
+      setItems([...item]);
+    }
   }, [pathname]);
 
   const make = (pathname) => ({
