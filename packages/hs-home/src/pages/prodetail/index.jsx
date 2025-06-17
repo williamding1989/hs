@@ -82,7 +82,7 @@ const Prodetail = () => {
         品牌专题页入口
         <img
           src={`${brandMap[detail.brand_id]}`}
-          className="prodetail__brand__img"
+          className={`prodetail__brand__img brand-${detail.brand_id}`}
           onClick={() => jump(detail.brand_linkurl)}
         ></img>
       </div>

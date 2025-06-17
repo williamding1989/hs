@@ -137,22 +137,29 @@ const CookDetail = () => {
               effect={"coverflow"}
               grabCursor={true}
               centeredSlides={true}
-              slidesPerView={3}
+              slidesPerView={"auto"} // 改为auto可以更好地控制显示数量
+              loop={true} // 添加循环播放
+              initialSlide={1} // 默认从第二个开始（如果数组长度允许）
               coverflowEffect={{
-                rotate: 10,
-                stretch: 120,
-                depth: 200,
-                modifier: 1,
+                rotate: 0, // 减少旋转角度
+                stretch: 0, // 减少拉伸
+                depth: 100, // 调整深度控制覆盖程度
+                modifier: 2, // 增加修饰器强度
                 slideShadows: false,
               }}
               pagination={true}
               modules={[EffectCoverflow]}
               className="mySwiper"
-              onSlideChange={(swiper) => setSwiperIndex(swiper.activeIndex)}
+              onSlideChange={(swiper) => setSwiperIndex(swiper.realIndex)}
             >
               {recommend.map((v, i) => {
                 return (
-                  <SwiperSlide key={i} onClick={() => jump(v.link)}>
+                  <SwiperSlide
+                    key={i}
+                    onClick={() => {
+                      jump(v.id);
+                    }}
+                  >
                     <img src={v.url} />
                   </SwiperSlide>
                 );

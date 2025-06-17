@@ -80,7 +80,7 @@ const Footer = () => {
                   <img
                     src={v.icon}
                     className="icon"
-                    onClick={() => jump(v.link)}
+                    onClick={() => jump(v.link, false, "_blank")}
                   ></img>
                 </div>
               );
@@ -100,14 +100,20 @@ const Footer = () => {
           <div className="footer__links__container__inner">
             <div
               className="footer__links__container__inner__item"
-              onClick={() => jump(`https://housefoods-group.com/`)}
+              onClick={() =>
+                jump(`https://housefoods-group.com/`, false, "_blank")
+              }
             >
               日本好侍
             </div>
             <div
               className="footer__links__container__inner__item"
               onClick={() =>
-                jump(`https://www.housefoods.com.cn/index/company/sitemap.html`)
+                jump(
+                  `https://www.housefoods.com.cn/index/company/sitemap.html`,
+                  false,
+                  "self"
+                )
               }
             >
               站点地图
@@ -115,7 +121,11 @@ const Footer = () => {
             <div
               className="footer__links__container__inner__item"
               onClick={() =>
-                jump(`https://www.housefoods.com.cn/index/company/privacy.html`)
+                jump(
+                  `https://www.housefoods.com.cn/index/company/privacy.html`,
+                  false,
+                  "self"
+                )
               }
             >
               隐私条款
@@ -123,7 +133,11 @@ const Footer = () => {
             <div
               className="footer__links__container__inner__item"
               onClick={() =>
-                jump(`https://www.housefoods.com.cn/index/company/ruler.html`)
+                jump(
+                  `https://www.housefoods.com.cn/index/company/ruler.html`,
+                  false,
+                  "self"
+                )
               }
             >
               使用规则
@@ -137,13 +151,25 @@ const Footer = () => {
         <div className="footer__rights__container">
           <div
             className="footer__rights__container__item"
-            onClick={() => jump(`https://beian.mps.gov.cn/#/query/webSearch`)}
+            onClick={() =>
+              jump(
+                `https://beian.mps.gov.cn/#/query/webSearch`,
+                false,
+                "_blank"
+              )
+            }
           >
             沪公网安备 31010502001878
           </div>
           <div
             className="footer__rights__container__item"
-            onClick={() => jump(`https://beian.miit.gov.cn/#/Integrated/index`)}
+            onClick={() =>
+              jump(
+                `https://beian.miit.gov.cn/#/Integrated/index`,
+                false,
+                "_blank"
+              )
+            }
           >
             沪ICP备06056327号-2
           </div>

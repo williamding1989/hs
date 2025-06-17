@@ -113,7 +113,7 @@ const Header = () => {
               className={`header__nav__list ${active == i && "active"}`}
               onClick={() => {
                 setActive(i);
-                jump(n.link, !n.isExternal);
+                jump(n.link, !n.isExternal, n.isExternal && "self");
               }}
               key={i}
             >

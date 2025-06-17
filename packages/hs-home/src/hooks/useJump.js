@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 /**
  * 页面跳转
@@ -7,7 +7,14 @@ import { useNavigate } from 'react-router-dom'
  * @returns
  */
 export const useJump = () => {
-  const navigate = useNavigate()
-  return (url, useRouter = false) =>
-    useRouter ? navigate(url) : (window.location.href = url)
-}
+  const navigate = useNavigate();
+  return (url, useRouter = false, type = "self") => {
+    if (useRouter) return navigate(url);
+
+    if (type === "self") {
+      window.location.href = url;
+    } else {
+      window.open(url, type);
+    }
+  };
+};
