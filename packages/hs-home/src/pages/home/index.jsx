@@ -316,11 +316,20 @@ const Home = () => {
               );
             })}
           </div>
-          <img
+          {/* <img
             src={fancy_btn}
             className="fancy__btn"
             onClick={() => jump("/cookbook", true)}
-          ></img>
+          ></img> */}
+
+          <div
+            className="btn fancy__btn"
+            onClick={() => jump("/cookbook", true)}
+          >
+            <img src={btn__bg} className="btn__bg"></img>
+            <img src={icon_right1} className="icon"></img>
+            <div className="btn__desc ">查看所有菜谱</div>
+          </div>
         </div>
       </div>
 
@@ -416,11 +425,14 @@ const Home = () => {
             );
           })}
         </div>
-        <img
-          src={news_more}
-          className="news__more"
+        <div
+          className=" btn news__more"
           onClick={() => jump("/newslist", true)}
-        ></img>
+        >
+          <img src={btn__bg} className="btn__bg"></img>
+          <img src={icon_right1} className="icon"></img>
+          <div className="btn__desc ">查看更多</div>
+        </div>
         <img
           src={news_more1}
           className="news__more1"

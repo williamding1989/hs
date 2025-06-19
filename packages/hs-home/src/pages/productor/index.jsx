@@ -68,6 +68,8 @@ const Productor = () => {
       });
     });
 
+    console.log(nav);
+
     setNavdata(nav);
   };
 
@@ -141,7 +143,11 @@ const Productor = () => {
               <div className="productor__list__goods">
                 {v.goods.map((g, index) => {
                   return (
-                    <div key={index} className="productor__list__goods__item">
+                    <div
+                      key={index}
+                      className="productor__list__goods__item"
+                      onClick={() => jump(`/prodetail/${g.id}`, true)}
+                    >
                       <div className="productor__list__goods__item__img">
                         <img src={g.img}></img>
                       </div>
@@ -168,10 +174,7 @@ const Productor = () => {
                           </div>
                         );
                       })}
-                      <div
-                        className="productor__list__goods__item__detailbtn"
-                        onClick={() => jump(`/prodetail/${g.id}`, true)}
-                      >
+                      <div className="productor__list__goods__item__detailbtn">
                         商品详情
                       </div>
                     </div>

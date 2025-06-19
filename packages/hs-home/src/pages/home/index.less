@@ -46,7 +46,7 @@
     position: relative;
     width: 100vw;
     height: 730px;
-    padding-top: 68px;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,12 +54,13 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center center;
+    margin-bottom: -65px;
     &__mob1,
     &__mob2 {
       display: none;
     }
     &__title {
-      width: 228px;
+      width: 232px;
     }
 
     &__book {
@@ -86,25 +87,29 @@
     .btn {
       position: absolute;
       bottom: 60px;
-      width: 181px;
-      height: 43px;
+      width: 240px;
+      height: 60px;
       .icon {
-        right: 1%;
-        width: 37px;
+        right: 3%;
+        width: 50px;
       }
       &__desc {
-        font-size: 18px;
+        font-size: 24px;
+        text-align: left;
+        padding-left: 54px;
       }
     }
   }
 
   .hotfancy {
+    position: relative;
     padding-bottom: 60px;
     width: 100vw;
-    background-image: url("../../assets/hot_bg.jpg");
+    background-image: url("../../assets/hot_bg.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    z-index: 2;
     // 人气菜谱
     .hot {
       display: flex;
@@ -223,6 +228,21 @@
         cursor: pointer;
         margin-top: 95px;
         width: 240px;
+        height: 60px;
+        .icon {
+          right: 3%;
+          width: 50px;
+        }
+        .btn__bg {
+          height: 100%;
+        }
+        .btn__desc {
+          font-weight: 600;
+          font-size: 24px;
+          color: #ffffff;
+          text-align: left;
+          padding-left: 28px;
+        }
       }
       &__swiperwrap {
         width: 1120px;
@@ -309,7 +329,7 @@
           transform: translate(100px, 0);
         }
         .list__more {
-          right: 15%;
+          right: 10%;
           transition: all 0.8s ease-in 1.2s;
           transform: translate(100px, 0);
         }
@@ -328,7 +348,7 @@
           transform: translate(-100px, 0);
         }
         .list__more {
-          left: 15%;
+          left: 12%;
           transition: all 0.8s ease-in 1.2s;
           transform: translate(-100px, 0);
         }
@@ -345,8 +365,8 @@
         }
         .list__more {
           position: absolute;
-          width: 154px;
-          bottom: 12%;
+          width: 218px;
+          bottom: 8%;
           cursor: pointer;
         }
       }
@@ -473,7 +493,23 @@
     &__more {
       cursor: pointer;
       margin-top: 57px;
-      width: 154px;
+      width: 240px;
+      position: relative;
+      height: 60px;
+      .icon {
+        right: 3%;
+        width: 50px;
+      }
+      .btn__bg {
+        height: 100%;
+      }
+      .btn__desc {
+        font-weight: 600;
+        font-size: 24px;
+        color: #ffffff;
+        text-align: left;
+        padding-left: 54px;
+      }
     }
     &__more1 {
       display: none;
