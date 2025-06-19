@@ -1,4 +1,4 @@
-const HOST = "http://124.223.0.156:8082";
+const HOST = "http://124.223.0.156:8081"; //"http://124.223.0.156:8082";
 
 const BASE = "/api";
 
