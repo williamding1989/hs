@@ -362,7 +362,7 @@ const Home = () => {
               src={abouths_btn}
               className="abouths__btn"
               onClick={() =>
-                jump("https://www.housefoods.com.cn/index/company/index.html")
+                jump("http://58.34.161.53:6080/index/company/index.html")
               }
             ></img>
             <div className="abouths__desc">
@@ -388,7 +388,7 @@ const Home = () => {
           src={knowmore}
           className="abouths__knowmore"
           onClick={() =>
-            jump("https://www.housefoods.com.cn/index/company/index.html")
+            jump("http://58.34.161.53:6080/index/company/index.html")
           }
         ></img>
       </div>

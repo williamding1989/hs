@@ -110,7 +110,7 @@ const Footer = () => {
               className="footer__links__container__inner__item"
               onClick={() =>
                 jump(
-                  `https://www.housefoods.com.cn/index/company/sitemap.html`,
+                  `http://58.34.161.53:6080/index/company/sitemap.html`,
                   false,
                   "self"
                 )
@@ -122,7 +122,7 @@ const Footer = () => {
               className="footer__links__container__inner__item"
               onClick={() =>
                 jump(
-                  `https://www.housefoods.com.cn/index/company/privacy.html`,
+                  `http://58.34.161.53:6080/index/company/privacy.html`,
                   false,
                   "self"
                 )
@@ -134,7 +134,7 @@ const Footer = () => {
               className="footer__links__container__inner__item"
               onClick={() =>
                 jump(
-                  `https://www.housefoods.com.cn/index/company/ruler.html`,
+                  `http://58.34.161.53:6080/index/company/ruler.html`,
                   false,
                   "self"
                 )
