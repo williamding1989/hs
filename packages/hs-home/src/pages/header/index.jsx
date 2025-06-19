@@ -36,7 +36,7 @@ const Header = () => {
   const mobnavClick = (n) => {
     // 没子菜单，直接跳转
     if (!n.sub) {
-      return jump(n.link);
+      return jump(n.link, !n.isExternal, n.isExternal && "self");
     }
 
     // clone
