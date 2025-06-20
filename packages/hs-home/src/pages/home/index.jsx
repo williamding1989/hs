@@ -236,7 +236,7 @@ const Home = () => {
       </div>
 
       {/* 波浪 */}
-      {/* <div className="wave"></div> */}
+      <div className="wave"></div>
 
       {/* 日式咖喱课堂 */}
       <div className="classroom">
