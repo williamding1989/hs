@@ -9,6 +9,12 @@ import { getHomeData } from "../../request/index.js";
 import { parseUrl } from "../../utils/index.js";
 import { useLocation } from "react-router-dom";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/less/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
+
 // 资源
 import swiper_right from "../../assets/swiper_right.png";
 import swiper_left from "../../assets/swiper_left.png";
@@ -128,7 +134,7 @@ const Home = () => {
       const data = await getHomeData({ isPreview });
       console.log("data", data);
 
-      setCv(format(data.cv.item));
+      setCv([...format(data.cv.item), ...format(data.cv.item)]);
       setClassData(data.class);
       setCookbook(data.cookbook.item);
       setNewsData(data.news.item);
@@ -203,26 +209,34 @@ const Home = () => {
     <div className="Home">
       {/* 轮播 */}
       <div className="banner">
-        <HsSwiper
-          slides={cv}
-          prevRef={banner__prev}
-          nextRef={banner__next}
-          pagination={device() == 1 ? true : false}
-        ></HsSwiper>
-        <img
-          src={swiper_left}
-          ref={banner__prev}
-          className="banner__prev"
-        ></img>
-        <img
-          src={swiper_right}
-          ref={banner__next}
-          className="banner__next"
-        ></img>
+        {cv.length && (
+          <>
+            <HsSwiper
+              slides={cv}
+              prevRef={banner__prev}
+              nextRef={banner__next}
+              pagination={true}
+              slidesPerView={1.4}
+              centeredSlides={true}
+              initialSlide={1}
+              // autoplay
+            ></HsSwiper>
+            <img
+              src={swiper_left}
+              ref={banner__prev}
+              className="banner__prev"
+            ></img>
+            <img
+              src={swiper_right}
+              ref={banner__next}
+              className="banner__next"
+            ></img>
+          </>
+        )}
       </div>
 
       {/* 波浪 */}
-      <div className="wave"></div>
+      {/* <div className="wave"></div> */}
 
       {/* 日式咖喱课堂 */}
       <div className="classroom">

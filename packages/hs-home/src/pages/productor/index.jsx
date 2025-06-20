@@ -8,6 +8,8 @@ import pro_nav1 from "../../assets/pro_nav1.png";
 import pro_nav2 from "../../assets/pro_nav2.png";
 import pro_nav1Active from "../../assets/pro_nav1-active.png";
 import pro_nav2Active from "../../assets/pro_nav2-active.png";
+import arricon from "../../assets/arricon.png";
+import homeicon from "../../assets/homeicon.png";
 
 const Productor = () => {
   const [navdata, setNavdata] = useState([]);

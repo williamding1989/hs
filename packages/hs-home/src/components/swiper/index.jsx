@@ -72,7 +72,6 @@ const HsSwiper = ({
         className="HsSwiper"
         ref={swiperRef}
         modules={[Navigation, Autoplay, Pagination, EffectCoverflow]}
-        spaceBetween={30}
         loop={true}
         onSlideChange={(swiper) => {
           onSlideChange && onSlideChange(swiper.realIndex);

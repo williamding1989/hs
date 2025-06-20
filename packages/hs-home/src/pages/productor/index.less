@@ -19,9 +19,6 @@
       cursor: pointer;
       &:last-child {
         margin-left: 80px;
-        > img {
-          margin-top: 26px;
-        }
       }
     }
   }
@@ -191,6 +188,22 @@
     &::before {
       content: "";
       position: absolute;
+      background-repeat: no-repeat;
+      background-size: contain;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &::after {
+      background-image: url("../../assets/homeicon.png");
+      width: 32px;
+      height: 32px;
+      left: 70px;
+    }
+    &::before {
+      background-image: url("../../assets/arricon.png");
+      width: 53px;
+      height: 53px;
+      right: 4px;
     }
   }
 }
