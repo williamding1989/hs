@@ -134,7 +134,7 @@ const Home = () => {
       const data = await getHomeData({ isPreview });
       console.log("data", data);
 
-      setCv([...format(data.cv.item), ...format(data.cv.item)]);
+      setCv(format(data.cv.item));
       setClassData(data.class);
       setCookbook(data.cookbook.item);
       setNewsData(data.news.item);
@@ -219,7 +219,7 @@ const Home = () => {
               slidesPerView={1.4}
               centeredSlides={true}
               initialSlide={1}
-              // autoplay
+              autoplay
             ></HsSwiper>
             <img
               src={swiper_left}
