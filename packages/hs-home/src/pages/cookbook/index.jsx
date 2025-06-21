@@ -6,6 +6,7 @@ import { useJump } from "../../hooks/index.js";
 import fork from "../../assets/fork.png";
 import { getCookList } from "../../request/index.js";
 import { Pagination } from "antd";
+import { useLocation } from "react-router-dom";
 
 const Cookbook = () => {
   const [category_id, setCategory_id] = useState(1);
@@ -16,6 +17,16 @@ const Cookbook = () => {
   const jump = useJump();
 
   const isDetailPage = window.location.pathname.includes("cookdetail");
+
+  const { search } = useLocation();
+  // 从URL参数中获取导航类型
+  const params = new URLSearchParams(search);
+  const category = params.get("category");
+
+  // 设置导航索引,如果没有参数默认为0
+  useEffect(() => {
+    switchNav(Number(category) || 0);
+  }, [category]);
 
   useEffect(() => {
     if (!isDetailPage) {
@@ -57,7 +68,12 @@ const Cookbook = () => {
                   n.category_id == category_id &&
                   "cookbook__nav__container__list-checked"
                 }`}
-                onClick={() => switchNav(n.category_id)}
+                onClick={() => {
+                  if (isDetailPage) {
+                    jump(`/cookbook?category=${n.category_id}`);
+                  }
+                  switchNav(n.category_id);
+                }}
               >
                 {n.title}
                 <img src={n.bg}></img>
@@ -107,6 +123,7 @@ const Cookbook = () => {
             className="cookbook__pagination"
             align="center"
             defaultCurrent={1}
+            current={page} // 添加current属性来控制当前页码
             total={total_count}
             pageSize={20}
             onChange={(page) => {

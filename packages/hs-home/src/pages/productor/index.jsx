@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./index.less";
-// import { navMap } from "./config.js";
 import { device } from "../../utils/index.js";
 import { useJump } from "../../hooks/index.js";
 import { getProList } from "../../request/index.js";
@@ -8,14 +7,22 @@ import pro_nav1 from "../../assets/pro_nav1.png";
 import pro_nav2 from "../../assets/pro_nav2.png";
 import pro_nav1Active from "../../assets/pro_nav1-active.png";
 import pro_nav2Active from "../../assets/pro_nav2-active.png";
-import arricon from "../../assets/arricon.png";
-import homeicon from "../../assets/homeicon.png";
+import { useLocation } from "react-router-dom";
 
 const Productor = () => {
   const [navdata, setNavdata] = useState([]);
   const [navIndex, setNavIndex] = useState(0);
   const [secondNavindex, setSecondNavindex] = useState(0);
   const jump = useJump();
+  const { search } = useLocation();
+  // 从URL参数中获取导航类型
+  const params = new URLSearchParams(search);
+  const type = params.get("type");
+
+  // 设置导航索引,如果没有参数默认为0
+  useEffect(() => {
+    setNavIndex(Number(type) || 0);
+  }, [type]);
 
   useEffect(() => {
     getList();

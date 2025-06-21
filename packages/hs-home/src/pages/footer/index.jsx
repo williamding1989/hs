@@ -10,7 +10,8 @@ const Footer = () => {
   const [codeindex1, setCodeindex1] = useState(null);
 
   // 显示二维码
-  const showCode = (t, v, i) => {
+  const showCode = (t, v, i, e) => {
+    e.stopPropagation();
     // mob
     if (device() == 1) {
       const { type, link } = v;
@@ -32,7 +33,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="footer">
+    <div className="footer" onClick={() => setCodeindex1(-1)}>
       {/* 关注信息 */}
       <div className="footer__shop">
         <div className="footer__block block__left">
@@ -44,7 +45,7 @@ const Footer = () => {
                   <img
                     src={v.icon}
                     className="icon"
-                    onClick={() => showCode(0, v, i)}
+                    onClick={(e) => showCode(0, v, i, e)}
                   ></img>
                   <div
                     className={

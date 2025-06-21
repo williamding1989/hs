@@ -2,11 +2,11 @@ import "./index.less";
 
 const Tag = ({ type, className }) => {
   const typeMap = {
-    1: {
+    2: {
       className: "company",
       text: "公司",
     },
-    2: {
+    1: {
       className: "product",
       text: "产品",
     },

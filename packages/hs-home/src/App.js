@@ -17,6 +17,7 @@ import {
   Route,
   Outlet,
 } from "react-router-dom";
+import { useLocation } from "./hooks/index.js";
 
 // 标准布局
 function Standards() {
@@ -32,6 +33,7 @@ function Standards() {
 function App() {
   return (
     <div className="hs_container">
+      <useLocation />
       <Router>
         <Routes>
           <Route element={<Standards />}>

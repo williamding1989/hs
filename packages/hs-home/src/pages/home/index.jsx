@@ -209,7 +209,7 @@ const Home = () => {
     <div className="Home">
       {/* 轮播 */}
       <div className="banner">
-        {cv.length && (
+        {cv.length > 0 && (
           <>
             <HsSwiper
               slides={cv}
@@ -330,11 +330,6 @@ const Home = () => {
               );
             })}
           </div>
-          {/* <img
-            src={fancy_btn}
-            className="fancy__btn"
-            onClick={() => jump("/cookbook", true)}
-          ></img> */}
 
           <div
             className="btn fancy__btn"
@@ -357,7 +352,7 @@ const Home = () => {
             <img
               src={more}
               className="list__more"
-              onClick={() => jump("/productor", true)}
+              onClick={() => jump("/productor?type=0", true)}
             ></img>
           </div>
           <div className="product__container__list list2" ref={_product__list2}>
@@ -366,11 +361,15 @@ const Home = () => {
             <img
               src={more}
               className="list__more"
-              onClick={() => jump("/productor", true)}
+              onClick={() => jump("/productor?type=1", true)}
             ></img>
           </div>
         </div>
-        <img src={more} className="more"></img>
+        <img
+          src={more}
+          className="more"
+          onClick={() => jump("/productor?type=0", true)}
+        ></img>
       </div>
 
       {/* 波浪 */}

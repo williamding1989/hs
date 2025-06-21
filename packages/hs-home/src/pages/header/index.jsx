@@ -74,6 +74,7 @@ const Header = () => {
               <div
                 className={`level-${level}`}
                 onClick={() => {
+                  setMobnavshow(false);
                   mobnavClick(n);
                 }}
               >
