@@ -25,7 +25,7 @@ const Cookbook = () => {
 
   // 设置导航索引,如果没有参数默认为0
   useEffect(() => {
-    switchNav(Number(category) || 0);
+    switchNav(Number(category) || navMap[0].category_id);
   }, [category]);
 
   useEffect(() => {

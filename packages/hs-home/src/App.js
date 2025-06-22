@@ -17,10 +17,17 @@ import {
   Route,
   Outlet,
 } from "react-router-dom";
-import { useLocation } from "./hooks/index.js";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 // 标准布局
 function Standards() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+
   return (
     <>
       <Header />
@@ -33,7 +40,6 @@ function Standards() {
 function App() {
   return (
     <div className="hs_container">
-      <useLocation />
       <Router>
         <Routes>
           <Route element={<Standards />}>

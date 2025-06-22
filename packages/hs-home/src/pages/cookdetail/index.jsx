@@ -138,7 +138,6 @@ const CookDetail = () => {
               grabCursor={true}
               centeredSlides={true}
               slidesPerView={"auto"} // 改为auto可以更好地控制显示数量
-              loop={true} // 添加循环播放
               initialSlide={1} // 默认从第二个开始（如果数组长度允许）
               coverflowEffect={{
                 rotate: 0, // 减少旋转角度
