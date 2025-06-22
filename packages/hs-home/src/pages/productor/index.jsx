@@ -147,50 +147,52 @@ const Productor = () => {
         {navdata[navIndex].secondNav.map((v, i) => {
           const id = `section-${i}`;
           return (
-            <div className="productor__list" key={i} id={id}>
-              <div className="productor__list__title">{v.title}</div>
-              <div className="productor__list__goods">
-                {v.goods.map((g, index) => {
-                  return (
-                    <div
-                      key={index}
-                      className="productor__list__goods__item"
-                      onClick={() => jump(`/prodetail/${g.id}`, true)}
-                    >
-                      <div className="productor__list__goods__item__img">
-                        <img src={g.img}></img>
-                      </div>
+            v.goods.length > 0 && (
+              <div className="productor__list" key={i} id={id}>
+                <div className="productor__list__title">{v.title}</div>
+                <div className="productor__list__goods">
+                  {v.goods.map((g, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="productor__list__goods__item"
+                        onClick={() => jump(`/prodetail/${g.id}`, true)}
+                      >
+                        <div className="productor__list__goods__item__img">
+                          <img src={g.img}></img>
+                        </div>
 
-                      <div className="productor__list__goods__item__title">
-                        {g.title}
-                      </div>
-                      <div className="productor__list__goods__item__desc">
-                        {g.desc}
-                      </div>
-                      {g.sku.map((s, num) => {
-                        return (
-                          <div
-                            key={num}
-                            className="productor__list__goods__item__sku"
-                          >
-                            <div className="productor__list__goods__item__sku__title">
-                              {s.title}
+                        <div className="productor__list__goods__item__title">
+                          {g.title}
+                        </div>
+                        <div className="productor__list__goods__item__desc">
+                          {g.desc}
+                        </div>
+                        {g.sku.map((s, num) => {
+                          return (
+                            <div
+                              key={num}
+                              className="productor__list__goods__item__sku"
+                            >
+                              <div className="productor__list__goods__item__sku__title">
+                                {s.title}
+                              </div>
+                              <div className="productor__list__goods__item__sku__dot"></div>
+                              <div className="productor__list__goods__item__sku__content">
+                                {s.content}
+                              </div>
                             </div>
-                            <div className="productor__list__goods__item__sku__dot"></div>
-                            <div className="productor__list__goods__item__sku__content">
-                              {s.content}
-                            </div>
-                          </div>
-                        );
-                      })}
-                      <div className="productor__list__goods__item__detailbtn">
-                        商品详情
+                          );
+                        })}
+                        <div className="productor__list__goods__item__detailbtn">
+                          商品详情
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            )
           );
         })}
       </div>
