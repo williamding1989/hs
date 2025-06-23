@@ -25,13 +25,15 @@ const Cookbook = () => {
 
   // 设置导航索引,如果没有参数默认为0
   useEffect(() => {
-    switchNav(Number(category) || navMap[0].category_id);
+    if (category) {
+      switchNav(Number(category));
+    }
   }, [category]);
 
   useEffect(() => {
-    if (!isDetailPage) {
-      getList();
-    }
+    if (isDetailPage) return;
+
+    getList();
   }, [category_id, page]);
 
   const getList = async () => {
@@ -43,7 +45,11 @@ const Cookbook = () => {
       setTotal_page(total_page ?? []);
       setCookList(list);
       setTotal_count(total_count);
-    } catch (error) {}
+    } catch (error) {
+      setTotal_page(1);
+      setCookList([]);
+      setTotal_count(0);
+    }
   };
 
   const switchNav = (id) => {
