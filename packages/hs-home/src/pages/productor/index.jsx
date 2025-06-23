@@ -168,7 +168,7 @@ const Productor = () => {
                         <div className="productor__list__goods__item__desc">
                           {g.desc}
                         </div>
-                        {g.sku.map((s, num) => {
+                        {/* {g.sku.map((s, num) => {
                           return (
                             <div
                               key={num}
@@ -183,7 +183,7 @@ const Productor = () => {
                               </div>
                             </div>
                           );
-                        })}
+                        })} */}
                         <div className="productor__list__goods__item__detailbtn">
                           商品详情
                         </div>

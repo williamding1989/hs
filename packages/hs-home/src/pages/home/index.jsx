@@ -190,11 +190,11 @@ const Home = () => {
   const calcNewsClass = (type) => {
     switch (type) {
       // 公司
-      case 1:
+      case 2:
         type = "company";
         break;
       // 产品
-      case 2:
+      case 1:
         type = "productor";
         break;
       // 活动
@@ -216,7 +216,7 @@ const Home = () => {
               prevRef={banner__prev}
               nextRef={banner__next}
               pagination={true}
-              slidesPerView={1.8}
+              slidesPerView={1.3}
               centeredSlides={true}
               initialSlide={1}
               autoplay
