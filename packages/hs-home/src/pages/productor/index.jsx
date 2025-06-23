@@ -156,7 +156,16 @@ const Productor = () => {
                       <div
                         key={index}
                         className="productor__list__goods__item"
-                        onClick={() => jump(`/prodetail/${g.id}`, true)}
+                        onClick={() => {
+                          if (navIndex == 1) {
+                            return jump(
+                              `http://58.34.161.53:6080/index/business/index.html`,
+                              false,
+                              "self"
+                            );
+                          }
+                          jump(`/prodetail/${g.id}`, true);
+                        }}
                       >
                         <div className="productor__list__goods__item__img">
                           <img src={g.img}></img>

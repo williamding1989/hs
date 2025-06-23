@@ -92,9 +92,10 @@ const Prodetail = () => {
         {/* 商品介绍 */}
         <div className="prodetail__container__intro">
           <div className="prodetail__title">商品介绍</div>
-          <div className="prodetail__container__intro__tips">
-            {detail.description}
-          </div>
+          <div
+            className="prodetail__container__intro__tips"
+            dangerouslySetInnerHTML={{ __html: detail.product_info }}
+          ></div>
         </div>
         <div className="prodetail__container__additional">
           {/* 产品规格 */}
