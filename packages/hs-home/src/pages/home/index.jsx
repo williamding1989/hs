@@ -216,7 +216,7 @@ const Home = () => {
               prevRef={banner__prev}
               nextRef={banner__next}
               pagination={true}
-              slidesPerView={1.3}
+              slidesPerView={device() == 1 ? 1 : 1.3}
               centeredSlides={true}
               initialSlide={1}
               autoplay
