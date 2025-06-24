@@ -37,6 +37,7 @@ const CookDetail = () => {
     try {
       const data = await getCookDetail({ id, isPreview });
 
+      localStorage.setItem("cookdetail", data.name);
       setDetail(data);
       setRecommend(format(data.recommend));
     } catch (error) {}

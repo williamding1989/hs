@@ -36,6 +36,8 @@ const Prodetail = () => {
   const getDetail = async (id, isPreview) => {
     try {
       const data = await getProDetail({ id, isPreview });
+      localStorage.setItem("prodetail", data.name);
+
       setDetail(data);
     } catch (error) {}
   };

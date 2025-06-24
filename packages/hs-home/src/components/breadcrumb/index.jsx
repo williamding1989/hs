@@ -3,26 +3,45 @@ import { useEffect, useRef, useState } from "react";
 import "./index.less";
 
 const HsBreadcrumb = ({ pathname }) => {
+  const defaultMap = [
+    {
+      title: "首页",
+      href: "/",
+    },
+  ];
+
   const routeMap = {
     "/": "首页",
     "/productor": "产品介绍",
     "/cookbook": "好侍菜谱",
   };
 
-  const [items, setItems] = useState([
-    {
-      title: "首页",
-      href: "/",
-    },
-  ]);
+  const detailMap = {
+    cookdetail: "/cookbook",
+    prodetail: "/productor",
+  };
+
+  const [items, setItems] = useState(defaultMap);
 
   useEffect(() => {
     let item = items;
-    item.lengths = 2;
     const current = make(pathname);
+    const key = Object.keys(detailMap).find((i) => pathname.includes(i));
     if (current.title) {
-      item[1] = make(pathname);
+      item.length = 1;
+      item.push(make(pathname));
       setItems([...item]);
+    } else if (key) {
+      item.length = 1;
+      setTimeout(() => {
+        const name = localStorage.getItem(key);
+        item.push(make(detailMap[key]));
+        item.push({
+          title: name,
+          href: pathname,
+        });
+        setItems([...item]);
+      }, 700);
     }
   }, [pathname]);
 
