@@ -10,6 +10,7 @@ import {
   Newslist,
   Newsdetail,
   Preview,
+  Business,
 } from "./pages/index.jsx";
 import {
   BrowserRouter as Router,
@@ -45,24 +46,21 @@ function App() {
           <Route element={<Standards />}>
             {/* 首页 */}
             <Route path="/" element={<Home />} />
-
             {/* 产品介绍 */}
             <Route path="/productor" element={<Productor />} />
-
             {/* 产品详情 */}
             <Route path="/prodetail/:id" element={<Prodetail />} />
-
             {/* 菜谱 */}
             <Route path="/cookbook" element={<Cookbook />}>
               {/* 菜谱详情 */}
               <Route path="cookdetail/:id" element={<Cookdetail />} />
             </Route>
-
             {/* 新闻列表 */}
             <Route path="/newslist" element={<Newslist />} />
-
             {/* 新闻详情 */}
             <Route path="/newsdetail/:id" element={<Newsdetail />} />
+            {/* 业务合作 */}
+            <Route path="/business" element={<Business />} />
           </Route>
 
           {/* 二维码 */}

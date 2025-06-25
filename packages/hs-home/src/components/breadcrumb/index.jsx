@@ -14,6 +14,7 @@ const HsBreadcrumb = ({ pathname }) => {
     "/": "首页",
     "/productor": "产品介绍",
     "/cookbook": "好侍菜谱",
+    "/business": "业务合作",
   };
 
   const detailMap = {

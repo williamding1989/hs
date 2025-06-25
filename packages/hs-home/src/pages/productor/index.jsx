@@ -158,11 +158,7 @@ const Productor = () => {
                         className="productor__list__goods__item"
                         onClick={() => {
                           if (navIndex == 1) {
-                            return jump(
-                              `http://58.34.161.53:6080/index/business/index.html`,
-                              false,
-                              "self"
-                            );
+                            return jump("/business", true);
                           }
                           jump(`/prodetail/${g.id}`, true);
                         }}

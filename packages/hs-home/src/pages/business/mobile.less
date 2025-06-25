@@ -1,0 +1,221 @@
+// Mobile
+@media only screen and (max-width: 767px) {
+  div.business {
+    .business__title {
+      width: 49vw;
+      line-height: 15.1vw;
+      padding-left: 12.26vw;
+      font-size: 1.375rem;
+    }
+    &__company {
+      height: auto;
+      &__container {
+        height: auto;
+        padding: 8vw 3.2vw 0 3.2vw;
+        &::after {
+          left: 0;
+        }
+        &__line {
+          display: none;
+        }
+        &__info {
+          width: 100%;
+          flex-direction: column;
+          margin-top: 8vw;
+          &__img {
+            width: 100%;
+            height: auto;
+            margin-top: 0;
+            &::after {
+              display: none;
+            }
+            .business__company__container__info__img__pc {
+              display: none;
+            }
+            .business__company__container__info__img__mobile {
+              display: block;
+            }
+          }
+          &__text {
+            margin-top: 5.33vw;
+            width: 100%;
+            &__content {
+              margin-bottom: 5.33vw;
+              font-size: 0.875rem;
+              line-height: 5.33vw;
+            }
+          }
+        }
+      }
+      &__staff {
+        width: 100%;
+        padding: 0 3.2vw;
+        background: none;
+        height: auto;
+        flex-direction: column;
+        &__block {
+          width: 100%;
+          &__title {
+            text-align: center;
+            font-size: 1rem;
+            padding-top: 5.33vw;
+            position: relative;
+            &::after {
+              position: absolute;
+              content: "";
+              width: 17.86vw;
+              height: 2.93vw;
+              bottom: 0.4vw;
+              left: 50%;
+              transform: translateX(-50%);
+              background: linear-gradient(
+                180deg,
+                rgba(244, 0, 41, 0.09) 0%,
+                rgba(230, 0, 18, 0) 100%
+              );
+            }
+          }
+          &__content {
+            padding: 5.33vw 3.46vw 5.33vw 5.33vw;
+            margin-top: 5.33vw;
+            height: 51.73vw;
+            .business__company__staff__block__content__chief {
+              height: auto;
+              width: 29.86vw;
+            }
+            &__introduce {
+              margin-left: 7.2vw;
+              &__name {
+                padding-top: 5.33vw;
+                font-size: 1rem;
+                color: #333333;
+                line-height: 5.86vw;
+              }
+              &__title {
+                font-size: 0.75rem;
+                line-height: 4.53vw;
+                margin-top: 0.53vw;
+              }
+              &__text {
+                font-size: 0.75rem;
+                line-height: 4.63vw;
+                margin-top: 4.8vw;
+              }
+            }
+          }
+          &__increase {
+            height: 52.8vw;
+            margin-top: 5.33vw;
+            &__title {
+              font-size: 1rem;
+              top: 6.93vw;
+              left: 10.4vw;
+            }
+            &__content {
+              font-size: 1.375rem;
+              top: 14.66vw;
+              left: 10.4vw;
+            }
+          }
+        }
+        div.business__company__staff__growth {
+          width: 100%;
+          margin-top: 3.46vw;
+        }
+      }
+    }
+    &__channel {
+      height: auto;
+      &__container {
+        width: 100%;
+        padding-top: 8vw;
+        &__list {
+          margin-top: 8vw;
+          padding: 0 3.2vw;
+          &__item {
+            border-radius: 1.33vw;
+            height: 39.46vw;
+            width: 48%;
+            margin-bottom: 5.33vw;
+            padding: 2.13vw 2.13vw 0 2.13vw;
+            .business__channel__container__list__item__img {
+              margin-bottom: 2.13vw;
+            }
+            &__btn {
+              height: 8vw;
+              border-radius: 1.33vw;
+              &__nameCn {
+                font-size: 0.75rem;
+                margin-top: 0.53vw;
+                line-height: 4.53vw;
+              }
+              &__nameUk {
+                margin-top: -0.2vw;
+                font-size: 0.5rem;
+                line-height: 2.93vw;
+              }
+            }
+          }
+        }
+      }
+    }
+    &__product {
+      padding-top: 2.66vw;
+      .business__product__list1 {
+        margin-top: 8vw;
+        .business__product__list__item {
+          width: 29.86vw;
+          margin-right: 2.13vw;
+          &:last-child {
+            margin-right: 0;
+          }
+          .business__product__list__item__name {
+            margin-top: 2.13vw;
+            font-size: 0.55rem;
+            line-height: 3.73vw;
+          }
+        }
+      }
+
+      .business__product__list2 {
+        margin-top: 5.33vw;
+        .business__product__list__item {
+          width: 16vw;
+          margin-right: 15.73vw;
+          &:last-child {
+            margin-right: 0;
+          }
+          .business__product__list__item__name {
+            margin-top: 2.13vw;
+            font-size: 0.55rem;
+            line-height: 3.73vw;
+          }
+        }
+      }
+
+      .business__product__list3 {
+        margin-top: 6.93vw;
+        .business__product__list__item {
+          width: 18.13vw;
+          margin-right: 6.13vw;
+          &:last-child {
+            margin-right: 0;
+          }
+          .business__product__list__item__name {
+            margin-top: 2.13vw;
+            font-size: 0.55rem;
+            line-height: 3.73vw;
+          }
+        }
+      }
+    }
+    &__contact {
+      margin-top: 8vw;
+      padding: 0 3.2vw;
+      .business__contact__bg {
+        width: 100%;
+        margin-top: 8vw;
+      }
+    }
+  }
+}

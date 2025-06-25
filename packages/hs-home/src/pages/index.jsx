@@ -19,3 +19,5 @@ export { default as Newslist } from "./newslist/index.jsx";
 export { default as Newsdetail } from "./newsdetail/index.jsx";
 
 export { default as Preview } from "./preview/index.jsx";
+
+export { default as Business } from "./business/index.jsx";

@@ -25,10 +25,10 @@ export const navMap = [
     isExternal: true,
   },
   {
-    link: "http://58.34.161.53:6080/index/business/index.html",
+    link: "/business",
     title: "业务合作",
     id: 5,
-    isExternal: true,
+    isExternal: false,
   },
   {
     link: "http://58.34.161.53:6080/index/company/contact.html",
