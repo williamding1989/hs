@@ -119,11 +119,54 @@
       // 花式菜谱
       .fancy {
         margin-top: 18vw;
+        &__mobileBanner {
+          display: block;
+          width: 85vw;
+          margin-bottom: 7.46vw;
+          position: relative;
+          .mobilebanner__prev,
+          .mobilebanner__next {
+            position: absolute;
+            width: 6vw;
+            top: 30%;
+            z-index: 999;
+          }
+          .mobilebanner__prev {
+            left: -7vw;
+          }
+          .mobilebanner__next {
+            right: -7vw;
+          }
+          &:nth-last-child(2) {
+            margin-bottom: 0;
+          }
+          .slideContainer {
+            border-radius: 3.46vw;
+            padding: 1.33vw;
+            background-color: #fff;
+            > img {
+              border-radius: 3.46vw;
+              box-shadow: 0px 0 13px 1px rgba(0, 0, 0, 0.16);
+            }
+          }
+          .slideDesc {
+            margin-top: 3.2vw;
+            font-size: 1.125rem;
+            border-radius: 5.06vw;
+            padding: 0px 10vw 0px 6.66vw;
+            line-height: 9.33vw;
+            &::after {
+              width: 3.7vw;
+              height: 3.7vw;
+            }
+          }
+        }
         &__title {
           width: 59vw;
           margin-bottom: 7vw;
         }
         &__showcase {
+          display: none;
           width: 100vw;
           margin-bottom: 4vw;
           &__item {
@@ -251,6 +294,10 @@
         width: 85%;
         height: auto;
         margin-left: 15%;
+        > img {
+          width: 100%;
+          height: initial;
+        }
       }
       &__knowmore {
         width: 44vw;

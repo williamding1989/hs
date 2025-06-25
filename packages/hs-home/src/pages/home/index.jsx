@@ -70,6 +70,10 @@ const Home = () => {
   const fancy__next2 = useRef(null);
   const banner__prev = useRef(null);
   const banner__next = useRef(null);
+  const mobilebanner__prev1 = useRef(null);
+  const mobilebanner__next1 = useRef(null);
+  const mobilebanner__prev2 = useRef(null);
+  const mobilebanner__next2 = useRef(null);
   const _classroom__book = useRef(null);
   const _classroom__tips = useRef(null);
   const _product__list1 = useRef(null);
@@ -298,6 +302,7 @@ const Home = () => {
         {/* 花式菜谱 */}
         <div className="fancy">
           <img src={fancy_title} className="fancy__title"></img>
+          {/* pc */}
           <div className="fancy__showcase row-1">
             {fancyData.slice(0, 3).map((v, i) => {
               return (
@@ -314,6 +319,7 @@ const Home = () => {
               );
             })}
           </div>
+          {/* pc */}
           <div className="fancy__showcase row-2">
             {fancyData.slice(3, 7).map((v, i) => {
               return (
@@ -330,6 +336,52 @@ const Home = () => {
               );
             })}
           </div>
+
+          {/* mobile */}
+          {fancyData.length > 0 && (
+            <div className="fancy__mobileBanner mobileBanner1">
+              <HsSwiper
+                slides={fancyData.slice(0, 3)}
+                prevRef={mobilebanner__prev1}
+                nextRef={mobilebanner__next1}
+                showDesc={true}
+                autoplay
+              ></HsSwiper>
+              <img
+                src={swiper_left1}
+                ref={mobilebanner__prev1}
+                className="mobilebanner__prev"
+              ></img>
+              <img
+                src={swiper_right1}
+                ref={mobilebanner__next1}
+                className="mobilebanner__next"
+              ></img>
+            </div>
+          )}
+
+          {/* mobile */}
+          {fancyData.length > 3 && (
+            <div className="fancy__mobileBanner mobileBanner2">
+              <HsSwiper
+                slides={fancyData.slice(3, 7)}
+                prevRef={mobilebanner__prev2}
+                nextRef={mobilebanner__next2}
+                showDesc={true}
+                autoplay
+              ></HsSwiper>
+              <img
+                src={swiper_left1}
+                ref={mobilebanner__prev2}
+                className="mobilebanner__prev"
+              ></img>
+              <img
+                src={swiper_right1}
+                ref={mobilebanner__next2}
+                className="mobilebanner__next"
+              ></img>
+            </div>
+          )}
 
           <div
             className="btn fancy__btn"
@@ -421,7 +473,7 @@ const Home = () => {
         <div className="news__container">
           {newsData.map((v, i) => {
             return (
-              <div className="news__list borderbottom" key={i}>
+              <div className={`news__list ${v.top == 1 && "topping"}`} key={i}>
                 <div className={calcNewsClass(v.type)}>
                   {newsOptions[v.type]}
                 </div>

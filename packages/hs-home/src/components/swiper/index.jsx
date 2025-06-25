@@ -78,7 +78,7 @@ const HsSwiper = ({
         }}
         autoplay={
           autoplay && {
-            delay: 5500,
+            delay: 2500,
             disableOnInteraction: false, // 用户交互后不禁用自动播放
           }
         }

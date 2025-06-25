@@ -89,18 +89,6 @@ const Productor = () => {
     setSecondNavindex(0);
   };
 
-  const renderSecondNavMob = () => {
-    if (device() !== 1) return null;
-
-    return (
-      <div>
-        {navdata[navIndex].secondNav.map((n, i) => {
-          return <div></div>;
-        })}
-      </div>
-    );
-  };
-
   if (!navdata.length) return;
 
   return (
@@ -122,9 +110,22 @@ const Productor = () => {
         })}
       </div>
       {/* 二级导航 - pc */}
-      <div className="productor__secondnav">
+      <div className={`productor__secondnav tab-${navdata[navIndex].tab_id}`}>
         {navdata[navIndex].secondNav.map((n, i) => {
-          return (
+          return navdata[navIndex].tab_id == 2 && device() == 1 ? (
+            <a
+              key={i}
+              className={`productor__secondnav__item ${
+                secondNavindex === i ? "productor__secondnav__item-active" : ""
+              }`}
+              onClick={() => {
+                setSecondNavindex(i);
+              }}
+              href={`#section-${i}`}
+            >
+              {n.title}
+            </a>
+          ) : (
             <a
               key={i}
               className={`productor__secondnav__item ${
@@ -140,8 +141,7 @@ const Productor = () => {
           );
         })}
       </div>
-      {/* 二级导航 - mob */}
-      {renderSecondNavMob()}
+
       {/* 商品区域 */}
       <div className="productor__container">
         {navdata[navIndex].secondNav.map((v, i) => {

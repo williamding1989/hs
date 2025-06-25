@@ -11,7 +11,7 @@ import { useJump } from "../../hooks/index.js";
 import { parseUrl } from "../../utils/index.js";
 import { useLocation } from "react-router-dom";
 
-import { Pagination, EffectCoverflow } from "swiper/modules";
+import { Pagination, Navigation, EffectCoverflow } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/less/navigation";
@@ -25,6 +25,9 @@ const CookDetail = () => {
   const [recommend, setRecommend] = useState([]);
   const [swiperIndex, setSwiperIndex] = useState(0);
   const { id } = useParams(); // 获取 URL 参数
+  const swiper_leftRef = useRef(null);
+  const swiper_rightRef = useRef(null);
+
   useEffect(() => {
     if (!id) return;
 
@@ -155,9 +158,13 @@ const CookDetail = () => {
                 slideShadows: false,
               }}
               pagination={true}
-              modules={[EffectCoverflow]}
+              modules={[EffectCoverflow, Navigation]}
               className="mySwiper"
               onSlideChange={(swiper) => setSwiperIndex(swiper.realIndex)}
+              navigation={{
+                nextEl: ".swiper_right",
+                prevEl: ".swiper_left",
+              }}
             >
               {recommend.map((v, i) => {
                 return (
@@ -172,6 +179,16 @@ const CookDetail = () => {
                 );
               })}
             </Swiper>
+            <img
+              src={swiper_left}
+              ref={swiper_leftRef}
+              className="swiper_left"
+            ></img>
+            <img
+              src={swiper_right}
+              ref={swiper_rightRef}
+              className="swiper_right"
+            ></img>
             <div className="cookDetail__container__recommand__banner__desc">
               {recommend[swiperIndex]?.desc}
             </div>

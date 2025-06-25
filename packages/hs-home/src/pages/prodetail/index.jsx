@@ -77,17 +77,19 @@ const Prodetail = () => {
         <div className="prodetail__coverImage__name">{detail.name}</div>
       </div>
       {/* 品牌入口  */}
-      <div
-        className="prodetail__brand"
-        onClick={() => jump(detail.brand_linkurl)}
-      >
-        品牌专题页入口
-        <img
-          src={`${brandMap[detail.brand_id]}`}
-          className={`prodetail__brand__img brand-${detail.brand_id}`}
+      {[1, 2, 3].includes(detail.brand_id) && (
+        <div
+          className="prodetail__brand"
           onClick={() => jump(detail.brand_linkurl)}
-        ></img>
-      </div>
+        >
+          品牌专题页入口
+          <img
+            src={`${brandMap[detail.brand_id]}`}
+            className={`prodetail__brand__img brand-${detail.brand_id}`}
+            onClick={() => jump(detail.brand_linkurl)}
+          ></img>
+        </div>
+      )}
 
       {/* 商品详情 */}
       <div className="prodetail__container">
@@ -122,15 +124,18 @@ const Prodetail = () => {
           </div>
         </div>
         {/* 视频介绍 */}
-        <div className="prodetail__container__video">
-          <div className="prodetail__title">视频介绍</div>
-          <HsVideo
-            className="prodetail__container__video__item"
-            src={detail.video}
-            poster={detail.video_image}
-            playbtn={play2}
-          ></HsVideo>
-        </div>
+        {detail.video && (
+          <div className="prodetail__container__video">
+            <div className="prodetail__title">视频介绍</div>
+            <HsVideo
+              className="prodetail__container__video__item"
+              src={detail.video}
+              poster={detail.video_image}
+              playbtn={play2}
+            ></HsVideo>
+          </div>
+        )}
+
         {/* 菜谱 */}
         <div className="prodetail__container__cookbook">
           <div className="prodetail__title">菜谱</div>
