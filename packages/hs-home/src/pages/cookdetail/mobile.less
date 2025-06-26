@@ -4,6 +4,43 @@
   div.cookDetail {
     width: @containerW;
     padding: 6vw 3.2vw 0;
+
+    .backhome {
+      background: #e60012;
+      color: #ffffff;
+      text-align: center;
+      border-radius: 50px;
+      position: relative;
+      margin-top: 50px;
+      cursor: pointer;
+      display: block;
+      width: 70vw;
+      font-size: 1.25rem;
+      line-height: 14vw;
+      margin-top: 10.66vw;
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      &::after {
+        background-image: url("../../assets/homeicon.png");
+        left: 70px;
+        width: 6vw;
+        height: 6vw;
+      }
+      &::before {
+        background-image: url("../../assets/arricon.png");
+        right: 4px;
+        width: 12vw;
+        height: 12vw;
+      }
+    }
+
     &__container {
       width: auto;
       &__video {
@@ -89,7 +126,13 @@
       }
       &__recommand {
         &__banner {
-          width: 100%;
+          width: 75vw;
+          height: auto;
+          &__desc {
+            font-size: 0.75rem;
+            margin-top: 5.3vw;
+            line-height: 4.53vw;
+          }
         }
       }
     }

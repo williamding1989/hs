@@ -194,6 +194,11 @@ const CookDetail = () => {
             </div>
           </div>
         </div>
+
+        {/* 返回首页 */}
+        <div className="backhome" onClick={() => jump("/", true)}>
+          返回首页
+        </div>
       </div>
     </div>
   );
