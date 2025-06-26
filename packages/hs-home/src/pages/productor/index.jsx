@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./index.less";
 import { device } from "../../utils/index.js";
 import { useJump } from "../../hooks/index.js";
@@ -13,8 +13,12 @@ const Productor = () => {
   const [navdata, setNavdata] = useState([]);
   const [navIndex, setNavIndex] = useState(0);
   const [secondNavindex, setSecondNavindex] = useState(0);
+  const navRef = useRef(null);
+  const [isSticky, setIsSticky] = useState(false);
+  const [placeholderHeight, setPlaceholderHeight] = useState(0);
   const jump = useJump();
   const { search } = useLocation();
+
   // 从URL参数中获取导航类型
   const params = new URLSearchParams(search);
   const type = params.get("type");
@@ -27,6 +31,48 @@ const Productor = () => {
   useEffect(() => {
     getList();
   }, []);
+
+  useEffect(() => {
+    // 只在移动端且数据加载完成后设置监听
+    if (device() !== 1 || !navdata.length) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    const navElement = navRef.current;
+    console.log("navRef.current;", navRef.current.offsetHeight);
+    const { top: initialTop } = navElement.getBoundingClientRect();
+
+    const handleScroll = () => {
+      if (!navElement) return;
+
+      const currentScrollY = window.scrollY;
+      const scrollDirection = currentScrollY > lastScrollY ? "down" : "up";
+      lastScrollY = currentScrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const { top } = navElement.getBoundingClientRect();
+
+          // 向下滚动且元素顶部到达视口顶部时固定
+          if (scrollDirection === "down" && top <= 0) {
+            setIsSticky(true);
+            setPlaceholderHeight(navRef.current.offsetHeight);
+          }
+          // 向上滚动且超过阈值时取消固定
+          else if (scrollDirection === "up" && currentScrollY < initialTop) {
+            setIsSticky(false);
+          }
+
+          ticking = false;
+        });
+
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [navdata]); // 依赖 navdata 的变化
 
   const getList = async () => {
     try {
@@ -110,22 +156,11 @@ const Productor = () => {
         })}
       </div>
       {/* 二级导航 - pc */}
-      <div className={`productor__secondnav tab-${navdata[navIndex].tab_id}`}>
+      <div
+        className={`productor__secondnav secondnav-pc tab-${navdata[navIndex].tab_id}`}
+      >
         {navdata[navIndex].secondNav.map((n, i) => {
-          return navdata[navIndex].tab_id == 2 && device() == 1 ? (
-            <a
-              key={i}
-              className={`productor__secondnav__item ${
-                secondNavindex === i ? "productor__secondnav__item-active" : ""
-              }`}
-              onClick={() => {
-                setSecondNavindex(i);
-              }}
-              href={`#section-${i}`}
-            >
-              {n.title}
-            </a>
-          ) : (
+          return (
             <a
               key={i}
               className={`productor__secondnav__item ${
@@ -140,6 +175,65 @@ const Productor = () => {
             </a>
           );
         })}
+      </div>
+
+      {/* 二级导航 - mobile */}
+      {/* 动态高度的占位元素 */}
+      {isSticky && (
+        <div
+          style={{
+            height: `${placeholderHeight}px`,
+            width: "100%",
+          }}
+        />
+      )}
+      <div className="productor__nav-container-bottom">
+        <div
+          className={`productor__nav-container  ${isSticky ? "fixed-nav" : ""}`}
+          ref={navRef}
+        >
+          {/* 第一个div包含前3个元素 */}
+          <div
+            className={`productor__secondnav secondnav-mobile tab-${navdata[navIndex].tab_id} `}
+          >
+            {navdata[navIndex].secondNav.slice(0, 3).map((n, i) => (
+              <a
+                key={i}
+                className={`productor__secondnav__item ${
+                  secondNavindex === i
+                    ? "productor__secondnav__item-active"
+                    : ""
+                }`}
+                onClick={() => setSecondNavindex(i)}
+                href={`#section-${i}`}
+              >
+                {n.title}
+              </a>
+            ))}
+          </div>
+
+          {/* 第二个div包含后2个元素 */}
+          {navdata[navIndex].secondNav.length > 3 && (
+            <div
+              className={`productor__secondnav secondnav-mobile tab-${navdata[navIndex].tab_id} `}
+            >
+              {navdata[navIndex].secondNav.slice(3).map((n, i) => (
+                <a
+                  key={i + 3} // 注意key要从3开始
+                  className={`mobile-item-${i + 3} productor__secondnav__item ${
+                    secondNavindex === i + 3
+                      ? "productor__secondnav__item-active"
+                      : ""
+                  }`}
+                  onClick={() => setSecondNavindex(i + 3)}
+                  href={`#section-${i + 3}`}
+                >
+                  {n.title}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* 商品区域 */}
