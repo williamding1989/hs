@@ -1,5 +1,4 @@
-const HOST = "http://124.223.0.156:8081"; //"http://124.223.0.156:8082";
-
+const HOST = "http://58.34.161.53:6081/";
 const BASE = "/api";
 
 const combine = (url) => `${HOST}${BASE}${url}`;
