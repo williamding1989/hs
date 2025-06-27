@@ -6,6 +6,7 @@ import { device } from "../../utils/index.js";
 import swiper_right from "../../assets/arr_right.png";
 import swiper_left from "../../assets/arr_left.png";
 import play_1 from "../../assets/play_1.png";
+import play2 from "../../assets/play_2.png";
 import { getCookDetail } from "../../request/index.js";
 import { useJump } from "../../hooks/index.js";
 import { parseUrl } from "../../utils/index.js";
@@ -80,7 +81,7 @@ const CookDetail = () => {
             <HsVideo
               src={detail.video}
               poster={detail.video_cover}
-              playbtn={play_1}
+              playbtn={play2}
             ></HsVideo>
           ) : (
             <img
