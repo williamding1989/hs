@@ -3,5 +3,9 @@
   "dependencies": {},
   "devDependencies": {
     "lerna": "^7.1.1"
+  },
+  "scripts": {
+    "start": "node scripts/run.js start",
+    "build": "node scripts/run.js build"
   }
 }
