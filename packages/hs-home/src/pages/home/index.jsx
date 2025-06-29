@@ -84,9 +84,9 @@ const Home = () => {
   const _classroom__mob2 = useRef(null);
 
   useEffect(() => {
-    const { isPreview } = parseUrl(pathname.search);
+    const { isPreview, type } = parseUrl(pathname.search);
 
-    getData(!!isPreview);
+    getData(!!isPreview, type);
 
     adapter();
 
@@ -133,9 +133,9 @@ const Home = () => {
   }, []);
 
   // 获取首页数据
-  const getData = async (isPreview) => {
+  const getData = async (isPreview, type) => {
     try {
-      const data = await getHomeData({ isPreview });
+      const data = await getHomeData({ isPreview, type });
       console.log("data", data);
 
       setCv(format(data.cv.item));

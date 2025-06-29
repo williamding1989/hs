@@ -18,14 +18,14 @@ const Newsdetail = () => {
   useEffect(() => {
     if (!id) return;
 
-    const { isPreview } = parseUrl(pathname.search);
+    const { isPreview, type } = parseUrl(pathname.search);
 
-    getDetail(id, !!isPreview);
+    getDetail(id, !!isPreview, type);
   }, [id]);
 
-  const getDetail = async (id, isPreview) => {
+  const getDetail = async (id, isPreview, type) => {
     try {
-      const data = await getNewsDetail({ id, isPreview });
+      const data = await getNewsDetail({ id, isPreview, type });
       setDetail(data);
     } catch (error) {}
   };

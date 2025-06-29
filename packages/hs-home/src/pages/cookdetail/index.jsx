@@ -32,14 +32,14 @@ const CookDetail = () => {
   useEffect(() => {
     if (!id) return;
 
-    const { isPreview } = parseUrl(pathname.search);
+    const { isPreview, type } = parseUrl(pathname.search);
 
-    getDetail(id, !!isPreview);
+    getDetail(id, !!isPreview, type);
   }, [id]);
 
-  const getDetail = async (id, isPreview) => {
+  const getDetail = async (id, isPreview, type) => {
     try {
-      const data = await getCookDetail({ id, isPreview });
+      const data = await getCookDetail({ id, isPreview, type });
 
       localStorage.setItem("cookdetail", data.name);
       setDetail(data);

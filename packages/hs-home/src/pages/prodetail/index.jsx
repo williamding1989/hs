@@ -28,14 +28,14 @@ const Prodetail = () => {
   useEffect(() => {
     if (!id) return;
 
-    const { isPreview } = parseUrl(pathname.search);
+    const { isPreview, type } = parseUrl(pathname.search);
 
-    getDetail(id, !!isPreview);
+    getDetail(id, !!isPreview, type);
   }, [id]);
 
-  const getDetail = async (id, isPreview) => {
+  const getDetail = async (id, isPreview, type) => {
     try {
-      const data = await getProDetail({ id, isPreview });
+      const data = await getProDetail({ id, isPreview, type });
       localStorage.setItem("prodetail", data.name);
 
       setDetail(data);
@@ -77,19 +77,19 @@ const Prodetail = () => {
         <div className="prodetail__coverImage__name">{detail.name}</div>
       </div>
       {/* 品牌入口  */}
-      {[1, 2, 3].includes(detail.brand_id) && (
-        <div
-          className="prodetail__brand"
-          onClick={() => jump(detail.brand_linkurl)}
-        >
-          品牌专题页入口
+      <div
+        className="prodetail__brand"
+        onClick={() => jump(detail.brand_linkurl)}
+      >
+        品牌专题页入口
+        {[1, 2, 3].includes(detail.brand_id) && (
           <img
             src={`${brandMap[detail.brand_id]}`}
             className={`prodetail__brand__img brand-${detail.brand_id}`}
             onClick={() => jump(detail.brand_linkurl)}
           ></img>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* 商品详情 */}
       <div className="prodetail__container">

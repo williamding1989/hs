@@ -28,7 +28,7 @@ const Preview = () => {
     <div className="Preview">
       <iframe
         className={type == 1 ? "pc" : "mobile"}
-        src={`${url}?isPreview=true`}
+        src={`${url}?isPreview=true&type=${type}`}
       ></iframe>
     </div>
   );
