@@ -77,19 +77,21 @@ const Prodetail = () => {
         <div className="prodetail__coverImage__name">{detail.name}</div>
       </div>
       {/* 品牌入口  */}
-      <div
-        className="prodetail__brand"
-        onClick={() => jump(detail.brand_linkurl)}
-      >
-        品牌专题页入口
-        {[1, 2, 3].includes(detail.brand_id) && (
-          <img
-            src={`${brandMap[detail.brand_id]}`}
-            className={`prodetail__brand__img brand-${detail.brand_id}`}
-            onClick={() => jump(detail.brand_linkurl)}
-          ></img>
-        )}
-      </div>
+      {[1, 2, 3, 4].includes(detail.brand_id) && (
+        <div
+          className="prodetail__brand"
+          onClick={() => jump(detail.brand_linkurl)}
+        >
+          品牌专题页入口
+          {[1, 2, 3].includes(detail.brand_id) && (
+            <img
+              src={`${brandMap[detail.brand_id]}`}
+              className={`prodetail__brand__img brand-${detail.brand_id}`}
+              onClick={() => jump(detail.brand_linkurl)}
+            ></img>
+          )}
+        </div>
+      )}
 
       {/* 商品详情 */}
       <div className="prodetail__container">
