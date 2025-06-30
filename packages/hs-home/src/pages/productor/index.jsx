@@ -39,9 +39,8 @@ const Productor = () => {
     let lastScrollY = window.scrollY;
     let ticking = false;
     const navElement = navRef.current;
-    console.log("navRef.current;", navRef.current.offsetHeight);
     const { top: initialTop } = navElement.getBoundingClientRect();
-
+    setPlaceholderHeight(navRef.current.offsetHeight);
     const handleScroll = () => {
       if (!navElement) return;
 
@@ -242,7 +241,12 @@ const Productor = () => {
           const id = `section-${i}`;
           return (
             v.goods.length > 0 && (
-              <div className="productor__list" key={i} id={id}>
+              <div
+                className="productor__list"
+                key={i}
+                id={id}
+                style={{ "scroll-margin-top": `${placeholderHeight}px` }}
+              >
                 <div className="productor__list__title">{v.title}</div>
                 <div className="productor__list__goods">
                   {v.goods.map((g, index) => {
