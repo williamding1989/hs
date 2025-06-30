@@ -284,8 +284,7 @@ const Home = () => {
                   <div className="caseItem__img">
                     <img src={v.image} />
                   </div>
-
-                  <img src={hot_title1} className="hot_title"></img>
+                  <div className="caseItem__mobileTitle">{v.name}</div>
                   <img
                     src={more1}
                     className="caseItem__more"
