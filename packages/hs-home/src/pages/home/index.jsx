@@ -1,5 +1,5 @@
 // 模块
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { HsSwiper, HsLoading, Totop } from "../../components/index.jsx";
 import { newsOptions } from "./config.js";
 import "./index.less";
@@ -9,7 +9,8 @@ import { getHomeData } from "../../request/index.js";
 import { parseUrl } from "../../utils/index.js";
 import { useLocation } from "react-router-dom";
 
-import { Swiper, SwiperSlide } from "swiper/react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import "swiper/css";
 import "swiper/less/navigation";
 import "swiper/css/pagination";
@@ -64,12 +65,6 @@ const Home = () => {
   // 花式菜谱数据
   const [fancyData, setFancyData] = useState([]);
 
-  const fancy__prev1 = useRef(null);
-  const fancy__prev2 = useRef(null);
-  const fancy__next1 = useRef(null);
-  const fancy__next2 = useRef(null);
-  const banner__prev = useRef(null);
-  const banner__next = useRef(null);
   const mobilebanner__prev1 = useRef(null);
   const mobilebanner__next1 = useRef(null);
   const mobilebanner__prev2 = useRef(null);
@@ -82,6 +77,55 @@ const Home = () => {
   const _abouths__right = useRef(null);
   const _classroom__mob1 = useRef(null);
   const _classroom__mob2 = useRef(null);
+
+  const autoplay = useRef(
+    Autoplay({
+      delay: 4000,
+      stopOnInteraction: false,
+      stopOnInit: true,
+    })
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: device() == 1 ? "start" : "center",
+      slidesToScroll: 1,
+    },
+    [autoplay.current]
+  );
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
+
+  const scrollPrev = () => emblaApi?.scrollPrev();
+  const scrollNext = () => emblaApi?.scrollNext();
+  const scrollTo = (index) => emblaApi?.scrollTo(index);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on("select", onSelect);
+    onSelect();
+
+    emblaApi.scrollTo(1, false);
+
+    const timer = setTimeout(() => {
+      if (autoplay.current && typeof autoplay.current.play === "function") {
+        autoplay.current.play();
+      }
+    }, 100);
+
+    return () => {
+      clearTimeout(timer);
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
   useEffect(() => {
     const { isPreview, type } = parseUrl(pathname.search);
@@ -139,6 +183,7 @@ const Home = () => {
       console.log("data", data);
 
       setCv(format(data.cv.item));
+
       setClassData(data.class);
       setCookbook(data.cookbook.item);
       setNewsData(data.news.item);
@@ -215,28 +260,59 @@ const Home = () => {
       <div className="banner">
         {cv.length > 0 && (
           <>
-            <HsSwiper
-              slides={cv}
-              prevRef={banner__prev}
-              nextRef={banner__next}
-              pagination={true}
-              slidesPerView={device() == 1 ? 1 : 1.3}
-              centeredSlides={true}
-              initialSlide={1}
-              autoplay
-            ></HsSwiper>
-            <img
-              src={swiper_left}
-              ref={banner__prev}
-              className="banner__prev"
-            ></img>
-            <img
-              src={swiper_right}
-              ref={banner__next}
-              className="banner__next"
-            ></img>
+            <div
+              className={`embla-wrapper ${
+                device() == 1 ? "mobile" : "desktop"
+              }`}
+            >
+              <div className="embla" ref={emblaRef}>
+                <div className="embla__container">
+                  {cv.map((item) => (
+                    <div
+                      className={`embla__slide ${
+                        device() == 1 ? "mobile" : "desktop"
+                      }`}
+                      key={item.id}
+                      onClick={() => {
+                        window.location.href = item.link;
+                      }}
+                    >
+                      <img src={item.url} className="embla__img" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </>
         )}
+
+        {/* 自定义左右按钮 */}
+        <div className="embla__buttons">
+          <img
+            src={swiper_left}
+            className="embla__btn left"
+            onClick={scrollPrev}
+          ></img>
+
+          <img
+            src={swiper_right}
+            className="embla__btn right"
+            onClick={scrollNext}
+          ></img>
+        </div>
+
+        {/* 自定义分页器 */}
+        <div className="embla__pagination">
+          {scrollSnaps.map((_, index) => (
+            <div
+              key={index}
+              className={`embla__dot ${
+                index === selectedIndex ? "is-selected" : ""
+              }`}
+              onClick={() => scrollTo(index)}
+            ></div>
+          ))}
+        </div>
       </div>
 
       {/* 波浪 */}

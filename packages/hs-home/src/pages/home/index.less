@@ -5,6 +5,103 @@
 // Common
 .Home {
   margin: 10px auto 0;
+  .embla {
+    overflow: hidden;
+  }
+
+  .embla-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .embla-wrapper.mobile {
+    .embla {
+      padding: 0;
+    }
+  }
+
+  .embla-wrapper.desktop {
+    .embla {
+      padding: 0 5%;
+    }
+  }
+
+  .embla__slide.mobile {
+    flex: 0 0 100%;
+  }
+
+  .embla__slide.desktop {
+    flex: 0 0 90%;
+  }
+
+  .embla__container {
+    display: flex;
+  }
+
+  .embla__slide {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .embla__img {
+    display: block;
+    width: 100%;
+  }
+
+  /* 左右按钮 */
+  .embla__buttons {
+    width: 77%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none; /* 允许子元素点击 */
+  }
+
+  .embla__btn {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .embla__btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  /* 分页器 */
+  .embla__pagination {
+    position: absolute;
+    bottom: 50px;
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    gap: 12px;
+    left: 80%;
+  }
+
+  .embla__dot {
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #333;
+    opacity: 1;
+  }
+
+  .embla__dot.is-selected {
+    width: 20px;
+    height: 10px;
+    border-radius: 40%;
+    background-color: #fff;
+  }
+
   // 轮博圆点
   .swiper-pagination {
     text-align: left;
