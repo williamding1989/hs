@@ -84,3 +84,62 @@ export const hascheck = async function () {
     throw err;
   }
 };
+
+export const observerLint = async function () {
+  if (process.env.NODE_ENV == "development") return;
+
+  // 白名单配置
+  const WHITELIST = ["https://hm.baidu.com", "https://hmcdn.baidu.com"];
+
+  // 检测非法资源
+  const isIllegalResource = (url) => {
+    if (!url) return false;
+
+    // 安全获取当前页面的 location 对象
+    const currentLocation = window.location || document.location;
+
+    // 处理相对路径（使用安全的 location 转换）
+    try {
+      url = new URL(url, currentLocation.href).href;
+    } catch {
+      return true; // 无效URL直接拦截
+    }
+
+    // 白名单直接放行
+    if (WHITELIST.some((whiteUrl) => url.includes(whiteUrl))) {
+      return false;
+    }
+
+    // 非法条件：包含override 或 是/static/路径下且不带哈希
+    const isOverrideFile = url.includes("override");
+    const isStaticWithoutHash =
+      url.includes("/static/") && !/\.([a-f0-9]{8,20})\.(js|css)/.test(url);
+
+    return isOverrideFile || isStaticWithoutHash;
+  };
+
+  // 静默处理
+  const cleanResources = () => {
+    // 处理CSS和JS
+    document
+      .querySelectorAll('link[rel="stylesheet"], script[src]')
+      .forEach((el) => {
+        const resourceUrl = el.href || el.src;
+        if (isIllegalResource(resourceUrl)) {
+          if (el.tagName === "LINK") {
+            el.href = "data:text/css,/* blocked */";
+          } else {
+            el.type = "text/plain";
+            el.src = "";
+          }
+        }
+      });
+  };
+
+  // 立即执行 + 监听后续变化
+  cleanResources();
+  new MutationObserver(cleanResources).observe(document, {
+    childList: true,
+    subtree: true,
+  });
+};
