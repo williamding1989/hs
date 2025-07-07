@@ -91,6 +91,8 @@ export const observerLint = async function () {
 
     const path = `/static/css/main.${window.__CSSHASH}.css`;
 
+    console.log("path", path);
+    console.log("url", url);
     return url == path;
   };
 
