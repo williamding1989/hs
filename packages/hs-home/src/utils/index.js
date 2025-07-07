@@ -89,9 +89,9 @@ export const observerLint = async function () {
   const isLegal = (url) => {
     if (!url) return false;
 
-    const path = `${window.location.href}static/css/main.${window.__CSSHASH}.css`;
+    const path = `/static/css/main.${window.__CSSHASH}.css`;
 
-    return path == url;
+    return url == path;
   };
 
   // 静默处理
