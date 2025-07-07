@@ -19,7 +19,7 @@ signedHtml = htmlContent.replace(
   `<meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
   script-src 'self' https://hm.baidu.com https://hmcdn.baidu.com;
-  style-src 'self';
+  style-src 'self' /static/css/main.*.css;
 "><title>`
 );
 
