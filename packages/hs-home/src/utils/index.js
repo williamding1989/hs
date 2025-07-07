@@ -57,3 +57,30 @@ export const parseUrl = (url) => {
   });
   return params;
 };
+
+export const computeHtmlSignature = async function () {
+  const html = document.documentElement.outerHTML;
+  const encoder = new TextEncoder();
+  const data = encoder.encode(html);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+};
+
+export const hascheck = async function () {
+  if (process.env.NODE_ENV == "development") return;
+
+  try {
+    const currentHash = await computeHtmlSignature();
+    const expectedHash = window.__HTML_SIGNATURE;
+
+    if (currentHash !== expectedHash) {
+      document.body.innerHTML = "<h1>安全警告：页面已被非法修改！</h1>";
+      throw new Error("HTML 篡改检测");
+    }
+  } catch (err) {
+    // 如果 crypto.subtle 不可用（如 HTTP 环境），仍然阻止执行
+    document.body.innerHTML = "<h1>安全警告：无法验证页面完整性！</h1>";
+    throw err;
+  }
+};

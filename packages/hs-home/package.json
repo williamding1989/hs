@@ -21,6 +21,7 @@
     "verify": "node scripts/verify-entry.js ",
     "start": "yarn verify && craco start",
     "build": "yarn verify && craco build",
+    "postbuild": "node scripts/sign.js",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
