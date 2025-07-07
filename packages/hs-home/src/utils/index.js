@@ -88,8 +88,8 @@ export const hascheck = async function () {
 export const observerLint = async function () {
   const isLegal = (url) => {
     if (!url) return false;
-
-    const path = `/static/css/main.${window.__CSSHASH}.css`;
+    const { origin } = window.location;
+    const path = `${origin}/static/css/main.${window.__CSSHASH}.css`;
 
     console.log("path", path);
     console.log("url", url);
