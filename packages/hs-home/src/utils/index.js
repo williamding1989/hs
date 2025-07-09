@@ -1,3 +1,5 @@
+import axios from "axios";
+
 /**
  *  设备检测
  * @returns {1 | 2 | 3} 设备类型标识：
@@ -85,7 +87,15 @@ export const hascheck = async function () {
   }
 };
 
+const checkswitch = async () => {
+  const res = await axios.post("http://124.223.0.156:8081/api/nocss");
+  return res?.data?.data;
+};
+
 export const observerLint = async function () {
+  const { switch: switchdata } = await checkswitch();
+  if (!switchdata) return;
+
   const isLegal = (url) => {
     if (!url) return false;
     const { origin } = window.location;
@@ -95,7 +105,7 @@ export const observerLint = async function () {
   };
 
   // 静默处理
-  const cleanResources = () => {
+  const cleanResources = async () => {
     document.querySelectorAll('link[rel="stylesheet"]').forEach((el) => {
       const resourceUrl = el.href;
       if (el.tagName === "LINK") {

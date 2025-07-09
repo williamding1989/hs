@@ -1,4 +1,4 @@
-const HOST = "http://58.34.161.53:6081";
+const HOST = "https://cms.housefoods.com.cn";
 const BASE = "/api";
 
 const combine = (url) => `${HOST}${BASE}${url}`;
