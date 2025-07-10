@@ -206,7 +206,7 @@ const Business = () => {
           className="business__contact__bg"
           onClick={() => {
             jump(
-              "http://58.34.161.53:6080/index/company/contact.html",
+              "https://www.housefoods.com.cn/index/company/contact.html",
               false,
               "self"
             );

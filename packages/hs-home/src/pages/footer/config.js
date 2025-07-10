@@ -15,11 +15,12 @@ export const footerMap1 = [
     qrcode: [
       {
         image:
-          "http://58.34.161.53:6080/storage/assets/home/images/house_contact_weixin01.jpg?v1",
+          "https://www.housefoods.com.cn/storage/assets/home/images/house_contact_weixin01.jpg?v1",
         desc: "家庭用微信",
       },
       {
-        image: "http://58.34.161.53:6080/storage/assets/home/images/ywy.png",
+        image:
+          "https://www.housefoods.com.cn/storage/assets/home/images/ywy.png",
         desc: "业务用微信",
       },
     ],
@@ -32,7 +33,7 @@ export const footerMap1 = [
     qrcode: [
       {
         image:
-          "http://58.34.161.53:6080/storage/assets/home/images/house_contact_weixin02.jpg",
+          "https://www.housefoods.com.cn/storage/assets/home/images/house_contact_weixin02.jpg",
         desc: "视频号",
       },
     ],
@@ -44,7 +45,7 @@ export const footerMap1 = [
     qrcode: [
       {
         image:
-          "http://58.34.161.53:6080/storage/assets/home/images/xhscode.jpg?v1",
+          "https://www.housefoods.com.cn/storage/assets/home/images/xhscode.jpg?v1",
         desc: "官方用小红书",
       },
     ],
@@ -56,7 +57,7 @@ export const footerMap1 = [
     qrcode: [
       {
         image:
-          "http://58.34.161.53:6080/storage/assets/home/images/house_contact_weibo.jpg",
+          "https://www.housefoods.com.cn/storage/assets/home/images/house_contact_weibo.jpg",
         desc: "官方微博",
       },
     ],

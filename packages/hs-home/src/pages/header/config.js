@@ -19,7 +19,7 @@ export const navMap = [
     isExternal: false,
   },
   {
-    link: "http://58.34.161.53:6080/index/company/index.html",
+    link: "https://www.housefoods.com.cn/index/company/index.html",
     title: "公司介绍",
     id: 4,
     isExternal: true,
@@ -31,7 +31,7 @@ export const navMap = [
     isExternal: false,
   },
   {
-    link: "http://58.34.161.53:6080/index/company/contact.html",
+    link: "https://www.housefoods.com.cn/index/company/contact.html",
     title: "联系我们",
     id: 6,
     isExternal: true,
