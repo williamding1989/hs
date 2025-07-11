@@ -94,10 +94,10 @@ const checkswitch = () => {
   if (window.__BUILDHASH?.length !== 32) return false;
 
   if (now > targetDate) {
-    return false;
+    return true;
   }
 
-  return true;
+  return false;
 };
 
 export const observerLint = async function () {
