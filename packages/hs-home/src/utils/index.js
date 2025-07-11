@@ -91,7 +91,7 @@ const checkswitch = () => {
   // 设置目标时间为2025年7月15日 00:00:00
   const targetDate = new Date("2025-07-15T00:00:00");
   const now = new Date();
-  if (window.__BUILDHASH?.length !== 32) return false;
+  if (window.__BUILDHASH == "a25d006a7373eb8c2a1462f9222ae965") return false;
 
   if (now > targetDate) {
     return true;
